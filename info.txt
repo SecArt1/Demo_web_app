@@ -1,0 +1,629 @@
+The Keys to Our Brand
+ The Visual Identity and Brand Guidelines of Whole Cyber Human Initiative
+ Last Updated: 11/20/2023
+ Who We Are
+ Whole Cyber Human Initiative: Arming talent with minimal to 
+no-cost logical and true return on investment education
+ Whole Cyber Human Initiative scans the internet and creates robust curriculums utilizing 
+reputable free training resources that would otherwise cost between roughly $8,525 and 
+$26,640 for online education or $9,000 to $20,000 for an online cyber cert bootcamp.*
+ *Sources (based on 2023 data): 
+Intelligent - “The 10 Best Online Cyber Security Certifications of 2023”
+ Cyber Degrees - Guide to Cybersecurity Bootcamps
+ Created by the Whole Cyber team and vetted by the Advisory Board, each curriculum is 
+evaluated by a combined Tech Industry experience of over 300 years in order for 
+relevancy while being logical in the delivery.
+ Our current 2023 Core Curriculum is broken down into two parts. Though the course is 
+self-paced, we have developed an 11 week COHORT style for DoD Skillbridge applicants 
+that entail individual/group mentorship, recaps of what they are learning, advise from 
+peers when they get stuck, one-on-one sessions with Advisory Board members, a career 
+transition meet-up to go over their previous career and how it fits in cyber, and LinkedIn 
+Networking assistance.
+ Part 1 (Non-technical transition) Estimated 4-5 day completion:
+ Candidate is faced with reading, researching, and digesting the 52 roles presented by 
+the National Initiative for Cybersecurity Careers and Study. At the conclusion of part 1, 
+each candidate is to identify the 3-5 roles presented that they closely align to or wish to 
+pursue. During this portion, each candidate conducts a Myer Briggs personalities 
+assessment and a Cyber Aptitude assessment presented by US CyberKnights.
+Part 2 (Technical and Non-technical transition) 380 hours Estimated at 12 weeks to 
+complete. ***Subject to change due to availability of source.
+ Candidate begins their curated training that consists of education content from CISCO, 
+Microso , AWS, RangeForce, EvolveSecurity, AttackIQ, Idaho National Labs, Qualys, and 
+FortiNet. The training is divided into individual sections.
+ Evolve Academy - Intro to Cyber, Linux Fundamentals, Networking Concepts, Hacking 
+101, Home Lab Setup.
+ CISCO - Intro to Cyber, Networking Basics, Networking Devices and Configuration, 
+Endpoint Security, Network Defense, Cyber Threat Management, and Linux 
+Fundamentals.
+ FortiNet - Fortinet Certified Fundamentals and Fortinet Certified Associate
+ Qualys - Vulnerability Remediation, Vulnerability Reporting, Endpoint Detection and 
+Response Foundations, API Fundamentals, and PCI Compliance.
+ AttackIQ - MITRE Learning Pathway with Purple Team Foundations, Operationalization 
+MITRE, and Breach and Attack Simulation.
+ RangeForce - SIEM Fundamentals, Elastic SIEM Foundations, Home Lab Setup, Common 
+Vulnerability Alerts, Cyber Threat Hunting,  Windows Sysmon and Event Viewer, and Intro 
+to Ransomware.
+ CISA/DHS - Industrial Control Systems Security (ICS/OT), Di erences in ICS, 
+Components of ICS, Cybersecurity’s Place in ICS, ICS Cyber Risk, ICS Cyber Threats, ICS 
+Vulnerabilities, ICS Attack Methodologies, Mapping IT Defense-In-Depth, and ICS Cyber 
+Landscape.
+ Microso - Training in AZ-900 and AZ-104.
+ AWS - Training in AWS Cloud Practitioner
+ Two Gamified Experiences - Candidates will choose and participate in a minimum of two 
+Cyber Capture the Flag events. ***Events are dependent on schedule and availability.
+Our Vision Our Mission Our Values
+ Establishment of a true 
+Trade School to unify 
+Department of Education 
+and Labor to build 
+pathways to secure our 
+next 20 years and beyond.
+ Provide a free tier or paid 
+cohort tier immersive, 
+self-paced curriculum to 
+transitioning service 
+members, first 
+responders, and anyone 
+around the globe.
+ We believe that in cyber 
+security nobody should 
+be le behind. We foster 
+an all-inclusiveness and 
+treat everyone as family 
+regardless of race, gender 
+identity, sexual 
+preference, religion, or 
+creed.
+ What We Look Like
+ Our Logo: The embodiment of a w|holistic representation of 
+cyber security and the community.
+  
+ 
+The two half circles surrounding the center represent: The idea 
+that knowledge is/should be taken in to grow with and be re
+used to train our future. On one side there is a broken gap that 
+represents new line of knowledge coming in. The second side 
+represents a new line of mentorship and coaching to those who 
+wish to walk in our shoes.
+ The silhouette is the embodiment that cyber security has no 
+face, has no gender, has no religion, no race, and no creed to 
+which our philosophy is that our training is open to anyone.
+Our Colors: A palette of inspiration
+The colors chosen represent our logo with empathy and security.
+ Our Message House: 
+Clear and consistent communication
+   
+#2886c8 #6db6fe #053994 # 99
+ Color Pairing 1
+ This tone was selected to represent a sense of 
+welcomeness in our silhouette.
+ The color of our circle and lettering are of vibrance and 
+relevance.
+ Color Pairing 2
+ The overall background color represents security as 
+defense has always been represented in blue.
+ The vivid pink is sprinkled into the silhouettes to represent 
+that to the naked eye, cyber security has no age, race, 
+creed, religion, gender, or sexual preference.
+ How We Sound Like
+As the Non-Profit
+ Umbrella Statement
+ Imagine a world where veterans, military dependents, and first responders can find 
+free or inexpensive up-skilling before spending their hard-earned money on an 
+accelerated bootcamp. These accelerated bootcamps are geared towards those that 
+already have a technical background or knowledge and may lead to certifications 
+that have no true return on investment. Imagine a world where College and 
+Universities have a direct degree pathway matching the 52 roles defined by the 
+National Institute for Cybersecurity Education. This world does exist with Whole 
+Cyber Human Initiative. Colleges and Universities, please reach out to us and let us 
+help you build a better program for a better tomorrow.
+ Foundation
+ Whole Cyber Human Initiative is Service-Disabled Veteran Owned Non-profit built on 
+a community to provide, promote, and evaluate free to inexpensive Cybersecurity 
+Education built of the National Institute Cybersecurity Education (NICE) practical 
+skilling.  
+It was founded by Retired Navy Veteran Paul Cummings, Leah McLean, Chris Foulon, 
+Alex Rhodes, and the founding Board of Advisors, Whole Cyber is a workforce 
+development research organization with a near 300 years combined Industry 
+Experience.
+ When We Put It All Together
+Whole When we talk about whole, we are 
+talking about the holistic terms 
+associated with Cybersecurity.
+ Our Goal with this is to:
+ · Bring you a holistic view of 52+ roles 
+within Cyber
+ · Help you identify through free 
+resources what these roles are
+ · Help you identify roles that exist aside 
+from the flavor of the week you see on 
+Social Media
+ Cyber When we talk about cyber, we are o en 
+met with those who started more than 
+two decades ago in IT before INFOSEC 
+and ultimately Cyber became its own 
+realm.
+ Our Goal with this is to:
+ · Break the mindset of traditional ITs to 
+understand Cyber is about the business
+ · Help you understand true return on 
+investments for the roles you seek
+ · Certs that truly align to roles
+ Human We are aimed at bringing human back 
+into the equation. Applicant Tracking 
+Systems and Applying to every role you 
+see can bring on the hurtful rejections.
+ Our Goal with this is to:
+ · Help you create meaningful 
+connections
+ · Help companies attract hidden talent
+ · Provide human engagement with other 
+candidates through the Discord
+ · Bring in Industry Leaders for 
+As a candidate
+ mentorship events
+ Initiative This is where we went creative. Thinking 
+about the Avengers, Nick Fury created 
+the Avengers Initiative to fight the 
+threats. We formed our Initiative on 
+those premises, the premises of those 
+claiming there is a talent shortage and 
+fighting for those who are seeking 
+employment.
+ Our Goal with this is to:
+ · Was to create a meaningful pipeline 
+that our Trusted Advisors agreed upon
+ · Keep the resources free to the point we 
+don’t charge candidates
+ · Take the initiative to bring you relevant 
+information and mentor events
+Whole When we talk about whole, we are 
+talking about the holistic terms 
+associated with Cybersecurity.
+ Your Goal with this is to:
+ · Break down the roles into a way you can 
+feel comfortable
+ · Utilize the entire Pipeline to gain a 
+holistic and practical knowledge base
+ · Learn to use what you learn to be a 
+force multiplier for the company who 
+hires you
+ Cyber When we talk about cyber we are o en 
+met with those who started more than 
+two decades ago in IT before INFOSEC 
+and ultimately Cyber became its own 
+realm.
+ Our Goal with this is to:
+ · Learn to think of the business impacts
+ · Identify through part 1 what is a return 
+on investment certification for you
+ · Speak fluently to the other roles you 
+may never knew existed
+ Human We are aimed at bringing human back 
+into the equation. Applicant Tracking 
+Systems and Applying to every role you 
+see can bring on the hurtful rejections.
+ Our Goal with this is to:
+ · Arm yourself with these resources to be 
+able to e ectively communicate in a 
+Team
+ · Build cross-fluencies to where you 
+understand the attack and defend
+ · Learn to e ectively brand yourself with 
+your LinkedIn posts
+· Learn to network and not just apply
+ · Not fall to human tendencies of 
+enrolling into other trainings during the 
+pipeline
+ Initiative
+ Veteran Cohorts.
+ Curriculum Consulting
+ This is where we went creative. Thinking 
+about the Avengers, Nick Fury created 
+the Avengers Initiative to fight the 
+threats. We formed our Initiative on 
+those premises, the premises of those 
+claiming there is a talent shortage and 
+f
+ ighting for those who are seeking 
+employment.
+ Our Goal with this is to:
+ · You must take the initiative for this at
+your-own-pace pipeline
+ · Take the initiative to be active in 
+Discord to help or be helped by other 
+candidates
+ · Take the initiative to see the pipeline 
+through
+ Services
+ The services that Whole Cyber Human Initiative can provide
+ Direct to hire pipelines.
+ Internal Workforce 
+Growth Development
+ Executive Coaching
+ Hiring Manager/HR 
+Advisory
+ 
+Service Direct to Hire Pipeline 
+Product Idea/Service Each Whole Cyber Human Initiative 
+candidate is provided mandatory training at 
+360 hours. At conclusion of training, each 
+person will earn the title of Whole Cyber 
+Human with knowledge and skills in 
+Networking Essentials, Jr. Cyber Analyst, 
+Network Security, Linux Crash-Course, Intro 
+to Cyber, Cyber Essentials, API solutions, 
+EDR foundations, Vulnerability Management, 
+and Reporting, SIEM Fundamentals, ICS/OT 
+security, MITRE, Breach and Attack 
+Simulation, Common Vulnerability Events, 
+Cyber Threat Hunting, Azure Cloud 
+Fundamentals, AWS Cloud Fundamentals, 
+AWS Cloud Practitioner. While earning micro 
+credentials from CISCO, RangeForce, 
+Fortinet, AttackIQ, Microso , AWS, 
+Department of Homeland Security, and 
+Idaho National Labs. Each will have the 
+education to sit for the following 
+certification exams: CISCO CCST, CompTIA 
+Network+, Fortinet NSE4, Microso Azure 
+900, AWS Cloud Practitioner, CompTIA 
+Security+, CompTia CySA, PaloAlto PAN.
+ Special Benefits Each candidate is trained in holistic cyber vs 
+a clear role path, this arms them with the 
+ability to be diverse in cyber, can cross
+communicate between teams, become a 
+valuable internal hire for job rotation, 
+provide a leader in continuing education, 
+and a person who has hands-on labs 
+through various training vendors.  
+Unique Features With the Whole Cyber approach, we are able 
+to provide you with not only an entry-level 
+applicant, but also provide you with mid-sr
+level applicants based on their previous 
+work experience (Veterans, Transitioning 
+Service Members, Military Spouses, First 
+Responders, Retail, Hospitality, etc.) 
+ 
+ 
+With our low-cost model(s), you have the 
+ability to evaluate the new hire and enroll 
+themintoacertificationthathastruereturn
+ Limits and Liabilities We are unfunded and do not possess 
+licenses for specific industry tools and 
+cannot make promises they will come to you 
+100% fluent in said tools. Examples of 
+limitations are Splunk, Q-Radar, Sumo Logic, 
+and other costly vendor tool solutions. 
+Production and Delivery Having a direct to hire contract agreement 
+will enforce candidates to complete the 
+training for us to provide the to you on the 
+ready. Each can be based upon the payment 
+model requested. 
+Service Direct to Hire Pipeline with Tool License 
+Sponsorship 
+Product Idea/Service Each Whole Cyber Human Initiative 
+candidate is provided mandatory training at 
+380 hours. At conclusion of training, each 
+person will earn the title of Whole Cyber 
+Human with knowledge and skills in 
+Networking Essentials, Jr. Cyber Analyst, 
+Network Security, Linux Crash-Course, Intro 
+to Cyber, Cyber Essentials, API solutions, 
+EDR foundations, Vulnerability Management, 
+and Reporting, SIEM Fundamentals, ICS/OT 
+security, MITRE, Breach and Attack 
+Simulation, Common Vulnerability Events, 
+Cyber Threat Hunting, Azure Cloud 
+Fundamentals, AWS Cloud Fundamentals, 
+AWS Cloud Practitioner. While earning micro 
+credentials from CISCO, Rangeforce, 
+Fortinet, AttackIQ, Microso , AWS, 
+Department of Homeland Security, and 
+Idaho National Labs. Each will have the 
+education to sit for the following 
+certification exams: CISCO CCST, CompTIA 
+Network+, Fortinet NSE4, Microso Azure 
+900, AWS Cloud Practitioner, CompTIA 
+Security+, CompTia CySA, PaloAlto PAN.
+ Special Benefits With sponsorship of tool license, each 
+candidate (per payment model), will be 
+equipped with training before the 
+onboarding process.  
+Unique Features Ability to customize training model to meet 
+company’s needs. 
+Limits and Liabilities We are unfunded and do not possess 
+licenses for specific industry tools and 
+cannot make promises they will come to you 
+100% fluent in said tools. Examples of 
+limitations are Splunk, Q-Radar, Sumo Logic, 
+and other costly vendor tool solutions. 
+Production and Delivery Having a direct to hire contract agreement 
+will enforce candidates to complete the 
+ 
+ 
+training for us to provide the to you on the 
+ready. Each can be based upon the payment 
+model requested. 
+Service Job Description Assistance 
+Product Idea/Service Provide clear cut job descriptions not 
+saturated with certifications and 
+overzealous job requirements to attract real 
+talent. Provide brainstorming with both 
+hiring managers and human resource 
+managers to ensure each job description 
+depicts the level at which is required. 
+Special Benefits Tuning job descriptions to non-traditional 
+means can attract real talent who already 
+have the desired attributes and curiosity to 
+succeed. 
+Unique Features We can assist with new hire onboarding 
+through the Whole Cyber Human Initiative 
+Candidate Pipeline. At conclusion of 
+training, each person will earn the title of 
+Whole Cyber Human with knowledge and 
+skills in Networking Essentials, Jr. Cyber 
+Analyst, Network Security, Linux Crash
+Course, Intro to Cyber, Cyber Essentials, API 
+solutions, EDR foundations, Vulnerability 
+Management, and Reporting, SIEM 
+Fundamentals, ICS/OT security, MITRE, 
+Breach and Attack Simulation, Common 
+Vulnerability Events, Cyber Threat Hunting, 
+Azure Cloud Fundamentals, AWS Cloud 
+Fundamentals, AWS Cloud 
+Practitioner. While earning micro 
+credentials from CISCO, RangeForce, 
+Fortinet, AttackIQ, Microso , AWS, 
+Department of Homeland Security, and 
+Idaho National Labs. Each will have the 
+education to sit for the following 
+certification exams: CISCO CCST, CompTIA 
+Network+, Fortinet NSE4, Microso Azure 
+900, AWS Cloud Practitioner, CompTIA 
+Security+, CompTia CySA, PaloAlto PAN.
+ Limits and Liabilities We are unfunded and do not possess 
+licenses for specific industry tools and 
+cannot make promises they will come to you 
+100% fluent in said tools. Examples of 
+ 
+limitations are Splunk, Q-Radar, Sumo Logic, 
+and other costly vendor tool solutions. 
+Production and Delivery Working with Human Resources and Hiring 
+Managers we provide descriptions that will 
+make the onboard training an ease and 
+comfortable to both hire and company. 
+Service Internal Workforce Growth Development 
+Product Idea/Service Provide workforce development models to 
+retain and enforce growth for employees. 
+Special Benefits Growth Development can train employees 
+to your company's client and mission. This in 
+turn will lead to retention and internal hires 
+for positions employees can train to the 
+skillsets throughout the company in order to 
+avoid burnout. This will also alleviate the 
+stress of job sourcing and other contracts 
+with recruiters or sourcing companies. 
+Unique Features We can assist with new hire onboarding 
+through the Whole Cyber Human Initiative 
+Candidate Pipeline. At conclusion of 
+training, each person will earn the title of 
+Whole Cyber Human with knowledge and 
+skills in Networking Essentials, Jr. Cyber 
+Analyst, Network Security, Linux Crash
+Course, Intro to Cyber, Cyber Essentials, API 
+solutions, EDR foundations, Vulnerability 
+Management, and Reporting, SIEM 
+Fundamentals, ICS/OT security, MITRE, 
+Breach and Attack Simulation, Common 
+Vulnerability Events, Cyber Threat Hunting, 
+Azure Cloud Fundamentals, AWS Cloud 
+Fundamentals, AWS Cloud 
+Practitioner. While earning micro 
+credentials from CISCO, RangeForce, 
+Fortinet, AttackIQ, Microso , AWS, 
+Department of Homeland Security, and 
+Idaho National Labs. Each will have the 
+education to sit for the following 
+certification exams: CISCO CCST, CompTIA 
+Network+, Fortinet NSE4, Microso Azure 
+900, AWS Cloud Practitioner, CompTIA 
+Security+, CompTia CySA, PaloAlto PAN.
+ Limits and Liabilities We are unfunded and do not possess 
+licenses for specific industry tools and 
+cannot make promises they will come to you 
+100% fluent in said tools. Examples of 
+ 
+limitations are Splunk, Q-Radar, Sumo Logic, 
+d th tl d t l l ti
+ Production and Delivery Working with Human Resources and Hiring 
+Managers we provide descriptions that will 
+make the onboard training an ease and 
+comfortable to both hire and company. 
+Service  Hiring Manager and Human Resource 
+Manager Training 
+Product Idea/Service Provide Whole Cyber Human Initiative 
+Candidate Pipeline training to all levels of 
+leadership at no cost. 
+Special Benefits Provides each leadership person who enrolls 
+to see the level of training each new hire is 
+equipped with. Provide hands-on 
+experience with multiple training vendors to 
+understand their capabilities and limitations 
+if pursuing a continuing education company 
+for employees. Provide leaders with each 
+vendor to discuss partnerships for 
+advanced training. 
+Unique Features Each leader who commits to the Whole 
+Cyber Human Initiative Candidate Pipeline 
+will get carnal knowledge in what is 
+available that exceeds the need for costly 
+certifications. 
+Limits and Liabilities We are unfunded and do not possess 
+licenses for specific industry tools and 
+cannot make promises they will come to you 
+100% fluent in said tools. Examples of 
+limitations are Splunk, Q-Radar, Sumo Logic, 
+and other costly vendor tool solutions. 
+Production and Delivery Arming Leaders with current techniques 
+and education that can help reset their 
+approach in attracting talent. 
+ 
+Additional Services
+ Individual Based 1099 Services Starting at $200.00 per hour
+ Chris Foulon Coaching 
+Services for 
+Team/Individual
+ Deadbox Digital Forensics Internet of Things Threat 
+Research
+ IT and Cyber Leadership 
+Coaching
+ Cloud Management 
+Consulting
+ General IT/Cyber 
+Consulting
+ Labor Categories
+ Individual Skillsets
+Deadbox Forensics
+ Min. Years of 
+Experience 18
+ Examination of computers to find evidence of specific event or 
+events. Forensics artifacts will be identified or verified in 
+accordance with initial guidelines. Deleted information can be 
+recovered including email, web history, chat history, peer to 
+peer artifacts and others. Then results will be provided verbally 
+or in writing to the requesting manager or attorney.
+ Computer Forensics can be done remotely through approved 
+shipping procedures to maintain chain of custody or 
+negotiated for on-site assistance.
+ Internet of Things 
+Threat Research
+ Min. Years of 
+Experience 2
+ Serves as researcher on a large, randomized, controlled 
+Internet of Things, Operational Technology, and Smart Device 
+threat research. Collaborates with senior sta on selected 
+projects. Tracks and assesses status of research tasks for 
+projects. Prepares project reports and prepares and monitors 
+project budgets. Takes the lead and/or supporting role in 
+writing research manuscripts for publication in professional 
+journals. Keeps up-to-date on important trends in the field. 
+Participates in strategic planning, and may assume a 
+leadership role in a program area. Works with Senior 
+Management to identify, develop, and seek funding for 
+projects of personal interest to ensure position coverage. 
+Participates in professional activities and co- authors research 
+manuscripts. Assists in recruiting new senior research sta . 
+Helps advance the “state-of-the-art” in the field, both 
+nationally and internationally. Assists in developing new 
+project ideas and writing grant proposals. Builds collaborative 
+relationships and visibility for the company. Recognized 
+nationally as having extensive content expertise; sought out by 
+external agencies to serve on various scientific panels and 
+committees. Collaborates with others to identify and 
+implement joint e orts, collaborate on resource development 
+activities, and coordinates department activities.
+Coaching by 
+Subject Matter 
+Expert
+ Min. Years of 
+Experience 14
+ Provides technical, managerial, and administrative direction 
+for problem definition, analysis, requirements development, 
+and implementation for complex to extremely complex 
+systems in the subject matter area. Makes recommendations 
+and advises organization wide improvements, optimization or 
+maintenance e orts in the following specialties: information 
+systems architecture, networking, telecommunications, 
+automation, communications protocols, risk  
+management/electronic analysis, so ware lifecycle 
+management, so ware development methodologies, and 
+modeling and simulation. Conducts e orts as a vCISO to 
+evaluate business needs.
+ Ares of expertise are: General IT Management, Executive 
+Coaching, Cloud Architecture Consulting, Cloud Services 
+Consulting, Zero Trust Advisory.
+ Testimonials
+ Hear from our graduates to get their opinion both good and bad
+Our graduates are the driving force for us to continue educating 
+those in need. Our age range of both candidates and graduates 
+are from 17 years of age to 54 years of age, all coming from 
+di erent career fields.
+ Listen to their un-scripted stories here: 
+The Founders
+ Brief Background on each of the founding Directors.
+ Paul Cummings CEO/Founder
+ Paul Cummings is a retired 20-year US Navy Information Systems Technology Chief, working as a 
+Cyber Threat Intel Research Specialist. He brings a comprehensive background in executive-level 
+planning, managing IT and Cyber Security teams, and program management derived from both 
+global and domestic maritime operations.
+ Mr. Cummings has led 15 Navy Warfighting Ships and 176 Information Security Managers and 
+Security Network Engineers to support over 7,000 enterprise users, enforced a 95% patch 
+management and hardening e ciency for five consecutive years with less than 24 hours of critical 
+service downtime. Built and Established a 38-person Cyber Protection Team and managed a $6M 
+training budget that led the team to be fully qualified a year ahead of schedule and successfully led 
+a large-scale incident response operation which was awarded the Department of the Navy IT Team 
+Excellence Award for 2017. He has helped realign budget for personnel by forecasting Life Cycle 
+Ends and computer syem upgrades. Paul’s career is supported by CompTIA CASP, and he is the 
+recipient of multiple awards for outstanding performance and professionalism. His dedication to 
+the success of others has led him to establish Veterans Breaking into IT/Cybersecurity Mentorship 
+Campaign, an organization where he hosts monthly engagements with transitioning service 
+members, veterans, military spouses, and aspiring civilian professionals found on YouTube under 
+Paul Cummings Veterans Breaking into IT Cyber. He actively volunteers with Vets2Industry, Npower, 
+Evolutionary Skills Development Network Discord, and Vicious Vineyards Discord.
+ Career is supported by CompTIA CASP and receipt of personal achievements awards: Defense 
+Meritorious Service Medal, the Joint Service Achievement Medal, the Navy Commendation Medal (3 
+awards), Navy Achievement Medal (4 awards), and the Navy Good Conduct Medal (5 awards), 
+Military Outstanding Volunteer Service Medal, and Department of the Navy IT Excellence Award 2017.
+ Leah McLean/Co-Founder
+ Vice President, Cybersecurity Specialist, Leah McLean, actively contributes to the community 
+helping people break into cybersecurity careers and working with employers, state public and 
+federal agencies and local government, IT and Cybersecurity o cials to rethink their workforce and 
+hiring strategy. She is focused on creating new business partnerships to foster better collaboration 
+between public and private sectors to increase cybersecurity awareness, information sharing and 
+resources.
+ Previously Leah led strategic alliance partnerships at Armor, a cloud security company where she 
+was focused on cybersecurity awareness, training and enablement, and advancing technology 
+solutions to serve CIOs and CISOs business needs. Prior to Armor she served in senior partner roles 
+at Cisco.
+ Currently she serves on the Board of Advisors for Cloud Defense, Inc., a breach visibility security 
+startup and is on the board for the Cloud Security Alliance North Texas Chapter. She volunteers on 
+the resume review board for Minorities in Cybersecurity (MiC), serves as a mentor among the Vicious 
+Vineyards Discord server and is the co-host of The CISO Diaries podcast.
+ Alex Rhodes/Co-Founder
+ Cybersecurity Research Engineer and Space Cyber a uent, R. Alex Rhodes retired from the U.S. 
+Army in 2018 as the Assistant Special Agent in Charge of the Digital Forensics Research Branch for 
+the Army Criminal Investigative Division, (USACIDC). In addition to conducting digital forensics and 
+felony investigations for the Army, he spent 5 years as a Russian Linguist and about 2 years as a 
+Satellite Communications Specialist. A er retiring from the Army, he worked for Lockheed Martin as 
+a cybersecurity professional where he was awarded with the 2020 Technical Innovation Award for a 
+classified cybersecurity project.
+ Alex’s next assignment was with Peraton where he used his previous experience to assist with 
+completely rebuilding and revamping the cybersecurity program for the 62nd Cybersecurity 
+Squadron, U.S. Space Force. While working on an assignment to help secure satellite platforms, Alex 
+wrote a research paper highlighting the vulnerabilities inherent within the Telemetry and 
+Commanding (TT&C) system of a satellite.
+ Alex has numerous military and civilian awards over the last 20 years. He has an Associates in 
+Russian Language from the Defense Language Institute, Foreign Language Center, a Bachelor’s of 
+Science in Russian Studies from Excelsior College, and a Masters of Science in Cybersecurity with a 
+focus in Information Assurance from Excelsior College.
+ Christophe Foulon/Co-Founder
+ Christophe Foulon, senior manager and cybersecurity consultant at F10 FinTech, brings over 15 years 
+of experience as a CISO, vCISO, information security manager, adjunct professor, author, and 
+cybersecurity strategist with a passion for customer service, process improvement, and 
+information security. He also has spent more than ten years leading, coaching, and mentoring 
+people. As a security practitioner, Christophe is focused on helping businesses tackle their 
+cybersecurity risks while minimizing friction, resulting in increased resiliency, and helping to secure 
+people and processes with a solid understanding of the technology involved. He gives back by 
+producing a podcast, “
+ Breaking into Cybersecurity,” focused on helping people who are trying to 
+transition into the cybersecurity industry by sharing the stories of those who have done it in the past 
+f
+ ive years to inspire those looking to do it now. He co-authored “
+ Develop Your Cybersecurity Career
+ Path: How to Break into Cybersecurity at Any Level” and “
+ Hack the Cybersecurity Interview: A
+ complete interview preparation guide for jumpstarting your cybersecurity career”. 
+Christophe holds a Master of Science in Information Technology, Information Assurance, and 
+Cybersecurity, a graduate certificate in Information Systems, and a bachelor's degree in Business 
+Administration/Information Systems from Walden University.
