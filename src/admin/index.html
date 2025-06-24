@@ -1,0 +1,3004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Management System - Whole Cyber Human Initiative</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../public/assets/css/styles.css">
+    
+    <style>
+        :root {
+            --admin-sidebar-width: 280px;
+            --admin-header-height: 70px;
+            --admin-primary: #1f2937;
+            --admin-secondary: #374151;
+            --admin-accent: #3b82f6;
+            --admin-success: #10b981;
+            --admin-warning: #f59e0b;
+            --admin-danger: #ef4444;
+            --admin-bg: #f9fafb;
+            --admin-card: #ffffff;
+            --admin-border: #e5e7eb;
+            --admin-text: #1f2937;
+            --admin-text-light: #6b7280;
+        }
+
+        body {
+            background: var(--admin-bg);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Admin Header */
+        .admin-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--admin-header-height);
+            background: var(--admin-card);
+            border-bottom: 1px solid var(--admin-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 1000;
+        }
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .admin-logo img {
+            height: 40px;
+        }
+
+        .admin-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--admin-text);
+        }
+
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--admin-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Admin Sidebar */
+        .admin-sidebar {
+            position: fixed;
+            top: var(--admin-header-height);
+            left: 0;
+            width: var(--admin-sidebar-width);
+            height: calc(100vh - var(--admin-header-height));
+            background: var(--admin-card);
+            border-right: 1px solid var(--admin-border);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-menu {
+            padding: 1.5rem 0;
+        }
+
+        .menu-section {
+            margin-bottom: 2rem;
+        }
+
+        .menu-section-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--admin-text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            color: var(--admin-text);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .menu-item:hover {
+            background: var(--admin-bg);
+            border-left-color: var(--admin-accent);
+        }
+
+        .menu-item.active {
+            background: rgba(59, 130, 246, 0.1);
+            border-left-color: var(--admin-accent);
+            color: var(--admin-accent);
+        }
+
+        .menu-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .admin-main {
+            margin-left: var(--admin-sidebar-width);
+            margin-top: var(--admin-header-height);
+            padding: 2rem;
+            min-height: calc(100vh - var(--admin-header-height));
+        }
+
+        .content-header {
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--admin-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            color: var(--admin-text-light);
+            font-size: 1rem;
+        }
+
+        /* Dashboard Cards */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-card {
+            background: var(--admin-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--admin-border);
+            transition: all 0.2s;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--admin-text);
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .card-icon.courses {
+            background: var(--admin-accent);
+        }
+
+        .card-icon.students {
+            background: var(--admin-success);
+        }
+
+        .card-icon.certificates {
+            background: var(--admin-warning);
+        }
+
+        .card-icon.revenue {
+            background: var(--admin-danger);
+        }
+
+        .card-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--admin-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            color: var(--admin-text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Content Management Tables */
+        .content-table {
+            background: var(--admin-card);
+            border-radius: 12px;
+            border: 1px solid var(--admin-border);
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--admin-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--admin-text);
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: var(--admin-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        .btn-secondary {
+            background: var(--admin-bg);
+            color: var(--admin-text);
+            border: 1px solid var(--admin-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--admin-border);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--admin-border);
+        }
+
+        .data-table th {
+            background: var(--admin-bg);
+            font-weight: 600;
+            color: var(--admin-text);
+            font-size: 0.875rem;
+        }
+
+        .data-table td {
+            color: var(--admin-text);
+            font-size: 0.875rem;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge.published {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--admin-success);
+        }
+
+        .status-badge.draft {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--admin-warning);
+        }
+
+        .status-badge.archived {
+            background: rgba(107, 114, 128, 0.1);
+            color: var(--admin-text-light);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .action-btn.edit {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--admin-accent);
+        }
+
+        .action-btn.edit:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .action-btn.delete {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--admin-danger);
+        }
+
+        .action-btn.delete:hover {
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        /* Additional Admin Styles */
+        .quiz-icon, .assignment-icon {
+            color: var(--admin-accent);
+            margin-right: 0.5rem;
+        }
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .certificate-card {
+            border: 1px solid var(--admin-border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .certificate-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .certificate-preview {
+            background: linear-gradient(135deg, var(--admin-accent), var(--admin-primary));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .certificate-preview i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-info {
+            padding: 1.5rem;
+        }
+
+        .certificate-info h5 {
+            margin: 0 0 0.5rem 0;
+            color: var(--admin-text);
+        }
+
+        .certificate-info p {
+            color: var(--admin-text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--admin-text-light);
+            margin-bottom: 1rem;
+        }
+
+        .certificate-actions {
+            padding: 0 1.5rem 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .role-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .role-badge.student {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .role-badge.instructor {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .role-badge.admin {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .progress-mini {
+            width: 60px;
+            height: 4px;
+            background: var(--admin-border);
+            border-radius: 2px;
+            overflow: hidden;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .progress-mini .progress-fill {
+            height: 100%;
+            background: var(--admin-success);
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 0.8rem;
+            color: var(--admin-text-light);
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .analytics-card {
+            background: var(--admin-card);
+            border: 1px solid var(--admin-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .analytics-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .analytics-card .card-header h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--admin-text);
+        }
+
+        .analytics-card .card-header i {
+            color: var(--admin-accent);
+            font-size: 1.2rem;
+        }
+
+        .metric-large {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--admin-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--admin-text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-change {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .metric-change.positive {
+            color: var(--admin-success);
+        }
+
+        .metric-change.negative {
+            color: var(--admin-danger);
+        }
+
+        .performance-chart {
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--admin-bg);
+            border-radius: 4px;
+            color: var(--admin-text-light);
+        }
+
+        .quiz-questions {
+            margin-top: 2rem;
+        }
+
+        .question-item {
+            border: 1px solid var(--admin-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--admin-bg);
+        }
+
+        .question-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .question-options input {
+            padding: 0.5rem;
+            border: 1px solid var(--admin-border);
+            border-radius: 4px;
+        }
+
+        .date-range-picker select {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--admin-border);
+            border-radius: 4px;
+            background: var(--admin-card);
+        }        /* Modal System */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: var(--admin-card);
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        .modal-content.large {
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--admin-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: var(--admin-text);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--admin-border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        .close {
+            color: var(--admin-text-light);
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close:hover {
+            color: var(--admin-text);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--admin-text);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--admin-border);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--admin-accent);
+        }
+
+        /* Table Improvements */
+        .table-cell-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .btn-icon.btn-primary {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--admin-accent);
+        }
+
+        .btn-icon.btn-primary:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .btn-icon.btn-secondary {
+            background: rgba(107, 114, 128, 0.1);
+            color: var(--admin-text-light);
+        }
+
+        .btn-icon.btn-secondary:hover {
+            background: rgba(107, 114, 128, 0.2);
+        }
+
+        .btn-icon.btn-danger {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--admin-danger);
+        }
+
+        .btn-icon.btn-danger:hover {
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        .btn.btn-sm {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.75rem;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: 1px solid var(--admin-border);
+            border-radius: 6px;
+            font-size: 0.875rem;
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--admin-text-light);
+            font-size: 0.875rem;
+        }
+
+        /* Status Badge Improvements */
+        .status-badge.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--admin-success);
+        }
+
+        .status-badge.warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--admin-warning);
+        }
+
+        .status-badge.danger {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--admin-danger);
+        }
+
+        /* Section Management */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            color: var(--admin-text);
+            font-size: 1.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Settings Styles */
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .settings-group {
+            background: var(--admin-card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--admin-border);
+        }
+
+        .settings-group h4 {
+            margin: 0 0 1.5rem 0;
+            color: var(--admin-text);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--admin-border);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            background: var(--admin-bg);
+            color: var(--admin-text);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--admin-accent);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-switch label {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .toggle-switch label:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        .toggle-switch input:checked + label {
+            background-color: var(--admin-accent);
+        }
+
+        .toggle-switch input:checked + label:before {
+            transform: translateX(26px);
+        }
+
+        /* Branding Styles */
+        .branding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .branding-group {
+            background: var(--admin-card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--admin-border);
+        }
+
+        .branding-group h4 {
+            margin: 0 0 1.5rem 0;
+            color: var(--admin-text);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .file-upload {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 2px dashed var(--admin-border);
+            border-radius: 8px;
+            background: var(--admin-bg);
+        }
+
+        .logo-preview {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .favicon-preview {
+            width: 32px;
+            height: 32px;
+            background: var(--admin-accent);
+            border-radius: 4px;
+        }
+
+        .color-picker {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .color-input {
+            width: 50px;
+            height: 35px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .color-code {
+            font-family: monospace;
+            font-size: 0.875rem;
+            color: var(--admin-text-light);
+        }
+
+        /* Security Styles */
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .security-group {
+            background: var(--admin-card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--admin-border);
+        }
+
+        .security-group h4 {
+            margin: 0 0 1.5rem 0;
+            color: var(--admin-text);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--admin-text);
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.25rem;
+            font-size: 0.75rem;
+            color: var(--admin-text-light);
+        }
+
+        /* Certificate Grid */
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .certificate-card {
+            background: var(--admin-card-bg);
+            border: 1px solid var(--admin-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .certificate-preview {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-preview i {
+            font-size: 2.5rem;
+            color: var(--admin-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-preview h4 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--admin-text);
+        }
+
+        .certificate-info h5 {
+            margin: 0 0 0.5rem 0;
+            color: var(--admin-text);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .certificate-info p {
+            margin: 0 0 1rem 0;
+            color: var(--admin-text-light);
+            font-size: 0.875rem;
+        }
+
+        .certificate-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.75rem;
+            color: var(--admin-text-light);
+        }
+
+        .certificate-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-sm {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.75rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .admin-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .admin-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .admin-main {
+                margin-left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block !important;
+                background: none;
+                border: none;
+                font-size: 1.2rem;
+                color: var(--admin-text);
+                cursor: pointer;
+                margin-right: 1rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .question-options {
+                grid-template-columns: 1fr;
+            }
+
+            .search-bar {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+
+            .table-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .data-table {
+                font-size: 0.75rem;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="admin-logo">
+            <button class="mobile-menu-btn" style="display: none;" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <img src="../public/assets/images/image.png" alt="Whole Cyber Human Initiative">
+            <div class="admin-title">Content Management System</div>
+        </div>
+        <div class="admin-user">
+            <span>Admin User</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </header>
+
+    <!-- Admin Sidebar -->
+    <nav class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-menu">            <div class="menu-section">
+                <div class="menu-section-title">Overview</div>
+                <a href="#" class="menu-item active" onclick="showSection('dashboard')">
+                    <i class="fas fa-chart-line menu-icon"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showSection('analytics')">
+                    <i class="fas fa-chart-bar menu-icon"></i>
+                    <span>Analytics</span>
+                </a>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-section-title">Content</div>
+                <a href="#" class="menu-item" onclick="showSection('courses')">
+                    <i class="fas fa-graduation-cap menu-icon"></i>
+                    <span>Courses</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showSection('lessons')">
+                    <i class="fas fa-play-circle menu-icon"></i>
+                    <span>Lessons</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showSection('quizzes')">
+                    <i class="fas fa-question-circle menu-icon"></i>
+                    <span>Quizzes</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showSection('assignments')">
+                    <i class="fas fa-tasks menu-icon"></i>
+                    <span>Assignments</span>
+                </a>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-section-title">Users</div>
+                <a href="#" class="menu-item" onclick="showSection('users')">
+                    <i class="fas fa-users menu-icon"></i>
+                    <span>Users</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showSection('certificates')">
+                    <i class="fas fa-certificate menu-icon"></i>
+                    <span>Certificates</span>
+                </a>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-section-title">Settings</div>
+                <a href="#" class="menu-item" onclick="showSection('settings')">
+                    <i class="fas fa-cog menu-icon"></i>
+                    <span>General Settings</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showSection('branding')">
+                    <i class="fas fa-palette menu-icon"></i>
+                    <span>Branding</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showSection('security')">
+                    <i class="fas fa-shield-alt menu-icon"></i>
+                    <span>Security</span>
+                </a>
+            </div>
+        </div>
+    </nav>    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Dashboard Content -->
+        <div class="content-section active" id="dashboard-section">
+            <div class="content-header">
+                <h1 class="page-title">Dashboard</h1>
+                <p class="page-subtitle">Overview of your learning platform</p>
+            </div>
+
+            <!-- Dashboard Stats -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <div class="card-title">Total Courses</div>
+                        <div class="card-icon courses">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    <div class="card-value">16</div>
+                    <div class="card-subtitle">+2 new this month</div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <div class="card-title">Active Students</div>
+                        <div class="card-icon students">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="card-value">1,247</div>
+                    <div class="card-subtitle">+18% from last month</div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <div class="card-title">Certificates Issued</div>
+                        <div class="card-icon certificates">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                    </div>
+                    <div class="card-value">384</div>
+                    <div class="card-subtitle">+12% from last month</div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <div class="card-title">Monthly Revenue</div>
+                        <div class="card-icon revenue">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                    <div class="card-value">$8,429</div>
+                    <div class="card-subtitle">+24% from last month</div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="content-table">
+                <div class="table-header">
+                    <div class="table-title">Recent Course Activity</div>
+                    <div class="table-actions">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                        <button class="btn btn-primary" onclick="showModal('courseModal')">
+                            <i class="fas fa-plus"></i>
+                            Add Course
+                        </button>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Course Name</th>
+                            <th>Instructor</th>
+                            <th>Students</th>
+                            <th>Status</th>
+                            <th>Last Updated</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>OT Cyber Essentials</td>
+                            <td>Paul Cummings</td>
+                            <td>156</td>
+                            <td><span class="status-badge published">Published</span></td>
+                            <td>June 20, 2025</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-primary" title="Edit" onclick="editCourse(1)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon btn-danger" title="Delete" onclick="deleteCourse(1)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Breaking into Cybersecurity Leadership</td>
+                            <td>Expert Team</td>
+                            <td>89</td>
+                            <td><span class="status-badge published">Published</span></td>
+                            <td>June 18, 2025</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-primary" title="Edit" onclick="editCourse(2)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon btn-danger" title="Delete" onclick="deleteCourse(2)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>AI Generalist Track</td>
+                            <td>Ken Underhill</td>
+                            <td>234</td>
+                            <td><span class="status-badge published">Published</span></td>
+                            <td>June 15, 2025</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-primary" title="Edit" onclick="editCourse(3)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon btn-danger" title="Delete" onclick="deleteCourse(3)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Job Interview Mastery</td>
+                            <td>Ken Underhill</td>
+                            <td>312</td>
+                            <td><span class="status-badge published">Published</span></td>
+                            <td>June 12, 2025</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-primary" title="Edit" onclick="editCourse(4)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon btn-danger" title="Delete" onclick="deleteCourse(4)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Budgeting for Tech Career</td>
+                            <td>Finance Expert</td>
+                            <td>67</td>
+                            <td><span class="status-badge draft">Draft</span></td>
+                            <td>June 10, 2025</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-primary" title="Edit" onclick="editCourse(5)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon btn-danger" title="Delete" onclick="deleteCourse(5)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Courses Management Content -->
+        <div class="content-section" id="courses-section">
+            <div class="section-header">
+                <h2><i class="fas fa-graduation-cap"></i> Course Management</h2>
+                <button class="btn btn-primary" onclick="showModal('courseModal')">
+                    <i class="fas fa-plus"></i> Create Course
+                </button>
+            </div>
+
+            <!-- Course Creation Form -->
+            <div class="content-table">
+                <div class="table-header">
+                    <div class="table-title">All Courses</div>
+                    <div class="table-actions">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search courses..." id="courseSearch">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>Instructor</th>
+                            <th>Students</th>
+                            <th>Revenue</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="coursesTableBody">
+                        <tr>
+                            <td>
+                                <div class="table-cell-content">
+                                    <i class="fas fa-graduation-cap" style="color: var(--admin-accent);"></i>
+                                    <div>
+                                        <strong>OT Cyber Essentials</strong>
+                                        <div style="font-size: 0.75rem; color: var(--admin-text-light);">Operational Technology Security</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Paul Cummings</td>
+                            <td>156</td>
+                            <td>$3,120</td>
+                            <td><span class="status-badge success">Published</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-primary" onclick="editCourse(1)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon btn-secondary" onclick="duplicateCourse(1)">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                    <button class="btn-icon btn-danger" onclick="deleteCourse(1)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>        <!-- Analytics Content -->
+        <div class="content-section" id="analytics-section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-bar"></i> Analytics Dashboard</h2>
+                <div class="date-range-picker">
+                    <select id="analyticsRange">
+                        <option value="7">Last 7 days</option>
+                        <option value="30" selected>Last 30 days</option>
+                        <option value="90">Last 90 days</option>
+                        <option value="365">Last year</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Analytics Cards -->
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <div class="card-header">
+                        <h3>Course Engagement</h3>
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="metric-large">85%</div>
+                        <div class="metric-label">Average Completion Rate</div>
+                        <div class="metric-change positive">+5.2% from last month</div>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="card-header">
+                        <h3>Quiz Performance</h3>
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="metric-large">78%</div>
+                        <div class="metric-label">Average Pass Rate</div>
+                        <div class="metric-change negative">-2.1% from last month</div>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="card-header">
+                        <h3>Assignment Submissions</h3>
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="metric-large">92%</div>
+                        <div class="metric-label">On-Time Submission Rate</div>
+                        <div class="metric-change positive">+3.4% from last month</div>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="card-header">
+                        <h3>User Satisfaction</h3>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="metric-large">4.7/5</div>
+                        <div class="metric-label">Average Course Rating</div>
+                        <div class="metric-change positive">+0.2 from last month</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-table">
+                <div class="table-header">
+                    <div class="table-title">Course Performance Overview</div>
+                </div>
+                <div style="padding: 2rem;">
+                    <div class="performance-chart">
+                        <canvas id="performanceChart" width="800" height="400"></canvas>
+                        <p>Chart visualization would be implemented here with Chart.js</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Management Content -->
+        <div class="content-section" id="users-section">
+            <div class="section-header">
+                <h2><i class="fas fa-users"></i> User Management</h2>
+                <button class="btn btn-primary" onclick="showModal('userModal')">
+                    <i class="fas fa-user-plus"></i> Add User
+                </button>
+            </div>
+
+            <div class="content-table">
+                <div class="table-header">
+                    <div class="table-title">All Users</div>
+                    <div class="table-actions">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search users..." id="userSearch">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Courses</th>
+                            <th>Progress</th>
+                            <th>Last Active</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <tr>
+                            <td>
+                                <div class="table-cell-content">
+                                    <div class="user-avatar">JD</div>
+                                    <span>John Doe</span>
+                                </div>
+                            </td>
+                            <td>john.doe@example.com</td>
+                            <td><span class="role-badge student">Student</span></td>
+                            <td>3</td>
+                            <td>
+                                <div class="progress-mini">
+                                    <div class="progress-fill" style="width: 65%"></div>
+                                </div>
+                                <span class="progress-text">65%</span>
+                            </td>
+                            <td>2 hours ago</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-primary" onclick="editUser(1)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon btn-secondary" onclick="viewUserProgress(1)">
+                                        <i class="fas fa-chart-line"></i>
+                                    </button>
+                                    <button class="btn-icon btn-danger" onclick="suspendUser(1)">
+                                        <i class="fas fa-ban"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Lessons Management Content -->
+        <div class="content-section" id="lessons-section">
+            <div class="section-header">
+                <h2><i class="fas fa-play-circle"></i> Lesson Management</h2>
+                <button class="btn btn-primary" onclick="showModal('lessonModal')">
+                    <i class="fas fa-plus"></i> Create Lesson
+                </button>
+            </div>
+
+            <div class="content-table">
+                <div class="table-header">
+                    <div class="table-title">All Lessons</div>
+                    <div class="table-actions">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search lessons..." id="lessonSearch">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Lesson</th>
+                            <th>Course</th>
+                            <th>Duration</th>
+                            <th>Type</th>
+                            <th>Views</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lessonsTableBody">
+                        <tr>
+                            <td>
+                                <div class="table-cell-content">
+                                    <i class="fas fa-play-circle" style="color: var(--admin-accent);"></i>
+                                    <div>
+                                        <strong>Introduction to OT Security</strong>
+                                        <div style="font-size: 0.75rem; color: var(--admin-text-light);">Module 1</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>OT Cyber Essentials</td>
+                            <td>15 min</td>
+                            <td><span class="status-badge info">Video</span></td>
+                            <td>324</td>
+                            <td><span class="status-badge success">Published</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-primary" onclick="editLesson(1)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon btn-secondary" onclick="duplicateLesson(1)">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                    <button class="btn-icon btn-danger" onclick="deleteLesson(1)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Quiz Management Content -->
+        <div class="content-section" id="quizzes-section">
+            <div class="section-header">
+                <h2><i class="fas fa-question-circle"></i> Quiz Management</h2>
+                <button class="btn btn-primary" onclick="showModal('quizModal')">
+                    <i class="fas fa-plus"></i> Create Quiz
+                </button>
+            </div>            <div class="content-table">
+                <div class="table-header">
+                    <div class="table-title">All Quizzes</div>
+                    <div class="table-actions">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search quizzes..." id="quizSearch">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Quiz Title</th>
+                            <th>Course</th>
+                            <th>Questions</th>
+                            <th>Pass Rate</th>
+                            <th>Attempts</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="quizzesTableBody">
+                        <tr>
+                            <td>
+                                <div class="table-cell-content">
+                                    <i class="fas fa-question-circle" style="color: var(--admin-accent);"></i>
+                                    <span>OT Cybersecurity Fundamentals</span>
+                                </div>
+                            </td>
+                            <td>OT Cyber Essentials</td>
+                            <td>15</td>
+                            <td><span class="status-badge success">85%</span></td>
+                            <td>234</td>
+                            <td><span class="status-badge success">Published</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-primary" onclick="editQuiz(1)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon btn-secondary" onclick="duplicateQuiz(1)">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                    <button class="btn-icon btn-danger" onclick="deleteQuiz(1)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Assignment Management Content -->
+        <div class="content-section" id="assignments-section">
+            <div class="section-header">
+                <h2><i class="fas fa-tasks"></i> Assignment Management</h2>
+                <button class="btn btn-primary" onclick="showModal('assignmentModal')">
+                    <i class="fas fa-plus"></i> Create Assignment
+                </button>
+            </div>            <div class="content-table">
+                <div class="table-header">
+                    <div class="table-title">All Assignments</div>
+                    <div class="table-actions">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search assignments..." id="assignmentSearch">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Assignment Title</th>
+                            <th>Course</th>
+                            <th>Due Date</th>
+                            <th>Submissions</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="assignmentsTableBody">
+                        <tr>
+                            <td>
+                                <div class="table-cell-content">
+                                    <i class="fas fa-tasks" style="color: var(--admin-accent);"></i>
+                                    <span>Network Security Assessment</span>
+                                </div>
+                            </td>
+                            <td>OT Cyber Essentials</td>
+                            <td>2025-01-15</td>
+                            <td>42/58</td>
+                            <td><span class="status-badge success">Active</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-primary" onclick="editAssignment(1)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon btn-secondary" onclick="viewSubmissions(1)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-icon btn-danger" onclick="deleteAssignment(1)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Certificate Management Content -->
+        <div class="content-section" id="certificates-section">
+            <div class="section-header">
+                <h2><i class="fas fa-certificate"></i> Certificate Management</h2>
+                <button class="btn btn-primary" onclick="showModal('certificateModal')">
+                    <i class="fas fa-plus"></i> Create Template
+                </button>
+            </div>            <div class="content-table">
+                <div class="table-header">
+                    <div class="table-title">Certificate Templates</div>
+                    <div class="table-actions">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search templates..." id="certificateSearch">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+                <div class="certificate-grid">
+                    <div class="certificate-card">
+                        <div class="certificate-preview">
+                            <i class="fas fa-certificate"></i>
+                            <h4>Course Completion</h4>
+                        </div>
+                        <div class="certificate-info">
+                            <h5>Standard Completion Certificate</h5>
+                            <p>Used for regular course completions</p>
+                            <div class="certificate-stats">
+                                <span><i class="fas fa-users"></i> 523 issued</span>
+                                <span><i class="fas fa-eye"></i> Active</span>
+                            </div>
+                        </div>
+                        <div class="certificate-actions">
+                            <button class="btn btn-sm btn-primary" onclick="editCertificate(1)">Edit</button>
+                            <button class="btn btn-sm btn-secondary" onclick="previewCertificate(1)">Preview</button>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-preview">
+                            <i class="fas fa-award"></i>
+                            <h4>Professional Certification</h4>
+                        </div>
+                        <div class="certificate-info">
+                            <h5>Industry Professional Certificate</h5>
+                            <p>For comprehensive certification programs</p>
+                            <div class="certificate-stats">
+                                <span><i class="fas fa-users"></i> 234 issued</span>
+                                <span><i class="fas fa-eye"></i> Active</span>
+                            </div>
+                        </div>
+                        <div class="certificate-actions">
+                            <button class="btn btn-sm btn-primary" onclick="editCertificate(2)">Edit</button>
+                            <button class="btn btn-sm btn-secondary" onclick="previewCertificate(2)">Preview</button>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-preview">
+                            <i class="fas fa-crown"></i>
+                            <h4>Executive Leadership</h4>
+                        </div>
+                        <div class="certificate-info">
+                            <h5>Executive Leadership Certificate</h5>
+                            <p>For executive-level programs</p>
+                            <div class="certificate-stats">
+                                <span><i class="fas fa-users"></i> 89 issued</span>
+                                <span><i class="fas fa-eye"></i> Active</span>
+                            </div>
+                        </div>
+                        <div class="certificate-actions">
+                            <button class="btn btn-sm btn-primary" onclick="editCertificate(3)">Edit</button>
+                            <button class="btn btn-sm btn-secondary" onclick="previewCertificate(3)">Preview</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Content -->
+        <div class="content-section" id="settings-section">
+            <div class="section-header">
+                <h2><i class="fas fa-cog"></i> General Settings</h2>
+            </div>
+
+            <div class="content-table">
+                <div class="table-header">
+                    <div class="table-title">Platform Configuration</div>
+                </div>
+                <div style="padding: 2rem;">
+                    <div class="settings-grid">
+                        <div class="settings-group">
+                            <h4>General Settings</h4>
+                            <div class="form-group">
+                                <label>Platform Name</label>
+                                <input type="text" value="Whole Cyber Human Initiative" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Email</label>
+                                <input type="email" value="admin@wholecyber.com" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Default Language</label>
+                                <select class="form-control">
+                                    <option value="en">English</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="fr">French</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <h4>Course Settings</h4>
+                            <div class="form-group">
+                                <label>Default Course Duration (hours)</label>
+                                <input type="number" value="40" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Auto-enroll new users</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="autoEnroll" checked>
+                                    <label for="autoEnroll"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Certificate auto-generation</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="autoCert" checked>
+                                    <label for="autoCert"></label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <h4>Notification Settings</h4>
+                            <div class="form-group">
+                                <label>Email notifications</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="emailNotif" checked>
+                                    <label for="emailNotif"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>SMS notifications</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="smsNotif">
+                                    <label for="smsNotif"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <button class="btn btn-primary">Save Settings</button>
+                        <button class="btn btn-secondary">Reset to Defaults</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Branding Content -->
+        <div class="content-section" id="branding-section">
+            <div class="section-header">
+                <h2><i class="fas fa-palette"></i> Branding</h2>
+            </div>
+
+            <div class="content-table">
+                <div class="table-header">
+                    <div class="table-title">Brand Customization</div>
+                </div>
+                <div style="padding: 2rem;">
+                    <div class="branding-grid">
+                        <div class="branding-group">
+                            <h4>Logo & Images</h4>
+                            <div class="form-group">
+                                <label>Primary Logo</label>
+                                <div class="file-upload">
+                                    <img src="../public/assets/images/image.png" alt="Current Logo" class="logo-preview">
+                                    <button class="btn btn-secondary">Change Logo</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Favicon</label>
+                                <div class="file-upload">
+                                    <div class="favicon-preview"></div>
+                                    <button class="btn btn-secondary">Upload Favicon</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="branding-group">
+                            <h4>Colors</h4>
+                            <div class="form-group">
+                                <label>Primary Color</label>
+                                <div class="color-picker">
+                                    <input type="color" value="#2563eb" class="color-input">
+                                    <span class="color-code">#2563eb</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Secondary Color</label>
+                                <div class="color-picker">
+                                    <input type="color" value="#7c3aed" class="color-input">
+                                    <span class="color-code">#7c3aed</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Accent Color</label>
+                                <div class="color-picker">
+                                    <input type="color" value="#059669" class="color-input">
+                                    <span class="color-code">#059669</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="branding-group">
+                            <h4>Typography</h4>
+                            <div class="form-group">
+                                <label>Primary Font</label>
+                                <select class="form-control">
+                                    <option value="Inter">Inter</option>
+                                    <option value="Roboto">Roboto</option>
+                                    <option value="Arial">Arial</option>
+                                    <option value="Helvetica">Helvetica</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Heading Font</label>
+                                <select class="form-control">
+                                    <option value="Inter">Inter</option>
+                                    <option value="Poppins">Poppins</option>
+                                    <option value="Montserrat">Montserrat</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <button class="btn btn-primary">Apply Changes</button>
+                        <button class="btn btn-secondary">Preview</button>
+                        <button class="btn btn-secondary">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Content -->
+        <div class="content-section" id="security-section">
+            <div class="section-header">
+                <h2><i class="fas fa-shield-alt"></i> Security</h2>
+            </div>
+
+            <div class="content-table">
+                <div class="table-header">
+                    <div class="table-title">Security Settings</div>
+                </div>
+                <div style="padding: 2rem;">
+                    <div class="security-grid">
+                        <div class="security-group">
+                            <h4>Authentication</h4>
+                            <div class="form-group">
+                                <label>Two-Factor Authentication</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="twoFA" checked>
+                                    <label for="twoFA"></label>
+                                </div>
+                                <small>Require 2FA for all admin accounts</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Password Minimum Length</label>
+                                <input type="number" value="8" min="6" max="32" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Session Timeout (minutes)</label>
+                                <input type="number" value="30" min="5" max="180" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="security-group">
+                            <h4>Access Control</h4>
+                            <div class="form-group">
+                                <label>IP Whitelist</label>
+                                <textarea class="form-control" rows="4" placeholder="Enter IP addresses, one per line"></textarea>
+                                <small>Leave empty to allow all IPs</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Failed Login Attempts</label>
+                                <input type="number" value="5" min="3" max="10" class="form-control">
+                                <small>Account locked after this many failed attempts</small>
+                            </div>
+                        </div>
+                        
+                        <div class="security-group">
+                            <h4>Data Protection</h4>
+                            <div class="form-group">
+                                <label>Data Encryption</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="encryption" checked disabled>
+                                    <label for="encryption"></label>
+                                </div>
+                                <small>Always enabled for sensitive data</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Automatic Backups</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="autoBackup" checked>
+                                    <label for="autoBackup"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Backup Frequency</label>
+                                <select class="form-control">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly" selected>Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <button class="btn btn-primary">Save Security Settings</button>
+                        <button class="btn btn-secondary">Run Security Audit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Course Creation Modal -->
+    <div class="modal" id="courseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Course</h3>
+                <span class="close" onclick="closeModal('courseModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="courseForm">
+                    <div class="form-group">
+                        <label for="courseTitle">Course Title</label>
+                        <input type="text" id="courseTitle" name="courseTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseInstructor">Instructor</label>
+                        <select id="courseInstructor" name="courseInstructor" required>
+                            <option value="">Select Instructor</option>
+                            <option value="ken-underhill">Ken Underhill</option>
+                            <option value="paul-cummings">Paul Cummings</option>
+                            <option value="expert-team">Expert Team</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseCategory">Category</label>
+                        <select id="courseCategory" name="courseCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="cybersecurity">Cybersecurity Fundamentals</option>
+                            <option value="career">Career Development</option>
+                            <option value="leadership">Leadership</option>
+                            <option value="technical">Technical Skills</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="coursePrice">Price ($)</label>
+                        <input type="number" id="coursePrice" name="coursePrice" step="0.01" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="courseDescription">Description</label>
+                        <textarea id="courseDescription" name="courseDescription" rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('courseModal')">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveCourse()">Create Course</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Creation Modal -->
+    <div class="modal" id="userModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New User</h3>
+                <span class="close" onclick="closeModal('userModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <div class="form-group">
+                        <label for="userName">Full Name</label>
+                        <input type="text" id="userName" name="userName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email Address</label>
+                        <input type="email" id="userEmail" name="userEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userRole">Role</label>
+                        <select id="userRole" name="userRole" required>
+                            <option value="">Select Role</option>
+                            <option value="student">Student</option>
+                            <option value="instructor">Instructor</option>
+                            <option value="admin">Administrator</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="userPassword">Temporary Password</label>
+                        <input type="password" id="userPassword" name="userPassword" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('userModal')">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveUser()">Add User</button>
+            </div>
+        </div>
+    </div>    <!-- JavaScript -->
+    <script>
+        // Admin Panel Main Functionality
+        class AdminPanel {
+            constructor() {
+                this.currentSection = 'dashboard';
+                this.courses = [];
+                this.users = [];
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.setupSearch();
+                this.loadSampleData();
+            }
+
+            setupEventListeners() {
+                // Mobile menu toggle
+                const mobileBtn = document.querySelector('.mobile-menu-btn');
+                if (mobileBtn) {
+                    mobileBtn.addEventListener('click', this.toggleSidebar);
+                }
+
+                // Window resize handling
+                window.addEventListener('resize', this.handleResize);
+                this.handleResize(); // Initial check
+            }
+
+            setupSearch() {
+                // Course search
+                const courseSearch = document.getElementById('courseSearch');
+                if (courseSearch) {
+                    courseSearch.addEventListener('input', (e) => this.searchCourses(e.target.value));
+                }
+
+                // User search
+                const userSearch = document.getElementById('userSearch');
+                if (userSearch) {
+                    userSearch.addEventListener('input', (e) => this.searchUsers(e.target.value));
+                }
+            }
+
+            loadSampleData() {
+                // Load sample courses
+                this.courses = [
+                    { id: 1, title: "OT Cyber Essentials", instructor: "Paul Cummings", students: 156, revenue: 3120, status: "published" },
+                    { id: 2, title: "Breaking into Cybersecurity Leadership", instructor: "Expert Team", students: 89, revenue: 1780, status: "published" },
+                    { id: 3, title: "AI Generalist Track", instructor: "Ken Underhill", students: 234, revenue: 4680, status: "published" },
+                    { id: 4, title: "Job Interview Mastery", instructor: "Ken Underhill", students: 312, revenue: 6240, status: "published" },
+                    { id: 5, title: "Budgeting for Tech Career", instructor: "Finance Expert", students: 67, revenue: 1340, status: "draft" }
+                ];
+
+                // Load sample users
+                this.users = [
+                    { id: 1, name: "John Doe", email: "john.doe@example.com", role: "student", courses: 3, progress: 65, lastActive: "2 hours ago" },
+                    { id: 2, name: "Jane Smith", email: "jane.smith@example.com", role: "instructor", courses: 2, progress: 100, lastActive: "1 day ago" },
+                    { id: 3, name: "Mike Johnson", email: "mike.johnson@example.com", role: "student", courses: 5, progress: 82, lastActive: "3 hours ago" }
+                ];
+            }
+
+            toggleSidebar() {
+                const sidebar = document.getElementById('adminSidebar');
+                sidebar.classList.toggle('open');
+            }
+
+            handleResize() {
+                const mobileBtn = document.querySelector('.mobile-menu-btn');
+                if (window.innerWidth <= 1024) {
+                    if (mobileBtn) mobileBtn.style.display = 'block';
+                } else {
+                    if (mobileBtn) mobileBtn.style.display = 'none';
+                    const sidebar = document.getElementById('adminSidebar');
+                    sidebar.classList.remove('open');
+                }
+            }
+
+            searchCourses(query) {
+                // Implement course search functionality
+                console.log('Searching courses:', query);
+                // Filter and update course table based on query
+            }
+
+            searchUsers(query) {
+                // Implement user search functionality
+                console.log('Searching users:', query);
+                // Filter and update user table based on query
+            }
+        }
+
+        // Section Management
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(`${sectionName}-section`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Update active menu item
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.closest('.menu-item').classList.add('active');
+
+            // Update admin panel current section
+            if (window.adminPanel) {
+                window.adminPanel.currentSection = sectionName;
+            }
+        }
+
+        // Modal Management
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                
+                // Reset form if exists
+                const form = modal.querySelector('form');
+                if (form) {
+                    form.reset();
+                }
+            }
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                const modalId = event.target.id;
+                closeModal(modalId);
+            }
+        });
+
+        // Course Management Functions
+        function saveCourse() {
+            const form = document.getElementById('courseForm');
+            const formData = new FormData(form);
+            
+            const courseData = {
+                title: formData.get('courseTitle'),
+                instructor: formData.get('courseInstructor'),
+                category: formData.get('courseCategory'),
+                price: formData.get('coursePrice'),
+                description: formData.get('courseDescription')
+            };
+
+            // Validate required fields
+            if (!courseData.title || !courseData.instructor || !courseData.category) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Simulate saving course
+            console.log('Saving course:', courseData);
+            
+            // Add to courses array
+            const newCourse = {
+                id: Date.now(),
+                title: courseData.title,
+                instructor: courseData.instructor,
+                students: 0,
+                revenue: 0,
+                status: 'draft',
+                ...courseData
+            };
+
+            if (window.adminPanel) {
+                window.adminPanel.courses.push(newCourse);
+            }
+
+            // Show success message
+            alert('Course created successfully!');
+            closeModal('courseModal');
+            
+            // Refresh course table if on courses section
+            if (window.adminPanel && window.adminPanel.currentSection === 'courses') {
+                updateCoursesTable();
+            }
+        }
+
+        function editCourse(courseId) {
+            // Simulate editing course
+            alert(`Opening course editor for course ID: ${courseId}`);
+            // In a real implementation, this would populate the modal with course data
+        }
+
+        function duplicateCourse(courseId) {
+            if (confirm('Are you sure you want to duplicate this course?')) {
+                alert(`Course ${courseId} duplicated successfully!`);
+                // Implement duplication logic
+            }
+        }
+
+        function deleteCourse(courseId) {
+            if (confirm('Are you sure you want to delete this course? This action cannot be undone.')) {
+                // Remove from courses array
+                if (window.adminPanel) {
+                    window.adminPanel.courses = window.adminPanel.courses.filter(course => course.id !== courseId);
+                }
+                
+                alert(`Course ${courseId} deleted successfully!`);
+                
+                // Refresh table
+                if (window.adminPanel && window.adminPanel.currentSection === 'courses') {
+                    updateCoursesTable();
+                }
+            }
+        }
+
+        function updateCoursesTable() {
+            const tbody = document.getElementById('coursesTableBody');
+            if (!tbody || !window.adminPanel) return;
+
+            tbody.innerHTML = '';
+            
+            window.adminPanel.courses.forEach(course => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div class="table-cell-content">
+                            <i class="fas fa-graduation-cap" style="color: var(--admin-accent);"></i>
+                            <div>
+                                <strong>${course.title}</strong>
+                                <div style="font-size: 0.75rem; color: var(--admin-text-light);">${course.category || 'No category'}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${course.instructor}</td>
+                    <td>${course.students}</td>
+                    <td>$${course.revenue}</td>
+                    <td><span class="status-badge ${course.status === 'published' ? 'success' : 'warning'}">${course.status}</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-icon btn-primary" onclick="editCourse(${course.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-icon btn-secondary" onclick="duplicateCourse(${course.id})">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <button class="btn-icon btn-danger" onclick="deleteCourse(${course.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // User Management Functions
+        function saveUser() {
+            const form = document.getElementById('userForm');
+            const formData = new FormData(form);
+            
+            const userData = {
+                name: formData.get('userName'),
+                email: formData.get('userEmail'),
+                role: formData.get('userRole'),
+                password: formData.get('userPassword')
+            };
+
+            // Validate required fields
+            if (!userData.name || !userData.email || !userData.role || !userData.password) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(userData.email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Add to users array
+            const newUser = {
+                id: Date.now(),
+                name: userData.name,
+                email: userData.email,
+                role: userData.role,
+                courses: 0,
+                progress: 0,
+                lastActive: 'Just now'
+            };
+
+            if (window.adminPanel) {
+                window.adminPanel.users.push(newUser);
+            }
+
+            alert('User created successfully!');
+            closeModal('userModal');
+            
+            // Refresh user table if on users section
+            if (window.adminPanel && window.adminPanel.currentSection === 'users') {
+                updateUsersTable();
+            }
+        }
+
+        function editUser(userId) {
+            alert(`Opening user editor for user ID: ${userId}`);
+        }
+
+        function viewUserProgress(userId) {
+            alert(`Viewing progress for user ID: ${userId}`);
+        }
+
+        function suspendUser(userId) {
+            if (confirm('Are you sure you want to suspend this user?')) {
+                alert(`User ${userId} suspended successfully!`);
+            }
+        }        function updateUsersTable() {
+            const tbody = document.getElementById('usersTableBody');
+            if (!tbody || !window.adminPanel) return;
+
+            tbody.innerHTML = '';
+            
+            window.adminPanel.users.forEach(user => {
+                const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div class="table-cell-content">
+                            <div class="user-avatar">${initials}</div>
+                            <span>${user.name}</span>
+                        </div>
+                    </td>
+                    <td>${user.email}</td>
+                    <td><span class="role-badge ${user.role}">${user.role}</span></td>
+                    <td>${user.courses}</td>
+                    <td>
+                        <div class="progress-mini">
+                            <div class="progress-fill" style="width: ${user.progress}%"></div>
+                        </div>
+                        <span class="progress-text">${user.progress}%</span>
+                    </td>
+                    <td>${user.lastActive}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-icon btn-primary" onclick="editUser(${user.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-icon btn-secondary" onclick="viewUserProgress(${user.id})">
+                                <i class="fas fa-chart-line"></i>
+                            </button>
+                            <button class="btn-icon btn-danger" onclick="suspendUser(${user.id})">
+                                <i class="fas fa-ban"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Analytics Functions
+        function updateAnalyticsRange() {
+            const range = document.getElementById('analyticsRange').value;
+            console.log(`Updating analytics for ${range} days`);
+            // Implement analytics update logic
+        }// Quiz Management Functions
+        function saveQuiz() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            
+            // Validate required fields
+            if (!formData.get('quizTitle') || !formData.get('quizCourse')) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Simulate saving quiz
+            console.log('Saving quiz');
+            alert('Quiz created successfully!');
+            closeModal('quizModal');
+        }
+
+        function editQuiz(quizId) {
+            alert(`Opening quiz editor for quiz ID: ${quizId}`);
+        }
+
+        function duplicateQuiz(quizId) {
+            if (confirm('Are you sure you want to duplicate this quiz?')) {
+                alert(`Quiz ${quizId} duplicated successfully!`);
+            }
+        }
+
+        function deleteQuiz(quizId) {
+            if (confirm('Are you sure you want to delete this quiz? This action cannot be undone.')) {
+                alert(`Quiz ${quizId} deleted successfully!`);
+            }
+        }
+
+        function addQuizQuestion() {
+            const questionsContainer = document.getElementById('quizQuestions');
+            const questionCount = questionsContainer.children.length;
+            const newQuestionNumber = questionCount;
+            
+            const questionHTML = `
+                <div class="question-item" data-question="${newQuestionNumber}">
+                    <div class="form-group">
+                        <label>Question ${newQuestionNumber}</label>
+                        <textarea name="question_${newQuestionNumber}" placeholder="Enter your question..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Options</label>
+                        <div class="question-options">
+                            <input type="text" name="option_${newQuestionNumber}_a" placeholder="Option A">
+                            <input type="text" name="option_${newQuestionNumber}_b" placeholder="Option B">
+                            <input type="text" name="option_${newQuestionNumber}_c" placeholder="Option C">
+                            <input type="text" name="option_${newQuestionNumber}_d" placeholder="Option D">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Correct Answer</label>
+                        <select name="correct_${newQuestionNumber}">
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>
+                            <option value="d">D</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="removeQuizQuestion(${newQuestionNumber})">
+                        <i class="fas fa-trash"></i> Remove Question
+                    </button>
+                </div>
+            `;
+            
+            questionsContainer.insertAdjacentHTML('beforeend', questionHTML);
+        }
+
+        function removeQuizQuestion(questionNumber) {
+            const questionItem = document.querySelector(`[data-question="${questionNumber}"]`);
+            if (questionItem) {
+                questionItem.remove();
+            }
+        }
+
+        // Assignment Management Functions
+        function saveAssignment() {
+            const form = document.getElementById('assignmentForm');
+            const formData = new FormData(form);
+            
+            // Validate required fields
+            if (!formData.get('assignmentTitle') || !formData.get('assignmentCourse') || !formData.get('dueDate')) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            console.log('Saving assignment');
+            alert('Assignment created successfully!');
+            closeModal('assignmentModal');
+        }
+
+        function editAssignment(assignmentId) {
+            alert(`Opening assignment editor for assignment ID: ${assignmentId}`);
+        }
+
+        function viewSubmissions(assignmentId) {
+            alert(`Viewing submissions for assignment ID: ${assignmentId}`);
+        }
+
+        function deleteAssignment(assignmentId) {
+            if (confirm('Are you sure you want to delete this assignment? This action cannot be undone.')) {
+                alert(`Assignment ${assignmentId} deleted successfully!`);
+            }
+        }
+
+        // Certificate Management Functions
+        function saveCertificate() {
+            const form = document.getElementById('certificateForm');
+            const formData = new FormData(form);
+            
+            // Validate required fields
+            if (!formData.get('certificateTitle') || !formData.get('certificateType')) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            console.log('Saving certificate template');
+            alert('Certificate template created successfully!');
+            closeModal('certificateModal');
+        }
+
+        function editCertificate(certificateId) {
+            alert(`Opening certificate editor for certificate ID: ${certificateId}`);
+        }
+
+        function previewCertificate(certificateId) {
+            alert(`Previewing certificate ID: ${certificateId}`);
+        }
+
+        // Lesson Management Functions
+        function saveLesson() {
+            const form = document.getElementById('lessonForm');
+            const formData = new FormData(form);
+            
+            // Validate required fields
+            if (!formData.get('lessonTitle') || !formData.get('lessonCourse') || !formData.get('lessonType')) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            console.log('Saving lesson');
+            alert('Lesson created successfully!');
+            closeModal('lessonModal');
+        }
+
+        function editLesson(lessonId) {
+            alert(`Opening lesson editor for lesson ID: ${lessonId}`);
+        }
+
+        function duplicateLesson(lessonId) {
+            if (confirm('Are you sure you want to duplicate this lesson?')) {
+                alert(`Lesson ${lessonId} duplicated successfully!`);
+            }
+        }
+
+        function deleteLesson(lessonId) {
+            if (confirm('Are you sure you want to delete this lesson? This action cannot be undone.')) {
+                alert(`Lesson ${lessonId} deleted successfully!`);
+            }
+        }
+
+        // Initialize Admin Panel
+        document.addEventListener('DOMContentLoaded', function() {
+            window.adminPanel = new AdminPanel();
+            
+            // Set up analytics range change
+            const analyticsRange = document.getElementById('analyticsRange');
+            if (analyticsRange) {
+                analyticsRange.addEventListener('change', updateAnalyticsRange);
+            }
+
+            // Initialize chart placeholder
+            const chartCanvas = document.getElementById('performanceChart');
+            if (chartCanvas) {
+                const ctx = chartCanvas.getContext('2d');
+                ctx.fillStyle = '#6b7280';
+                ctx.font = '16px Inter';
+                ctx.textAlign = 'center';
+                ctx.fillText('Chart visualization would be implemented here', chartCanvas.width / 2, chartCanvas.height / 2);
+                ctx.fillText('(Chart.js or similar charting library)', chartCanvas.width / 2, chartCanvas.height / 2 + 30);
+            }
+        });
+    </script>
+
+    <!-- Lesson Creation Modal -->
+    <div class="modal" id="lessonModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create Lesson</h3>
+                <span class="close" onclick="closeModal('lessonModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="lessonForm">
+                    <div class="form-group">
+                        <label for="lessonTitle">Lesson Title</label>
+                        <input type="text" id="lessonTitle" name="lessonTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lessonCourse">Course</label>
+                        <select id="lessonCourse" name="lessonCourse" required>
+                            <option value="">Select Course</option>
+                            <option value="ot-cyber">OT Cyber Essentials</option>
+                            <option value="security-engineer">Security Engineer</option>
+                            <option value="ai-generalist">AI Generalist</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="lessonType">Lesson Type</label>
+                        <select id="lessonType" name="lessonType" required>
+                            <option value="">Select Type</option>
+                            <option value="video">Video</option>
+                            <option value="text">Text</option>
+                            <option value="interactive">Interactive</option>
+                            <option value="quiz">Quiz</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="lessonDuration">Duration (minutes)</label>
+                        <input type="number" id="lessonDuration" name="lessonDuration" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="lessonDescription">Description</label>
+                        <textarea id="lessonDescription" name="lessonDescription" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('lessonModal')">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveLesson()">Save Lesson</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Creation Modal -->
+    <div class="modal" id="quizModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Create Quiz</h3>
+                <span class="close" onclick="closeModal('quizModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="quizForm">
+                    <div class="form-group">
+                        <label for="quizTitle">Quiz Title</label>
+                        <input type="text" id="quizTitle" name="quizTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quizCourse">Course</label>
+                        <select id="quizCourse" name="quizCourse" required>
+                            <option value="">Select Course</option>
+                            <option value="ot-cyber">OT Cyber Essentials</option>
+                            <option value="security-engineer">Security Engineer</option>
+                            <option value="ai-generalist">AI Generalist</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quizDescription">Description</label>
+                        <textarea id="quizDescription" name="quizDescription" rows="3"></textarea>
+                    </div>
+                    <div class="quiz-questions" id="quizQuestions">
+                        <h4>Questions</h4>
+                        <div class="question-item" data-question="1">
+                            <div class="form-group">
+                                <label>Question 1</label>
+                                <textarea name="question_1" placeholder="Enter your question..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Options</label>
+                                <div class="question-options">
+                                    <input type="text" name="option_1_a" placeholder="Option A">
+                                    <input type="text" name="option_1_b" placeholder="Option B">
+                                    <input type="text" name="option_1_c" placeholder="Option C">
+                                    <input type="text" name="option_1_d" placeholder="Option D">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Correct Answer</label>
+                                <select name="correct_1">
+                                    <option value="a">A</option>
+                                    <option value="b">B</option>
+                                    <option value="c">C</option>
+                                    <option value="d">D</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" onclick="addQuizQuestion()">
+                        <i class="fas fa-plus"></i> Add Question
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('quizModal')">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveQuiz()">Save Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Assignment Creation Modal -->
+    <div class="modal" id="assignmentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create Assignment</h3>
+                <span class="close" onclick="closeModal('assignmentModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="assignmentForm">
+                    <div class="form-group">
+                        <label for="assignmentTitle">Assignment Title</label>
+                        <input type="text" id="assignmentTitle" name="assignmentTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="assignmentCourse">Course</label>
+                        <select id="assignmentCourse" name="assignmentCourse" required>
+                            <option value="">Select Course</option>
+                            <option value="ot-cyber">OT Cyber Essentials</option>
+                            <option value="security-engineer">Security Engineer</option>
+                            <option value="ai-generalist">AI Generalist</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dueDate">Due Date</label>
+                        <input type="date" id="dueDate" name="dueDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="assignmentDescription">Description</label>
+                        <textarea id="assignmentDescription" name="assignmentDescription" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('assignmentModal')">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveAssignment()">Save Assignment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certificate Creation Modal -->
+    <div class="modal" id="certificateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create Certificate Template</h3>
+                <span class="close" onclick="closeModal('certificateModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="certificateForm">
+                    <div class="form-group">
+                        <label for="certificateTitle">Template Title</label>
+                        <input type="text" id="certificateTitle" name="certificateTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="certificateType">Certificate Type</label>
+                        <select id="certificateType" name="certificateType" required>
+                            <option value="">Select Type</option>
+                            <option value="completion">Completion Certificate</option>
+                            <option value="professional">Professional Certification</option>
+                            <option value="executive">Executive Leadership Certificate</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="certificateDescription">Description</label>
+                        <textarea id="certificateDescription" name="certificateDescription" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('certificateModal')">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveCertificate()">Save Template</button>
+            </div>
+        </div>
+    </div>    <!-- User Creation Modal -->
+    <div class="modal" id="userModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New User</h3>
+                <span class="close" onclick="closeModal('userModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <div class="form-group">
+                        <label for="userName">Full Name</label>
+                        <input type="text" id="userName" name="userName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email Address</label>
+                        <input type="email" id="userEmail" name="userEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userRole">Role</label>
+                        <select id="userRole" name="userRole" required>
+                            <option value="">Select Role</option>
+                            <option value="student">Student</option>
+                            <option value="instructor">Instructor</option>
+                            <option value="admin">Administrator</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="userPassword">Temporary Password</label>
+                        <input type="password" id="userPassword" name="userPassword" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('userModal')">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveUser()">Add User</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

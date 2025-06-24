@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budgeting for Tech Career - Learning Platform</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    
+    <!-- Learning Platform Styles -->
+    <style>
+        :root {
+            --sidebar-width: 320px;
+            --header-height: 70px;
+            --primary-blue: #2886c8;
+            --light-blue: #6db6fe;
+            --dark-blue: #053994;
+            --accent-pink: #ff0099;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border-light: #e5e7eb;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+            --finance-green: #059669;
+            --finance-gradient: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Platform Header */
+        .platform-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 1000;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .back-btn:hover {
+            color: var(--primary-blue);
+        }
+
+        .course-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        .progress-bar {
+            width: 120px;
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--finance-green);
+            transition: width 0.3s ease;
+        }
+
+        /* Sidebar */
+        .course-sidebar {
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--header-height));
+            background: var(--white);
+            border-right: 1px solid var(--border-light);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-content {
+            padding: 1.5rem;
+        }
+
+        .course-info {
+            margin-bottom: 2rem;
+            background: var(--finance-gradient);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 0 -1.5rem 2rem -1.5rem;
+        }
+
+        .course-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .course-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Module List */
+        .module-list {
+            margin-bottom: 2rem;
+        }
+
+        .module-list h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .module-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-item:hover {
+            background: var(--bg-light);
+        }
+
+        .module-item.active {
+            background: rgba(5, 150, 105, 0.1);
+            border: 1px solid rgba(5, 150, 105, 0.2);
+        }
+
+        .module-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            background: var(--border-light);
+            color: var(--text-light);
+            flex-shrink: 0;
+        }
+
+        .module-icon.completed {
+            background: var(--success-green);
+            color: white;
+        }
+
+        .module-icon.current {
+            background: var(--finance-green);
+            color: white;
+        }
+
+        .module-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .module-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+
+        .module-duration {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+            min-height: calc(100vh - var(--header-height));
+            margin-top: var(--header-height);
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .lesson-header {
+            margin-bottom: 2rem;
+        }
+
+        .lesson-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--finance-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .lesson-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--finance-gradient);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .content-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-text p {
+            margin-bottom: 1rem;
+        }
+
+        .content-text ul, .content-text ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .content-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Budget Calculator */
+        .calculator-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--finance-green);
+        }
+
+        .calculator-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .calculator-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--finance-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .calculator-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .budget-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            padding: 0.75rem;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--finance-green);
+        }
+
+        .budget-summary {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--finance-green);
+        }
+
+        /* Interactive Elements */
+        .quiz-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-light);
+        }
+
+        .quiz-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--finance-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .quiz-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .quiz-question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background: rgba(5, 150, 105, 0.05);
+            border-color: rgba(5, 150, 105, 0.2);
+        }
+
+        .quiz-option.selected {
+            background: rgba(5, 150, 105, 0.1);
+            border-color: var(--finance-green);
+        }
+
+        .quiz-option input[type="radio"] {
+            accent-color: var(--finance-green);
+        }
+
+        .quiz-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--finance-gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-light);
+        }
+
+        /* Assignment Section */
+        .assignment-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--finance-green);
+        }
+
+        .assignment-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .assignment-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--finance-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .assignment-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .assignment-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .assignment-requirements {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .assignment-requirements h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .assignment-requirements ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .assignment-requirements li {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        /* Certificate Section */
+        .certificate-container {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .certificate-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .certificate-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-certificate {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-certificate:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+            color: white;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--bg-light);
+            border-color: var(--finance-green);
+        }
+
+        .nav-btn.primary {
+            background: var(--finance-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .nav-btn.primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .course-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .course-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .platform-header {
+                padding: 0 1rem;
+            }
+
+            .header-left {
+                gap: 0.5rem;
+            }
+
+            .progress-container {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+
+            .lesson-title {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+
+            .quiz-container,
+            .assignment-container,
+            .calculator-container {
+                padding: 1.5rem;
+            }
+
+            .budget-form {
+                grid-template-columns: 1fr;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Platform Header -->
+    <header class="platform-header">
+        <div class="header-left">
+            <a href="../courses.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Courses
+            </a>
+            <h1 class="course-title">Budgeting for Tech Career</h1>
+        </div>
+        <div class="header-right">
+            <div class="progress-container">
+                <span class="progress-text">Progress: 20%</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Course Sidebar -->
+    <nav class="course-sidebar">
+        <div class="sidebar-content">
+            <div class="course-info">
+                <h3>Financial Planning Track</h3>
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>4 weeks</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-level-up-alt"></i>
+                        <span>Beginner Level</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>Financial Planning Certificate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-list">
+                <h4>Course Modules</h4>
+                
+                <div class="module-item active">
+                    <div class="module-icon current">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="module-details">
+                        <div class="module-title">Career Transition Budget Planning</div>
+                        <div class="module-duration">30 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">2</div>
+                    <div class="module-details">
+                        <div class="module-title">Education & Certification Costs</div>
+                        <div class="module-duration">35 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">3</div>
+                    <div class="module-details">
+                        <div class="module-title">Emergency Fund Building</div>
+                        <div class="module-duration">25 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">4</div>
+                    <div class="module-details">
+                        <div class="module-title">Salary Negotiation & Benefits</div>
+                        <div class="module-duration">40 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">5</div>
+                    <div class="module-details">
+                        <div class="module-title">Long-term Career Financial Planning</div>
+                        <div class="module-duration">45 min</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Lesson Header -->
+            <div class="lesson-header">
+                <div class="lesson-badge">
+                    <i class="fas fa-calculator"></i>
+                    Module 1 of 5
+                </div>
+                <h1 class="lesson-title">Career Transition Budget Planning</h1>
+                <p class="lesson-description">
+                    Learn how to create a comprehensive budget for your career transition into cybersecurity, 
+                    including education costs, living expenses, and emergency funds.
+                </p>
+            </div>
+
+            <!-- Learning Objectives -->
+            <div class="content-section">
+                <h2 class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-target"></i>
+                    </div>
+                    Learning Objectives
+                </h2>
+                <div class="content-text">
+                    <p>By the end of this module, you will be able to:</p>
+                    <ul>
+                        <li>Create a detailed career transition budget</li>
+                        <li>Calculate the total cost of education and certifications</li>
+                        <li>Plan for income gaps during your transition period</li>
+                        <li>Build an emergency fund to support your career change</li>
+                        <li>Identify potential sources of funding and financial support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Core Content -->
+            <div class="content-section">
+                <h2 class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    The Financial Reality of Career Change
+                </h2>
+                <div class="content-text">
+                    <p>
+                        Transitioning into a cybersecurity career requires careful financial planning. 
+                        Most career changers underestimate the total cost and time investment required 
+                        for a successful transition.
+                    </p>
+                    <p>
+                        A typical cybersecurity career transition involves several financial considerations:
+                    </p>
+                    <ul>
+                        <li><strong>Education costs:</strong> Bootcamps, courses, degrees ($3,000 - $50,000)</li>
+                        <li><strong>Certification fees:</strong> Security+, CISSP, etc. ($300 - $700 each)</li>
+                        <li><strong>Equipment:</strong> Home lab, computer upgrades ($1,000 - $5,000)</li>
+                        <li><strong>Living expenses:</strong> 6-18 months of reduced income</li>
+                        <li><strong>Job search costs:</strong> Travel, interview attire, networking</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Budget Calculator -->
+            <div class="calculator-container">
+                <div class="calculator-header">
+                    <div class="calculator-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="calculator-title">Career Transition Budget Calculator</h3>
+                </div>
+                <p>Use this calculator to estimate your total career transition costs:</p>
+                
+                <div class="budget-form">
+                    <div class="form-group">
+                        <label class="form-label">Monthly Living Expenses</label>
+                        <input type="number" class="form-input" id="monthly-expenses" placeholder="$4,000" oninput="calculateBudget()">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Transition Timeline (months)</label>
+                        <input type="number" class="form-input" id="transition-months" placeholder="12" oninput="calculateBudget()">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Education/Bootcamp Cost</label>
+                        <input type="number" class="form-input" id="education-cost" placeholder="$15,000" oninput="calculateBudget()">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Certification Costs</label>
+                        <input type="number" class="form-input" id="cert-cost" placeholder="$2,000" oninput="calculateBudget()">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Equipment & Tools</label>
+                        <input type="number" class="form-input" id="equipment-cost" placeholder="$3,000" oninput="calculateBudget()">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Miscellaneous Expenses</label>
+                        <input type="number" class="form-input" id="misc-cost" placeholder="$1,000" oninput="calculateBudget()">
+                    </div>
+                </div>
+                
+                <div class="budget-summary" id="budget-summary">
+                    <div class="summary-item">
+                        <span>Living Expenses:</span>
+                        <span id="total-living">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Education Costs:</span>
+                        <span id="total-education">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Equipment & Misc:</span>
+                        <span id="total-equipment">$0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Transition Budget:</span>
+                        <span id="total-budget">$0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Quiz -->
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <div class="quiz-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3 class="quiz-title">Knowledge Check</h3>
+                </div>
+                <div class="quiz-question">
+                    What percentage of your annual income should you ideally save as an emergency fund before starting a career transition?
+                </div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="quiz1" value="a">
+                        <span>3-6 months (25-50% of annual income)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="quiz1" value="b">
+                        <span>6-12 months (50-100% of annual income)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="quiz1" value="c">
+                        <span>1-2 months (8-16% of annual income)</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="quiz1" value="d">
+                        <span>12-18 months (100-150% of annual income)</span>
+                    </label>
+                </div>
+                <div class="quiz-actions">
+                    <button class="btn btn-primary" onclick="checkQuiz()">
+                        <i class="fas fa-check"></i>
+                        Submit Answer
+                    </button>
+                    <button class="btn btn-secondary" onclick="resetQuiz()">
+                        <i class="fas fa-redo"></i>
+                        Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Assignment -->
+            <div class="assignment-container">
+                <div class="assignment-header">
+                    <div class="assignment-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="assignment-title">Personal Budget Creation</h3>
+                </div>
+                <div class="assignment-description">
+                    Create a detailed, personalized career transition budget based on your specific situation and goals.
+                </div>
+                <div class="assignment-requirements">
+                    <h4>Assignment Requirements:</h4>
+                    <ul>
+                        <li>Complete a comprehensive expense audit of your current finances</li>
+                        <li>Research and price out specific education programs or certifications</li>
+                        <li>Create a month-by-month transition timeline with financial milestones</li>
+                        <li>Identify at least 3 potential income sources during transition</li>
+                        <li>Develop a savings plan to reach your transition budget goal</li>
+                    </ul>
+                </div>
+                <div class="quiz-actions">
+                    <button class="btn btn-primary" onclick="startAssignment()">
+                        <i class="fas fa-play"></i>
+                        Start Budget Planning
+                    </button>
+                    <button class="btn btn-secondary" onclick="downloadTemplate()">
+                        <i class="fas fa-download"></i>
+                        Download Budget Template
+                    </button>
+                </div>
+            </div>
+
+            <!-- Certificate Section -->
+            <div class="certificate-container">
+                <div class="certificate-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3 class="certificate-title">Financial Planning Certificate</h3>
+                <p class="certificate-description">
+                    Complete all modules and assignments to earn your Career Transition Financial Planning certificate.
+                </p>
+                <button class="btn btn-certificate" onclick="downloadCertificate()" disabled>
+                    <i class="fas fa-download"></i>
+                    Download Certificate
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <div class="lesson-navigation">
+                <a href="#" class="nav-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous Module
+                </a>
+                <div style="flex-grow: 1;"></div>
+                <a href="#" class="nav-btn primary">
+                    Next Module
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Budget Calculator
+        function calculateBudget() {
+            const monthlyExpenses = parseFloat(document.getElementById('monthly-expenses').value) || 0;
+            const transitionMonths = parseFloat(document.getElementById('transition-months').value) || 0;
+            const educationCost = parseFloat(document.getElementById('education-cost').value) || 0;
+            const certCost = parseFloat(document.getElementById('cert-cost').value) || 0;
+            const equipmentCost = parseFloat(document.getElementById('equipment-cost').value) || 0;
+            const miscCost = parseFloat(document.getElementById('misc-cost').value) || 0;
+
+            const totalLiving = monthlyExpenses * transitionMonths;
+            const totalEducation = educationCost + certCost;
+            const totalEquipment = equipmentCost + miscCost;
+            const totalBudget = totalLiving + totalEducation + totalEquipment;
+
+            document.getElementById('total-living').textContent = '$' + totalLiving.toLocaleString();
+            document.getElementById('total-education').textContent = '$' + totalEducation.toLocaleString();
+            document.getElementById('total-equipment').textContent = '$' + totalEquipment.toLocaleString();
+            document.getElementById('total-budget').textContent = '$' + totalBudget.toLocaleString();
+        }
+
+        // Quiz functionality
+        function checkQuiz() {
+            const selected = document.querySelector('input[name="quiz1"]:checked');
+            if (!selected) {
+                alert('Please select an answer before submitting.');
+                return;
+            }
+
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+                const input = option.querySelector('input');
+                if (input.value === 'b') {
+                    option.style.background = 'rgba(16, 185, 129, 0.1)';
+                    option.style.borderColor = '#10b981';
+                } else if (input.checked && input.value !== 'b') {
+                    option.style.background = 'rgba(239, 68, 68, 0.1)';
+                    option.style.borderColor = '#ef4444';
+                }
+            });
+
+            if (selected.value === 'b') {
+                alert('Correct! 6-12 months of expenses is the ideal emergency fund for a career transition.');
+                updateProgress();
+            } else {
+                alert('Not quite right. The correct answer is "6-12 months (50-100% of annual income)".');
+            }
+        }
+
+        function resetQuiz() {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.style.pointerEvents = 'auto';
+                option.style.background = '';
+                option.style.borderColor = 'transparent';
+                const input = option.querySelector('input');
+                input.checked = false;
+            });
+        }
+
+        function startAssignment() {
+            alert('Opening Budget Planning Worksheet...');
+            // In a real implementation, this would open the assignment tool
+        }
+
+        function downloadTemplate() {
+            alert('Downloading budget template...');
+            // In a real implementation, this would download the template file
+        }
+
+        function downloadCertificate() {
+            alert('Downloading your certificate...');
+            // In a real implementation, this would generate and download the certificate
+        }
+
+        function updateProgress() {
+            const progressFill = document.querySelector('.progress-fill');
+            const progressText = document.querySelector('.progress-text');
+            const newProgress = 30;
+            
+            progressFill.style.width = newProgress + '%';
+            progressText.textContent = `Progress: ${newProgress}%`;
+            
+            // Enable certificate download if module is complete
+            const certificateBtn = document.querySelector('.btn-certificate');
+            if (newProgress >= 30) {
+                certificateBtn.disabled = false;
+                certificateBtn.style.opacity = '1';
+            }
+        }
+
+        // Module navigation
+        document.querySelectorAll('.module-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.module-item').forEach(m => m.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Mobile sidebar toggle
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.course-sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        // Add mobile menu button for smaller screens
+        if (window.innerWidth <= 1024) {
+            const headerLeft = document.querySelector('.header-left');
+            const menuButton = document.createElement('button');
+            menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            menuButton.style.cssText = `
+                background: none;
+                border: none;
+                color: var(--text-light);
+                font-size: 1.2rem;
+                cursor: pointer;
+                padding: 0.5rem;
+                margin-right: 0.5rem;
+            `;
+            menuButton.onclick = toggleSidebar;
+            headerLeft.insertBefore(menuButton, headerLeft.firstChild);
+        }
+
+        // Initialize calculator
+        calculateBudget();
+    </script>
+</body>
+</html>

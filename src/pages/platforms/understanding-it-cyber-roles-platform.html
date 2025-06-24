@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding IT/Cyber Roles - Learning Platform</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    
+    <!-- Learning Platform Styles -->
+    <style>
+        :root {
+            --sidebar-width: 320px;
+            --header-height: 70px;
+            --primary-blue: #2886c8;
+            --light-blue: #6db6fe;
+            --dark-blue: #053994;
+            --accent-pink: #ff0099;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border-light: #e5e7eb;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+            --roles-purple: #7c3aed;
+            --roles-gradient: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Platform Header */
+        .platform-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 1000;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .back-btn:hover {
+            color: var(--primary-blue);
+        }
+
+        .course-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        .progress-bar {
+            width: 120px;
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--roles-purple);
+            transition: width 0.3s ease;
+        }
+
+        /* Sidebar */
+        .course-sidebar {
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--header-height));
+            background: var(--white);
+            border-right: 1px solid var(--border-light);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-content {
+            padding: 1.5rem;
+        }
+
+        .course-info {
+            margin-bottom: 2rem;
+            background: var(--roles-gradient);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 0 -1.5rem 2rem -1.5rem;
+        }
+
+        .course-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .course-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Module List */
+        .module-list {
+            margin-bottom: 2rem;
+        }
+
+        .module-list h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .module-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-item:hover {
+            background: var(--bg-light);
+        }
+
+        .module-item.active {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .module-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            background: var(--border-light);
+            color: var(--text-light);
+            flex-shrink: 0;
+        }
+
+        .module-icon.completed {
+            background: var(--success-green);
+            color: white;
+        }
+
+        .module-icon.current {
+            background: var(--roles-purple);
+            color: white;
+        }
+
+        .module-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .module-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+
+        .module-duration {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+            min-height: calc(100vh - var(--header-height));
+            margin-top: var(--header-height);
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .lesson-header {
+            margin-bottom: 2rem;
+        }
+
+        .lesson-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--roles-purple);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .lesson-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--roles-gradient);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .content-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-text p {
+            margin-bottom: 1rem;
+        }
+
+        .content-text ul, .content-text ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .content-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Role Explorer */
+        .role-explorer {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--roles-purple);
+        }
+
+        .explorer-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .explorer-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--roles-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .explorer-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .role-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .role-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .role-card:hover {
+            border-color: var(--roles-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+        }
+
+        .role-card.selected {
+            border-color: var(--roles-purple);
+            background: rgba(124, 58, 237, 0.05);
+        }
+
+        .role-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .role-salary {
+            font-size: 0.9rem;
+            color: var(--roles-purple);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .role-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .role-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--roles-purple);
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .role-details {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border: 1px solid var(--border-light);
+            display: none;
+        }
+
+        .role-details.show {
+            display: block;
+        }
+
+        .role-details h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .role-details ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .role-details li {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        /* Interactive Elements */
+        .quiz-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-light);
+        }
+
+        .quiz-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--roles-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .quiz-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .quiz-question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background: rgba(124, 58, 237, 0.05);
+            border-color: rgba(124, 58, 237, 0.2);
+        }
+
+        .quiz-option.selected {
+            background: rgba(124, 58, 237, 0.1);
+            border-color: var(--roles-purple);
+        }
+
+        .quiz-option input[type="radio"] {
+            accent-color: var(--roles-purple);
+        }
+
+        .quiz-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--roles-gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-light);
+        }
+
+        /* Assignment Section */
+        .assignment-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--roles-purple);
+        }
+
+        .assignment-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .assignment-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--roles-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .assignment-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .assignment-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .assignment-requirements {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .assignment-requirements h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .assignment-requirements ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .assignment-requirements li {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        /* Certificate Section */
+        .certificate-container {
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .certificate-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .certificate-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-certificate {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-certificate:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+            color: white;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--bg-light);
+            border-color: var(--roles-purple);
+        }
+
+        .nav-btn.primary {
+            background: var(--roles-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .nav-btn.primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .course-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .course-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .platform-header {
+                padding: 0 1rem;
+            }
+
+            .header-left {
+                gap: 0.5rem;
+            }
+
+            .progress-container {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+
+            .lesson-title {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+
+            .quiz-container,
+            .assignment-container,
+            .role-explorer {
+                padding: 1.5rem;
+            }
+
+            .role-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Platform Header -->
+    <header class="platform-header">
+        <div class="header-left">
+            <a href="../courses.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Courses
+            </a>
+            <h1 class="course-title">Understanding IT/Cyber Roles</h1>
+        </div>
+        <div class="header-right">
+            <div class="progress-container">
+                <span class="progress-text">Progress: 30%</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 30%"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Course Sidebar -->
+    <nav class="course-sidebar">
+        <div class="sidebar-content">
+            <div class="course-info">
+                <h3>Career Exploration Track</h3>
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>5 weeks</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-level-up-alt"></i>
+                        <span>Beginner Level</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>Career Exploration Certificate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-list">
+                <h4>Course Modules</h4>
+                
+                <div class="module-item active">
+                    <div class="module-icon current">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="module-details">
+                        <div class="module-title">Cybersecurity Career Landscape</div>
+                        <div class="module-duration">35 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">2</div>
+                    <div class="module-details">
+                        <div class="module-title">Technical vs. Non-Technical Roles</div>
+                        <div class="module-duration">40 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">3</div>
+                    <div class="module-details">
+                        <div class="module-title">Entry-Level Opportunities</div>
+                        <div class="module-duration">30 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">4</div>
+                    <div class="module-details">
+                        <div class="module-title">Career Progression Paths</div>
+                        <div class="module-duration">45 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">5</div>
+                    <div class="module-details">
+                        <div class="module-title">Skills Gap Analysis & Planning</div>
+                        <div class="module-duration">50 min</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Lesson Header -->
+            <div class="lesson-header">
+                <div class="lesson-badge">
+                    <i class="fas fa-compass"></i>
+                    Module 1 of 5
+                </div>
+                <h1 class="lesson-title">Cybersecurity Career Landscape</h1>
+                <p class="lesson-description">
+                    Explore the diverse world of cybersecurity careers, understand different role types, 
+                    and discover where your interests and skills might best fit in the industry.
+                </p>
+            </div>
+
+            <!-- Learning Objectives -->
+            <div class="content-section">
+                <h2 class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-target"></i>
+                    </div>
+                    Learning Objectives
+                </h2>
+                <div class="content-text">
+                    <p>By the end of this module, you will be able to:</p>
+                    <ul>
+                        <li>Identify major categories of cybersecurity roles and responsibilities</li>
+                        <li>Understand salary ranges and career progression for different positions</li>
+                        <li>Recognize the skills and qualifications required for various roles</li>
+                        <li>Assess your current background against cybersecurity career paths</li>
+                        <li>Create a personalized career development plan</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Core Content -->
+            <div class="content-section">
+                <h2 class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    The Modern Cybersecurity Industry
+                </h2>
+                <div class="content-text">
+                    <p>
+                        The cybersecurity industry offers one of the most diverse career landscapes in technology. 
+                        With over 3.5 million unfilled cybersecurity positions globally, there are opportunities 
+                        for professionals from virtually every background.
+                    </p>
+                    <p>
+                        The field can be broadly categorized into several key areas:
+                    </p>
+                    <ul>
+                        <li><strong>Defensive Security:</strong> Protecting systems and preventing attacks</li>
+                        <li><strong>Offensive Security:</strong> Ethical hacking and penetration testing</li>
+                        <li><strong>Governance & Compliance:</strong> Risk management and regulatory adherence</li>
+                        <li><strong>Security Engineering:</strong> Building secure systems and infrastructure</li>
+                        <li><strong>Incident Response:</strong> Managing and responding to security breaches</li>
+                        <li><strong>Security Leadership:</strong> Strategic security management and oversight</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Role Explorer -->
+            <div class="role-explorer">
+                <div class="explorer-header">
+                    <div class="explorer-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="explorer-title">Interactive Role Explorer</h3>
+                </div>
+                <p>Click on any role below to learn more about responsibilities, requirements, and career paths:</p>
+                
+                <div class="role-cards">
+                    <div class="role-card" onclick="toggleRoleDetails(this, 'analyst')">
+                        <div class="role-title">Security Analyst</div>
+                        <div class="role-salary">$45,000 - $85,000</div>
+                        <div class="role-description">
+                            Monitor security events, investigate incidents, and maintain security tools and processes.
+                        </div>
+                        <div class="role-skills">
+                            <span class="skill-tag">SIEM</span>
+                            <span class="skill-tag">Log Analysis</span>
+                            <span class="skill-tag">Incident Response</span>
+                        </div>
+                    </div>
+
+                    <div class="role-card" onclick="toggleRoleDetails(this, 'engineer')">
+                        <div class="role-title">Security Engineer</div>
+                        <div class="role-salary">$75,000 - $130,000</div>
+                        <div class="role-description">
+                            Design and implement security solutions, architect secure systems, and automate security processes.
+                        </div>
+                        <div class="role-skills">
+                            <span class="skill-tag">Cloud Security</span>
+                            <span class="skill-tag">DevSecOps</span>
+                            <span class="skill-tag">Automation</span>
+                        </div>
+                    </div>
+
+                    <div class="role-card" onclick="toggleRoleDetails(this, 'pentester')">
+                        <div class="role-title">Penetration Tester</div>
+                        <div class="role-salary">$65,000 - $120,000</div>
+                        <div class="role-description">
+                            Perform authorized attacks on systems to identify vulnerabilities and security weaknesses.
+                        </div>
+                        <div class="role-skills">
+                            <span class="skill-tag">Ethical Hacking</span>
+                            <span class="skill-tag">Vulnerability Assessment</span>
+                            <span class="skill-tag">Red Team</span>
+                        </div>
+                    </div>
+
+                    <div class="role-card" onclick="toggleRoleDetails(this, 'consultant')">
+                        <div class="role-title">Security Consultant</div>
+                        <div class="role-salary">$80,000 - $150,000</div>
+                        <div class="role-description">
+                            Provide strategic security advice, conduct assessments, and help organizations improve their security posture.
+                        </div>
+                        <div class="role-skills">
+                            <span class="skill-tag">Risk Assessment</span>
+                            <span class="skill-tag">Compliance</span>
+                            <span class="skill-tag">Communication</span>
+                        </div>
+                    </div>
+
+                    <div class="role-card" onclick="toggleRoleDetails(this, 'architect')">
+                        <div class="role-title">Security Architect</div>
+                        <div class="role-salary">$110,000 - $180,000</div>
+                        <div class="role-description">
+                            Design enterprise security architecture, establish security standards, and guide security strategy.
+                        </div>
+                        <div class="role-skills">
+                            <span class="skill-tag">Enterprise Architecture</span>
+                            <span class="skill-tag">Security Frameworks</span>
+                            <span class="skill-tag">Strategic Planning</span>
+                        </div>
+                    </div>
+
+                    <div class="role-card" onclick="toggleRoleDetails(this, 'manager')">
+                        <div class="role-title">Security Manager</div>
+                        <div class="role-salary">$95,000 - $160,000</div>
+                        <div class="role-description">
+                            Lead security teams, manage security programs, and coordinate with business stakeholders.
+                        </div>
+                        <div class="role-skills">
+                            <span class="skill-tag">Team Leadership</span>
+                            <span class="skill-tag">Program Management</span>
+                            <span class="skill-tag">Business Acumen</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Role Details (Initially Hidden) -->
+                <div id="analyst-details" class="role-details">
+                    <h4>Security Analyst - Detailed Overview</h4>
+                    <p><strong>Daily Responsibilities:</strong></p>
+                    <ul>
+                        <li>Monitor security information and event management (SIEM) systems</li>
+                        <li>Investigate security alerts and potential incidents</li>
+                        <li>Perform vulnerability assessments and coordinate remediation</li>
+                        <li>Create security reports and maintain documentation</li>
+                        <li>Participate in incident response activities</li>
+                    </ul>
+                    <p><strong>Required Skills:</strong></p>
+                    <ul>
+                        <li>Understanding of network protocols and security concepts</li>
+                        <li>Experience with SIEM tools (Splunk, QRadar, etc.)</li>
+                        <li>Knowledge of operating systems (Windows, Linux)</li>
+                        <li>Basic scripting abilities (PowerShell, Python)</li>
+                        <li>Strong analytical and problem-solving skills</li>
+                    </ul>
+                    <p><strong>Career Progression:</strong> Security Analyst → Senior Analyst → Security Engineer/Specialist → Security Manager</p>
+                </div>
+
+                <div id="engineer-details" class="role-details">
+                    <h4>Security Engineer - Detailed Overview</h4>
+                    <p><strong>Daily Responsibilities:</strong></p>
+                    <ul>
+                        <li>Design and implement security solutions and controls</li>
+                        <li>Automate security processes and integrate security into CI/CD pipelines</li>
+                        <li>Configure and maintain security tools and technologies</li>
+                        <li>Collaborate with development teams on secure coding practices</li>
+                        <li>Conduct security architecture reviews</li>
+                    </ul>
+                    <p><strong>Required Skills:</strong></p>
+                    <ul>
+                        <li>Strong programming/scripting skills (Python, Go, PowerShell)</li>
+                        <li>Cloud security expertise (AWS, Azure, GCP)</li>
+                        <li>Understanding of DevOps and CI/CD principles</li>
+                        <li>Experience with infrastructure as code (Terraform, CloudFormation)</li>
+                        <li>Knowledge of security frameworks and standards</li>
+                    </ul>
+                    <p><strong>Career Progression:</strong> Security Engineer → Senior Engineer → Principal Engineer → Security Architect</p>
+                </div>
+
+                <div id="pentester-details" class="role-details">
+                    <h4>Penetration Tester - Detailed Overview</h4>
+                    <p><strong>Daily Responsibilities:</strong></p>
+                    <ul>
+                        <li>Conduct authorized penetration tests on networks, applications, and systems</li>
+                        <li>Develop custom exploits and attack scenarios</li>
+                        <li>Document vulnerabilities and provide remediation recommendations</li>
+                        <li>Stay current with latest attack techniques and security tools</li>
+                        <li>Present findings to technical and non-technical stakeholders</li>
+                    </ul>
+                    <p><strong>Required Skills:</strong></p>
+                    <ul>
+                        <li>Deep understanding of networking and system administration</li>
+                        <li>Proficiency with penetration testing tools (Metasploit, Burp Suite, Nmap)</li>
+                        <li>Knowledge of programming languages (Python, C, JavaScript)</li>
+                        <li>Understanding of web application security and OWASP Top 10</li>
+                        <li>Strong report writing and communication skills</li>
+                    </ul>
+                    <p><strong>Career Progression:</strong> Junior Pentester → Penetration Tester → Senior Pentester → Red Team Lead</p>
+                </div>
+
+                <div id="consultant-details" class="role-details">
+                    <h4>Security Consultant - Detailed Overview</h4>
+                    <p><strong>Daily Responsibilities:</strong></p>
+                    <ul>
+                        <li>Assess client security posture and identify improvement opportunities</li>
+                        <li>Develop security strategies and roadmaps for organizations</li>
+                        <li>Conduct compliance assessments (SOX, PCI-DSS, HIPAA)</li>
+                        <li>Provide security training and awareness programs</li>
+                        <li>Manage multiple client relationships and projects</li>
+                    </ul>
+                    <p><strong>Required Skills:</strong></p>
+                    <ul>
+                        <li>Broad knowledge of security frameworks and best practices</li>
+                        <li>Strong business acumen and risk management understanding</li>
+                        <li>Excellent communication and presentation skills</li>
+                        <li>Experience with regulatory compliance requirements</li>
+                        <li>Project management and client relationship skills</li>
+                    </ul>
+                    <p><strong>Career Progression:</strong> Associate Consultant → Consultant → Senior Consultant → Principal/Director</p>
+                </div>
+
+                <div id="architect-details" class="role-details">
+                    <h4>Security Architect - Detailed Overview</h4>
+                    <p><strong>Daily Responsibilities:</strong></p>
+                    <ul>
+                        <li>Design enterprise-wide security architecture and standards</li>
+                        <li>Review and approve security designs for major projects</li>
+                        <li>Establish security patterns and reusable solutions</li>
+                        <li>Collaborate with enterprise architects and technology leaders</li>
+                        <li>Guide security technology selection and strategic planning</li>
+                    </ul>
+                    <p><strong>Required Skills:</strong></p>
+                    <ul>
+                        <li>Deep expertise in enterprise architecture principles</li>
+                        <li>Advanced knowledge of security frameworks (NIST, ISO 27001)</li>
+                        <li>Experience with cloud architecture and hybrid environments</li>
+                        <li>Strong understanding of business processes and technology</li>
+                        <li>Leadership and strategic thinking capabilities</li>
+                    </ul>
+                    <p><strong>Career Progression:</strong> Senior Engineer → Security Architect → Principal Architect → Chief Security Officer</p>
+                </div>
+
+                <div id="manager-details" class="role-details">
+                    <h4>Security Manager - Detailed Overview</h4>
+                    <p><strong>Daily Responsibilities:</strong></p>
+                    <ul>
+                        <li>Lead and develop security team members</li>
+                        <li>Manage security programs and initiatives</li>
+                        <li>Coordinate with business stakeholders on security requirements</li>
+                        <li>Oversee incident response and crisis management</li>
+                        <li>Develop security policies and procedures</li>
+                    </ul>
+                    <p><strong>Required Skills:</strong></p>
+                    <ul>
+                        <li>Strong leadership and people management skills</li>
+                        <li>Business understanding and strategic thinking</li>
+                        <li>Experience with security program management</li>
+                        <li>Budget management and resource planning</li>
+                        <li>Excellent communication and stakeholder management</li>
+                    </ul>
+                    <p><strong>Career Progression:</strong> Team Lead → Security Manager → Senior Manager → Director/CISO</p>
+                </div>
+            </div>
+
+            <!-- Interactive Quiz -->
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <div class="quiz-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3 class="quiz-title">Knowledge Check</h3>
+                </div>
+                <div class="quiz-question">
+                    Which cybersecurity role typically serves as the best entry point for someone with limited technical experience?
+                </div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="quiz1" value="a">
+                        <span>Penetration Tester</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="quiz1" value="b">
+                        <span>Security Analyst</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="quiz1" value="c">
+                        <span>Security Architect</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="quiz1" value="d">
+                        <span>Security Manager</span>
+                    </label>
+                </div>
+                <div class="quiz-actions">
+                    <button class="btn btn-primary" onclick="checkQuiz()">
+                        <i class="fas fa-check"></i>
+                        Submit Answer
+                    </button>
+                    <button class="btn btn-secondary" onclick="resetQuiz()">
+                        <i class="fas fa-redo"></i>
+                        Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Assignment -->
+            <div class="assignment-container">
+                <div class="assignment-header">
+                    <div class="assignment-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="assignment-title">Career Path Analysis</h3>
+                </div>
+                <div class="assignment-description">
+                    Conduct a comprehensive analysis of your ideal cybersecurity career path based on your interests, 
+                    skills, and goals.
+                </div>
+                <div class="assignment-requirements">
+                    <h4>Assignment Requirements:</h4>
+                    <ul>
+                        <li>Complete a skills and interests self-assessment</li>
+                        <li>Research 3 specific cybersecurity roles that interest you</li>
+                        <li>Analyze job postings for your target roles</li>
+                        <li>Identify skill gaps and create a development plan</li>
+                        <li>Set 6-month and 12-month career milestones</li>
+                    </ul>
+                </div>
+                <div class="quiz-actions">
+                    <button class="btn btn-primary" onclick="startAssignment()">
+                        <i class="fas fa-play"></i>
+                        Start Career Analysis
+                    </button>
+                    <button class="btn btn-secondary" onclick="downloadTemplate()">
+                        <i class="fas fa-download"></i>
+                        Download Worksheet
+                    </button>
+                </div>
+            </div>
+
+            <!-- Certificate Section -->
+            <div class="certificate-container">
+                <div class="certificate-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3 class="certificate-title">Career Exploration Certificate</h3>
+                <p class="certificate-description">
+                    Complete all modules and career analysis to earn your Career Exploration certificate.
+                </p>
+                <button class="btn btn-certificate" onclick="downloadCertificate()" disabled>
+                    <i class="fas fa-download"></i>
+                    Download Certificate
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <div class="lesson-navigation">
+                <a href="#" class="nav-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous Module
+                </a>
+                <div style="flex-grow: 1;"></div>
+                <a href="#" class="nav-btn primary">
+                    Next Module
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Role explorer functionality
+        function toggleRoleDetails(card, roleId) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
+            
+            // Hide all role details
+            document.querySelectorAll('.role-details').forEach(detail => {
+                detail.classList.remove('show');
+            });
+            
+            // Add selected class to clicked card
+            card.classList.add('selected');
+            
+            // Show the selected role details
+            document.getElementById(roleId + '-details').classList.add('show');
+        }
+
+        // Quiz functionality
+        function checkQuiz() {
+            const selected = document.querySelector('input[name="quiz1"]:checked');
+            if (!selected) {
+                alert('Please select an answer before submitting.');
+                return;
+            }
+
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+                const input = option.querySelector('input');
+                if (input.value === 'b') {
+                    option.style.background = 'rgba(16, 185, 129, 0.1)';
+                    option.style.borderColor = '#10b981';
+                } else if (input.checked && input.value !== 'b') {
+                    option.style.background = 'rgba(239, 68, 68, 0.1)';
+                    option.style.borderColor = '#ef4444';
+                }
+            });
+
+            if (selected.value === 'b') {
+                alert('Correct! Security Analyst is typically the best entry-level role, requiring foundational knowledge that can be learned on the job.');
+                updateProgress();
+            } else {
+                alert('Not quite right. Security Analyst is typically the best entry point as it provides foundational experience and requires skills that can be developed on the job.');
+            }
+        }
+
+        function resetQuiz() {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.style.pointerEvents = 'auto';
+                option.style.background = '';
+                option.style.borderColor = 'transparent';
+                const input = option.querySelector('input');
+                input.checked = false;
+            });
+        }
+
+        function startAssignment() {
+            alert('Opening Career Path Analysis Worksheet...');
+            // In a real implementation, this would open the assignment tool
+        }
+
+        function downloadTemplate() {
+            alert('Downloading career analysis template...');
+            // In a real implementation, this would download the template file
+        }
+
+        function downloadCertificate() {
+            alert('Downloading your certificate...');
+            // In a real implementation, this would generate and download the certificate
+        }
+
+        function updateProgress() {
+            const progressFill = document.querySelector('.progress-fill');
+            const progressText = document.querySelector('.progress-text');
+            const newProgress = 45;
+            
+            progressFill.style.width = newProgress + '%';
+            progressText.textContent = `Progress: ${newProgress}%`;
+            
+            // Enable certificate download if module is complete
+            const certificateBtn = document.querySelector('.btn-certificate');
+            if (newProgress >= 45) {
+                certificateBtn.disabled = false;
+                certificateBtn.style.opacity = '1';
+            }
+        }
+
+        // Module navigation
+        document.querySelectorAll('.module-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.module-item').forEach(m => m.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Mobile sidebar toggle
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.course-sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        // Add mobile menu button for smaller screens
+        if (window.innerWidth <= 1024) {
+            const headerLeft = document.querySelector('.header-left');
+            const menuButton = document.createElement('button');
+            menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            menuButton.style.cssText = `
+                background: none;
+                border: none;
+                color: var(--text-light);
+                font-size: 1.2rem;
+                cursor: pointer;
+                padding: 0.5rem;
+                margin-right: 0.5rem;
+            `;
+            menuButton.onclick = toggleSidebar;
+            headerLeft.insertBefore(menuButton, headerLeft.firstChild);
+        }
+    </script>
+</body>
+</html>

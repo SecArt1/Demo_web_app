@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Platform - Whole Cyber Human Initiative</title>
+    <title>Security Engineer 120-Day Track - Learning Platform</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,8 +12,9 @@
     
     <!-- Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-      <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="public/assets/css/styles.css">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../../public/assets/css/styles.css">
     
     <!-- Learning Platform Styles -->
     <style>
@@ -163,7 +164,7 @@
             color: var(--text-dark);
             cursor: pointer;
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             align-items: center;
             transition: all 0.3s ease;
         }
@@ -306,41 +307,6 @@
             gap: 1rem;
         }
 
-        /* Slides Container */
-        .slides-container {
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
-
-        .slides-viewer {
-            width: 100%;
-            height: 600px;
-            border: none;
-            background: #f5f5f5;
-        }
-
-        .slides-controls {
-            padding: 1rem;
-            background: var(--white);
-            border-top: 1px solid var(--border-light);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .slide-info {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .slide-navigation {
-            display: flex;
-            gap: 0.5rem;
-        }
-
         /* Content Tabs */
         .content-tabs {
             background: var(--white);
@@ -449,57 +415,10 @@
                 margin-right: 1rem;
             }
         }
-
-        @media (max-width: 768px) {
-            .main-content {
-                padding: 1rem;
-            }
-
-            .video-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .video-actions {
-                flex-wrap: wrap;
-            }
-
-            .tab-headers {
-                overflow-x: auto;
-            }
-
-            .lesson-navigation {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        /* Loading States */
-        .loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 400px;
-            color: var(--text-light);
-        }
-
-        .spinner {
-            border: 3px solid var(--border-light);
-            border-top: 3px solid var(--primary-blue);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin-right: 1rem;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
-      <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="public/assets/images/favicon.ico">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../../public/assets/images/favicon.ico">
 </head>
 <body>
     <!-- Platform Header -->
@@ -507,12 +426,13 @@
         <button class="sidebar-toggle" style="display: none;">
             <i class="fas fa-bars"></i>
         </button>
-          <div class="platform-logo">
-            <img src="public/assets/images/image.png" alt="Whole Cyber Human Initiative">
+        
+        <div class="platform-logo">
+            <img src="../../../public/assets/images/image.png" alt="Whole Cyber Human Initiative">
         </div>
         
         <div class="course-title-header" id="courseTitle">
-            Course Title Will Load Here
+            Security Engineer 120-Day Track
         </div>
         
         <div class="header-actions">
@@ -521,7 +441,8 @@
                 <div class="progress-bar">
                     <div class="progress-fill" id="progressFill" style="width: 0%"></div>
                 </div>
-            </div>            <button class="nav-btn secondary" onclick="window.location.href='src/pages/courses.html'">
+            </div>
+            <button class="nav-btn secondary" onclick="window.location.href='../courses.html'">
                 <i class="fas fa-arrow-left"></i> Back to Courses
             </button>
         </div>
@@ -531,17 +452,221 @@
     <aside class="course-sidebar" id="courseSidebar">
         <div class="sidebar-content">
             <div class="course-info">
-                <h3 id="sidebarCourseTitle">Course Title</h3>
+                <h3>Security Engineer 120-Day Track</h3>
                 <div class="course-meta">
-                    <span><i class="fas fa-user-tie"></i> <span id="instructor">Instructor Name</span></span>
-                    <span><i class="fas fa-clock"></i> <span id="totalDuration">Total Duration</span></span>
-                    <span><i class="fas fa-play-circle"></i> <span id="totalLessons">0 Lessons</span></span>
-                    <span><i class="fas fa-certificate"></i> <span id="certificateInfo">Certificate Available</span></span>
+                    <span><i class="fas fa-user-tie"></i> Paul Cummings</span>
+                    <span><i class="fas fa-clock"></i> 120 days</span>
+                    <span><i class="fas fa-play-circle"></i> 48 Lessons</span>
+                    <span><i class="fas fa-certificate"></i> Certificate Available</span>
                 </div>
             </div>
 
             <ul class="modules-list" id="modulesList">
-                <!-- Modules will be loaded dynamically -->
+                
+                <li class="module-item">
+                    <div class="module-header active" data-module="0">
+                        Foundation (Days 1-30)
+                        <i class="fas fa-chevron-down module-toggle"></i>
+                    </div>
+                    <ul class="lessons-list">
+                        
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link active" data-lesson="0">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Security Engineering Overview</div>
+                                    <div class="lesson-duration">30 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="1">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-file-powerpoint"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Infrastructure Security</div>
+                                    <div class="lesson-duration">45 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="2">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Network Security Design</div>
+                                    <div class="lesson-duration">40 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="module-item">
+                    <div class="module-header" data-module="1">
+                        Intermediate (Days 31-60)
+                        <i class="fas fa-chevron-down module-toggle"></i>
+                    </div>
+                    <ul class="lessons-list" style="display: none;">
+                        
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="3">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Application Security</div>
+                                    <div class="lesson-duration">50 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="4">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-file-powerpoint"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Cloud Security Architecture</div>
+                                    <div class="lesson-duration">60 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="5">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">DevSecOps Practices</div>
+                                    <div class="lesson-duration">45 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="module-item">
+                    <div class="module-header" data-module="2">
+                        Advanced (Days 61-90)
+                        <i class="fas fa-chevron-down module-toggle"></i>
+                    </div>
+                    <ul class="lessons-list" style="display: none;">
+                        
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="6">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Security Automation</div>
+                                    <div class="lesson-duration">55 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="7">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-file-powerpoint"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Threat Modeling</div>
+                                    <div class="lesson-duration">40 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="8">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Incident Response Planning</div>
+                                    <div class="lesson-duration">50 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="module-item">
+                    <div class="module-header" data-module="3">
+                        Mastery (Days 91-120)
+                        <i class="fas fa-chevron-down module-toggle"></i>
+                    </div>
+                    <ul class="lessons-list" style="display: none;">
+                        
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="9">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Advanced Threat Detection</div>
+                                    <div class="lesson-duration">60 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="10">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-file-powerpoint"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Security Metrics and KPIs</div>
+                                    <div class="lesson-duration">35 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="11">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Capstone Project</div>
+                                    <div class="lesson-duration">90 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </aside>
@@ -549,18 +674,18 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="content-container">
-            <!-- Video Container (shown for video lessons) -->
-            <div class="video-container" id="videoContainer" style="display: none;">
+            <!-- Video Container -->
+            <div class="video-container" id="videoContainer">
                 <video class="video-player" id="videoPlayer" controls>
                     <source src="" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <div class="video-controls">
-                    <h2 class="video-title" id="videoTitle">Lesson Title</h2>
+                    <h2 class="video-title" id="videoTitle">Security Engineering Overview</h2>
                     <div class="video-meta">
-                        <span><i class="fas fa-clock"></i> <span id="videoDuration">Duration</span></span>
-                        <span><i class="fas fa-eye"></i> <span id="videoViews">Views</span></span>
-                        <span><i class="fas fa-calendar"></i> <span id="videoDate">Date</span></span>
+                        <span><i class="fas fa-clock"></i> <span id="videoDuration">30 min</span></span>
+                        <span><i class="fas fa-eye"></i> <span id="videoViews">0 views</span></span>
+                        <span><i class="fas fa-calendar"></i> <span id="videoDate">June 24, 2025</span></span>
                     </div>
                     <div class="video-actions">
                         <button class="nav-btn secondary" id="markCompleteBtn">
@@ -571,24 +696,6 @@
                         </button>
                         <button class="nav-btn secondary" id="bookmarkBtn">
                             <i class="fas fa-bookmark"></i> Bookmark
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slides Container (shown for presentation lessons) -->
-            <div class="slides-container" id="slidesContainer" style="display: none;">
-                <iframe class="slides-viewer" id="slidesViewer" src=""></iframe>
-                <div class="slides-controls">
-                    <div class="slide-info">
-                        <span id="slideTitle">Presentation Title</span>
-                    </div>
-                    <div class="slide-navigation">
-                        <button class="nav-btn secondary" onclick="downloadSlides()">
-                            <i class="fas fa-download"></i> Download
-                        </button>
-                        <button class="nav-btn secondary" onclick="openFullscreen()">
-                            <i class="fas fa-expand"></i> Fullscreen
                         </button>
                     </div>
                 </div>
@@ -606,12 +713,14 @@
                 <div class="tab-content active" id="overview">
                     <h3>Lesson Overview</h3>
                     <div id="lessonDescription">
-                        <p>Lesson description and objectives will be loaded here.</p>
+                        <p>Welcome to Security Engineer 120-Day Track. This comprehensive course will guide you through essential concepts and practical skills.</p>
                     </div>
                     
                     <h4>Learning Objectives</h4>
                     <ul id="learningObjectives">
-                        <li>Learning objectives will be listed here</li>
+                        <li>Master core concepts and fundamentals</li>
+                        <li>Develop practical skills through hands-on exercises</li>
+                        <li>Build a strong foundation for career advancement</li>
                     </ul>
                 </div>
 
@@ -626,7 +735,10 @@
                 <div class="tab-content" id="resources">
                     <h3>Additional Resources</h3>
                     <ul id="resourcesList">
-                        <li>Resources will be loaded here</li>
+                        <li><a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Course Materials</a></li>
+                        <li><a href="#" target="_blank"><i class="fas fa-link"></i> External Resources</a></li>
+                        <li><a href="#" target="_blank"><i class="fas fa-book"></i> Reading List</a></li>
+                        <li><a href="#" target="_blank"><i class="fas fa-video"></i> Supplementary Videos</a></li>
                     </ul>
                 </div>
 
@@ -652,39 +764,42 @@
     </main>
 
     <!-- JavaScript -->
+    <script src="../../../public/assets/js/main.js"></script>
     <script>
         // Course Platform JavaScript
         class CoursePlatform {
             constructor() {
                 this.currentLesson = 0;
                 this.completedLessons = new Set();
-                this.courseData = {};
+                this.courseData = {
+                    title: "Security Engineer 120-Day Track",
+                    instructor: "Paul Cummings",
+                    totalDuration: "120 days",
+                    totalLessons: 48
+                };
                 this.init();
             }
 
             init() {
                 this.setupEventListeners();
-                this.loadCourseData();
                 this.setupTabs();
                 this.setupResponsive();
+                this.updateProgress();
             }
 
             setupEventListeners() {
-                // Tab switching
                 document.querySelectorAll('.tab-header').forEach(tab => {
                     tab.addEventListener('click', (e) => {
                         this.switchTab(e.target.dataset.tab);
                     });
                 });
 
-                // Module toggling
                 document.addEventListener('click', (e) => {
                     if (e.target.closest('.module-header')) {
                         this.toggleModule(e.target.closest('.module-header'));
                     }
                 });
 
-                // Lesson navigation
                 document.getElementById('prevLessonBtn').addEventListener('click', () => {
                     this.previousLesson();
                 });
@@ -693,20 +808,18 @@
                     this.nextLesson();
                 });
 
-                // Mark complete
                 document.getElementById('markCompleteBtn').addEventListener('click', () => {
                     this.markLessonComplete();
                 });
 
-                // Video player events
-                const videoPlayer = document.getElementById('videoPlayer');
-                if (videoPlayer) {
-                    videoPlayer.addEventListener('ended', () => {
-                        this.markLessonComplete();
+                document.querySelectorAll('.lesson-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const lessonIndex = parseInt(e.target.closest('.lesson-link').dataset.lesson);
+                        this.loadLesson(lessonIndex);
                     });
-                }
+                });
 
-                // Sidebar toggle for mobile
                 const sidebarToggle = document.querySelector('.sidebar-toggle');
                 if (sidebarToggle) {
                     sidebarToggle.addEventListener('click', () => {
@@ -715,188 +828,15 @@
                 }
             }
 
-            // Load course data (this would typically come from an API)
-            loadCourseData() {
-                // Sample course data - replace with actual API call
-                this.courseData = {
-                    title: "OT Cyber for Non-Electrical Engineers Essentials",
-                    instructor: "Paul Cummings",
-                    totalDuration: "4 hours 30 minutes",
-                    modules: [
-                        {
-                            id: 1,
-                            title: "Introduction to OT Cybersecurity",
-                            lessons: [
-                                {
-                                    id: 1,
-                                    title: "What is OT Cybersecurity?",
-                                    type: "video",
-                                    duration: "15 min",
-                                    videoUrl: "assets/videos/lesson1.mp4",
-                                    description: "Introduction to operational technology cybersecurity basics.",
-                                    objectives: ["Understand OT vs IT", "Learn basic OT concepts", "Identify OT security challenges"]
-                                },
-                                {
-                                    id: 2,
-                                    title: "OT Security Framework",
-                                    type: "slides",
-                                    duration: "20 min",
-                                    slidesUrl: "assets/presentations/ot-framework.pdf",
-                                    description: "Overview of OT security frameworks and standards.",
-                                    objectives: ["Learn security frameworks", "Understand compliance requirements"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 2,
-                            title: "Industrial Control Systems",
-                            lessons: [
-                                {
-                                    id: 3,
-                                    title: "SCADA Systems Overview",
-                                    type: "video",
-                                    duration: "25 min",
-                                    videoUrl: "assets/videos/lesson3.mp4",
-                                    description: "Understanding SCADA systems and their security implications.",
-                                    objectives: ["SCADA architecture", "Security vulnerabilities", "Protection strategies"]
-                                }
-                            ]
-                        }
-                    ]
-                };
-
-                this.updateCourseInfo();
-                this.renderModules();
-                this.loadLesson(0);
-            }
-
-            updateCourseInfo() {
-                document.getElementById('courseTitle').textContent = this.courseData.title;
-                document.getElementById('sidebarCourseTitle').textContent = this.courseData.title;
-                document.getElementById('instructor').textContent = this.courseData.instructor;
-                document.getElementById('totalDuration').textContent = this.courseData.totalDuration;
-                
-                const totalLessons = this.courseData.modules.reduce((total, module) => total + module.lessons.length, 0);
-                document.getElementById('totalLessons').textContent = `${totalLessons} Lessons`;
-            }
-
-            renderModules() {
-                const modulesList = document.getElementById('modulesList');
-                modulesList.innerHTML = '';
-
-                this.courseData.modules.forEach((module, moduleIndex) => {
-                    const moduleItem = document.createElement('li');
-                    moduleItem.className = 'module-item';
-                    
-                    moduleItem.innerHTML = `
-                        <div class="module-header" data-module="${moduleIndex}">
-                            ${module.title}
-                            <i class="fas fa-chevron-down module-toggle"></i>
-                        </div>
-                        <ul class="lessons-list">
-                            ${module.lessons.map((lesson, lessonIndex) => `
-                                <li class="lesson-item">
-                                    <a href="#" class="lesson-link" data-lesson="${this.getLessonGlobalIndex(moduleIndex, lessonIndex)}">
-                                        <div class="lesson-icon">
-                                            <i class="fas fa-${lesson.type === 'video' ? 'play' : 'file-powerpoint'}"></i>
-                                        </div>
-                                        <div class="lesson-content">
-                                            <div class="lesson-title">${lesson.title}</div>
-                                            <div class="lesson-duration">${lesson.duration}</div>
-                                        </div>
-                                        <div class="lesson-status">
-                                            <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
-                                        </div>
-                                    </a>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    `;
-                    
-                    modulesList.appendChild(moduleItem);
-                });
-
-                // Add lesson click handlers
-                document.querySelectorAll('.lesson-link').forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const lessonIndex = parseInt(e.target.closest('.lesson-link').dataset.lesson);
-                        this.loadLesson(lessonIndex);
-                    });
-                });
-            }
-
-            getLessonGlobalIndex(moduleIndex, lessonIndex) {
-                let globalIndex = 0;
-                for (let i = 0; i < moduleIndex; i++) {
-                    globalIndex += this.courseData.modules[i].lessons.length;
-                }
-                return globalIndex + lessonIndex;
-            }
-
-            getLessonData(globalIndex) {
-                let currentIndex = 0;
-                for (const module of this.courseData.modules) {
-                    if (globalIndex < currentIndex + module.lessons.length) {
-                        return module.lessons[globalIndex - currentIndex];
-                    }
-                    currentIndex += module.lessons.length;
-                }
-                return null;
-            }
-
             loadLesson(lessonIndex) {
                 this.currentLesson = lessonIndex;
-                const lesson = this.getLessonData(lessonIndex);
-                
-                if (!lesson) return;
 
-                // Update active lesson in sidebar
                 document.querySelectorAll('.lesson-link').forEach(link => {
                     link.classList.remove('active');
                 });
                 document.querySelector(`[data-lesson="${lessonIndex}"]`).classList.add('active');
 
-                // Load lesson content
-                if (lesson.type === 'video') {
-                    this.loadVideoLesson(lesson);
-                } else if (lesson.type === 'slides') {
-                    this.loadSlidesLesson(lesson);
-                }
-
-                // Update lesson info in tabs
-                document.getElementById('lessonDescription').innerHTML = `<p>${lesson.description}</p>`;
-                document.getElementById('learningObjectives').innerHTML = lesson.objectives.map(obj => `<li>${obj}</li>`).join('');
-
-                // Update navigation buttons
                 this.updateNavigationButtons();
-                this.updateProgress();
-            }
-
-            loadVideoLesson(lesson) {
-                document.getElementById('videoContainer').style.display = 'block';
-                document.getElementById('slidesContainer').style.display = 'none';
-                
-                const videoPlayer = document.getElementById('videoPlayer');
-                videoPlayer.src = lesson.videoUrl || 'https://via.placeholder.com/800x450/2886c8/ffffff?text=Video+Coming+Soon';
-                
-                document.getElementById('videoTitle').textContent = lesson.title;
-                document.getElementById('videoDuration').textContent = lesson.duration;
-                document.getElementById('videoViews').textContent = '0 views';
-                document.getElementById('videoDate').textContent = new Date().toLocaleDateString();
-            }
-
-            loadSlidesLesson(lesson) {
-                document.getElementById('videoContainer').style.display = 'none';
-                document.getElementById('slidesContainer').style.display = 'block';
-                
-                const slidesViewer = document.getElementById('slidesViewer');
-                // For PDF files, you can use PDF.js or Google Docs viewer
-                slidesViewer.src = lesson.slidesUrl 
-                    ? `https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + '/' + lesson.slidesUrl)}&embedded=true`
-                    : 'https://via.placeholder.com/800x600/2886c8/ffffff?text=Slides+Coming+Soon';
-                
-                document.getElementById('slideTitle').textContent = lesson.title;
             }
 
             toggleModule(moduleHeader) {
@@ -910,13 +850,11 @@
             }
 
             switchTab(tabName) {
-                // Update tab headers
                 document.querySelectorAll('.tab-header').forEach(header => {
                     header.classList.remove('active');
                 });
                 document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
 
-                // Update tab content
                 document.querySelectorAll('.tab-content').forEach(content => {
                     content.classList.remove('active');
                 });
@@ -926,7 +864,6 @@
             markLessonComplete() {
                 this.completedLessons.add(this.currentLesson);
                 
-                // Update lesson status in sidebar
                 const lessonLink = document.querySelector(`[data-lesson="${this.currentLesson}"]`);
                 lessonLink.classList.add('completed');
                 const statusIcon = lessonLink.querySelector('.lesson-status i');
@@ -936,29 +873,25 @@
 
                 this.updateProgress();
                 
-                // Auto-advance to next lesson
                 setTimeout(() => {
                     this.nextLesson();
                 }, 1000);
             }
 
             updateProgress() {
-                const totalLessons = this.courseData.modules.reduce((total, module) => total + module.lessons.length, 0);
                 const completedCount = this.completedLessons.size;
-                const progressPercentage = Math.round((completedCount / totalLessons) * 100);
+                const progressPercentage = Math.round((completedCount / this.courseData.totalLessons) * 100);
                 
                 document.getElementById('progressText').textContent = `${progressPercentage}% Complete`;
                 document.getElementById('progressFill').style.width = `${progressPercentage}%`;
             }
 
             updateNavigationButtons() {
-                const totalLessons = this.courseData.modules.reduce((total, module) => total + module.lessons.length, 0);
-                
                 const prevBtn = document.getElementById('prevLessonBtn');
                 const nextBtn = document.getElementById('nextLessonBtn');
                 
                 prevBtn.disabled = this.currentLesson === 0;
-                nextBtn.disabled = this.currentLesson >= totalLessons - 1;
+                nextBtn.disabled = this.currentLesson >= this.courseData.totalLessons - 1;
                 
                 if (nextBtn.disabled) {
                     nextBtn.innerHTML = '<i class="fas fa-trophy"></i> Course Complete';
@@ -974,8 +907,7 @@
             }
 
             nextLesson() {
-                const totalLessons = this.courseData.modules.reduce((total, module) => total + module.lessons.length, 0);
-                if (this.currentLesson < totalLessons - 1) {
+                if (this.currentLesson < this.courseData.totalLessons - 1) {
                     this.loadLesson(this.currentLesson + 1);
                 }
             }
@@ -990,7 +922,6 @@
             }
 
             setupResponsive() {
-                // Show/hide sidebar toggle button based on screen size
                 const checkScreenSize = () => {
                     const sidebarToggle = document.querySelector('.sidebar-toggle');
                     if (window.innerWidth <= 1024) {
@@ -1006,28 +937,12 @@
             }
         }
 
-        // Global functions for external use
         function saveNotes() {
             const notes = document.getElementById('notesArea').value;
             localStorage.setItem(`course_notes_${coursePlatform.currentLesson}`, notes);
             alert('Notes saved successfully!');
         }
 
-        function downloadSlides() {
-            const lesson = coursePlatform.getLessonData(coursePlatform.currentLesson);
-            if (lesson && lesson.slidesUrl) {
-                window.open(lesson.slidesUrl, '_blank');
-            }
-        }
-
-        function openFullscreen() {
-            const slidesViewer = document.getElementById('slidesViewer');
-            if (slidesViewer.requestFullscreen) {
-                slidesViewer.requestFullscreen();
-            }
-        }
-
-        // Initialize the platform when the page loads
         let coursePlatform;
         document.addEventListener('DOMContentLoaded', function() {
             coursePlatform = new CoursePlatform();

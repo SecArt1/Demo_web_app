@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPF Coaching Track 2 - Learning Platform | Whole Cyber Human Initiative</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../../public/assets/css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../../public/assets/images/favicon.ico">
+</head>
+<body>
+    <div class="platform-container">
+        <!-- Header -->
+        <header class="platform-header">
+            <nav class="platform-nav">
+                <div class="logo">
+                    <a href="../index.html">
+                        <img src="../../../public/assets/images/image.png" alt="Whole Cyber Human Initiative" class="logo-img">
+                    </a>
+                </div>
+                <div class="course-title">
+                    <h1>CPF Coaching: Making Your Tech/Cyber Careers Flourish - Track 2</h1>
+                </div>
+                <div class="nav-actions">
+                    <button class="btn btn-secondary btn-sm" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i> Menu
+                    </button>
+                    <button class="btn btn-primary btn-sm">
+                        <i class="fas fa-user"></i> Profile
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <div class="platform-layout">
+            <!-- Sidebar -->
+            <aside class="platform-sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Course Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-text">0% Complete</span>
+                </div>
+
+                <div class="sidebar-content">
+                    <div class="module-section">
+                        <h4><i class="fas fa-play-circle"></i> Introduction</h4>
+                        <ul class="lesson-list">
+                            <li class="lesson-item active">
+                                <i class="fas fa-video"></i>
+                                <span>Welcome to Track 2</span>
+                                <span class="lesson-status"><i class="fas fa-check-circle"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-file-text"></i>
+                                <span>Course Overview</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="module-section">
+                        <h4><i class="fas fa-chart-line"></i> Advanced Career Development</h4>
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Career Trajectory Planning</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Leadership Skills Development</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Professional Networking Strategies</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-tasks"></i>
+                                <span>Assignment: Networking Plan</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="module-section">
+                        <h4><i class="fas fa-briefcase"></i> Advanced Job Search</h4>
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Executive Search Strategies</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Salary Negotiation Mastery</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Personal Branding for Executives</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-question-circle"></i>
+                                <span>Quiz: Advanced Job Search</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="module-section">
+                        <h4><i class="fas fa-users"></i> Team Leadership</h4>
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Building High-Performance Teams</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Managing Remote Teams</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Conflict Resolution</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-tasks"></i>
+                                <span>Assignment: Leadership Assessment</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="module-section">
+                        <h4><i class="fas fa-trophy"></i> Certification</h4>
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <i class="fas fa-tasks"></i>
+                                <span>Final Capstone Project</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Course Completion Certificate</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="platform-main">
+                <div class="lesson-content">
+                    <div class="lesson-header">
+                        <h2>Welcome to CPF Coaching Track 2</h2>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 45 minutes</span>
+                            <span><i class="fas fa-video"></i> Video Lesson</span>
+                            <span><i class="fas fa-star"></i> Advanced Level</span>
+                        </div>
+                    </div>
+
+                    <div class="lesson-body">
+                        <div class="video-container">
+                            <div class="video-placeholder">
+                                <i class="fas fa-play-circle"></i>
+                                <p>Video content will be loaded here</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-description">
+                            <h3>About This Lesson</h3>
+                            <p>Welcome to Track 2 of the CPF Coaching program. This advanced track focuses on leadership development, executive-level career strategies, and team management skills essential for senior cybersecurity professionals.</p>
+                            
+                            <h4>What You'll Learn:</h4>
+                            <ul>
+                                <li>Advanced career trajectory planning for cybersecurity executives</li>
+                                <li>Leadership skills development and team management</li>
+                                <li>Professional networking strategies for senior roles</li>
+                                <li>Executive search and salary negotiation techniques</li>
+                                <li>Personal branding for cybersecurity leaders</li>
+                            </ul>
+
+                            <h4>Prerequisites:</h4>
+                            <ul>
+                                <li>Completion of CPF Coaching Track 1</li>
+                                <li>3+ years of cybersecurity experience</li>
+                                <li>Current or aspiring leadership role</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-actions">
+                            <button class="btn btn-primary" onclick="markComplete()">
+                                <i class="fas fa-check"></i> Mark as Complete
+                            </button>
+                            <button class="btn btn-secondary" onclick="nextLesson()">
+                                Next Lesson <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Elements -->
+                <div class="interactive-section" style="display: none;" id="quiz-section">
+                    <h3>Quick Check</h3>
+                    <div class="quiz-container">
+                        <div class="question active" data-question="1">
+                            <h4>What is the primary focus of CPF Coaching Track 2?</h4>
+                            <div class="options">
+                                <label><input type="radio" name="q1" value="a"> Basic cybersecurity skills</label>
+                                <label><input type="radio" name="q1" value="b"> Leadership and executive development</label>
+                                <label><input type="radio" name="q1" value="c"> Technical certifications</label>
+                                <label><input type="radio" name="q1" value="d"> Entry-level job search</label>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="submitQuiz()">Submit Answer</button>
+                    </div>
+                </div>
+
+                <div class="assignment-section" style="display: none;" id="assignment-section">
+                    <h3>Assignment: Leadership Assessment</h3>
+                    <div class="assignment-container">
+                        <div class="assignment-description">
+                            <p>Complete a comprehensive leadership assessment to identify your strengths and areas for improvement as a cybersecurity leader.</p>
+                            <h4>Deliverables:</h4>
+                            <ul>
+                                <li>Leadership style assessment report</li>
+                                <li>Personal development plan</li>
+                                <li>90-day leadership goal setting</li>
+                            </ul>
+                        </div>
+                        <div class="assignment-submission">
+                            <textarea placeholder="Describe your leadership assessment results and development plan..."></textarea>
+                            <button class="btn btn-primary">Submit Assignment</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Progress Modal -->
+        <div class="modal" id="progressModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Course Progress</h3>
+                    <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="progress-stats">
+                        <div class="stat">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">Lessons Completed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">Quizzes Passed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">Assignments Submitted</div>
+                        </div>
+                    </div>
+                    <div class="achievement-section">
+                        <h4>Achievements</h4>
+                        <div class="achievements">
+                            <div class="achievement locked">
+                                <i class="fas fa-medal"></i>
+                                <span>First Lesson Complete</span>
+                            </div>
+                            <div class="achievement locked">
+                                <i class="fas fa-star"></i>
+                                <span>Quiz Master</span>
+                            </div>
+                            <div class="achievement locked">
+                                <i class="fas fa-trophy"></i>
+                                <span>Course Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certificate Modal -->
+        <div class="modal" id="certificateModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Congratulations!</h3>
+                    <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="certificate">
+                        <div class="certificate-header">
+                            <h2>Certificate of Completion</h2>
+                        </div>
+                        <div class="certificate-body">
+                            <p>This certifies that</p>
+                            <h3 class="student-name">[Student Name]</h3>
+                            <p>has successfully completed</p>
+                            <h4>CPF Coaching: Making Your Tech/Cyber Careers Flourish - Track 2</h4>
+                            <p>Whole Cyber Human Initiative</p>
+                            <div class="certificate-date">Date: [Current Date]</div>
+                        </div>
+                    </div>
+                    <div class="certificate-actions">
+                        <button class="btn btn-primary">Download Certificate</button>
+                        <button class="btn btn-secondary">Share on LinkedIn</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Platform functionality
+        let currentProgress = 0;
+        let completedLessons = 0;
+        let totalLessons = 12;
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+
+        function markComplete() {
+            const currentLesson = document.querySelector('.lesson-item.active');
+            if (currentLesson) {
+                const statusIcon = currentLesson.querySelector('.lesson-status i');
+                statusIcon.className = 'fas fa-check-circle';
+                completedLessons++;
+                updateProgress();
+            }
+        }
+
+        function nextLesson() {
+            const lessons = document.querySelectorAll('.lesson-item');
+            const currentIndex = Array.from(lessons).findIndex(lesson => lesson.classList.contains('active'));
+            
+            if (currentIndex < lessons.length - 1) {
+                lessons[currentIndex].classList.remove('active');
+                lessons[currentIndex + 1].classList.add('active');
+                
+                // Unlock next lesson
+                const nextStatus = lessons[currentIndex + 1].querySelector('.lesson-status i');
+                if (nextStatus.classList.contains('fa-lock')) {
+                    nextStatus.className = 'fas fa-play-circle';
+                }
+            }
+        }
+
+        function updateProgress() {
+            currentProgress = (completedLessons / totalLessons) * 100;
+            const progressFill = document.querySelector('.progress-fill');
+            const progressText = document.querySelector('.progress-text');
+            
+            progressFill.style.width = currentProgress + '%';
+            progressText.textContent = Math.round(currentProgress) + '% Complete';
+            
+            if (currentProgress === 100) {
+                showCertificate();
+            }
+        }
+
+        function submitQuiz() {
+            const selectedAnswer = document.querySelector('input[name="q1"]:checked');
+            if (selectedAnswer) {
+                if (selectedAnswer.value === 'b') {
+                    alert('Correct! Track 2 focuses on leadership and executive development.');
+                } else {
+                    alert('Incorrect. Track 2 focuses on leadership and executive development for cybersecurity professionals.');
+                }
+                document.getElementById('quiz-section').style.display = 'none';
+            }
+        }
+
+        function showCertificate() {
+            document.getElementById('certificateModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+
+        // Initialize platform
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up event listeners
+            document.querySelector('.progress-text').addEventListener('click', function() {
+                document.getElementById('progressModal').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPF Coaching Track 3 - Learning Platform | Whole Cyber Human Initiative</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../../public/assets/css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../../public/assets/images/favicon.ico">
+</head>
+<body>
+    <div class="platform-container">
+        <!-- Header -->
+        <header class="platform-header">
+            <nav class="platform-nav">
+                <div class="logo">
+                    <a href="../index.html">
+                        <img src="../../../public/assets/images/image.png" alt="Whole Cyber Human Initiative" class="logo-img">
+                    </a>
+                </div>
+                <div class="course-title">
+                    <h1>CPF Coaching: Making Your Tech/Cyber Careers Flourish - Track 3</h1>
+                </div>
+                <div class="nav-actions">
+                    <button class="btn btn-secondary btn-sm" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i> Menu
+                    </button>
+                    <button class="btn btn-primary btn-sm">
+                        <i class="fas fa-user"></i> Profile
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <div class="platform-layout">
+            <!-- Sidebar -->
+            <aside class="platform-sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Course Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-text">0% Complete</span>
+                </div>
+
+                <div class="sidebar-content">
+                    <div class="module-section">
+                        <h4><i class="fas fa-play-circle"></i> Introduction</h4>
+                        <ul class="lesson-list">
+                            <li class="lesson-item active">
+                                <i class="fas fa-video"></i>
+                                <span>Welcome to Track 3</span>
+                                <span class="lesson-status"><i class="fas fa-check-circle"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-file-text"></i>
+                                <span>Executive Leadership Overview</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="module-section">
+                        <h4><i class="fas fa-crown"></i> Executive Leadership</h4>
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>C-Suite Cybersecurity Leadership</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Board-Level Communication</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Strategic Risk Management</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-tasks"></i>
+                                <span>Assignment: Executive Presentation</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="module-section">
+                        <h4><i class="fas fa-building"></i> Organization Transformation</h4>
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Digital Transformation Leadership</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Cybersecurity Culture Development</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Change Management Strategies</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-question-circle"></i>
+                                <span>Quiz: Organizational Leadership</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="module-section">
+                        <h4><i class="fas fa-handshake"></i> Strategic Partnerships</h4>
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Vendor Relationship Management</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Industry Collaboration</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Thought Leadership Development</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-tasks"></i>
+                                <span>Assignment: Strategic Partnership Plan</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="module-section">
+                        <h4><i class="fas fa-globe"></i> Global Cybersecurity</h4>
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>International Compliance</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Cross-Border Security Operations</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-video"></i>
+                                <span>Global Incident Response</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-question-circle"></i>
+                                <span>Quiz: Global Cybersecurity</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="module-section">
+                        <h4><i class="fas fa-trophy"></i> Executive Certification</h4>
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <i class="fas fa-tasks"></i>
+                                <span>Executive Capstone Project</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-users"></i>
+                                <span>Peer Review Session</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                            <li class="lesson-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Executive Leadership Certificate</span>
+                                <span class="lesson-status"><i class="fas fa-lock"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="platform-main">
+                <div class="lesson-content">
+                    <div class="lesson-header">
+                        <h2>Welcome to CPF Coaching Track 3</h2>
+                        <div class="lesson-meta">
+                            <span><i class="fas fa-clock"></i> 60 minutes</span>
+                            <span><i class="fas fa-video"></i> Video Lesson</span>
+                            <span><i class="fas fa-crown"></i> Executive Level</span>
+                        </div>
+                    </div>
+
+                    <div class="lesson-body">
+                        <div class="video-container">
+                            <div class="video-placeholder">
+                                <i class="fas fa-play-circle"></i>
+                                <p>Executive-level video content will be loaded here</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-description">
+                            <h3>About This Executive Track</h3>
+                            <p>Welcome to Track 3 of the CPF Coaching program - the Executive Leadership Track. This premier track is designed for current and aspiring C-level cybersecurity executives who want to master the art of strategic leadership in cybersecurity.</p>
+                            
+                            <h4>What You'll Master:</h4>
+                            <ul>
+                                <li>C-Suite cybersecurity leadership and board-level communication</li>
+                                <li>Strategic risk management and digital transformation leadership</li>
+                                <li>Organizational culture development and change management</li>
+                                <li>Strategic partnerships and vendor relationship management</li>
+                                <li>Global cybersecurity operations and international compliance</li>
+                                <li>Thought leadership development and industry influence</li>
+                            </ul>
+
+                            <h4>Prerequisites:</h4>
+                            <ul>
+                                <li>Completion of CPF Coaching Tracks 1 & 2</li>
+                                <li>5+ years of cybersecurity leadership experience</li>
+                                <li>Current senior management or executive role</li>
+                                <li>Experience with strategic planning and budgeting</li>
+                            </ul>
+
+                            <h4>Executive Benefits:</h4>
+                            <ul>
+                                <li>1:1 executive coaching sessions</li>
+                                <li>Peer networking with other C-level executives</li>
+                                <li>Board presentation practice and feedback</li>
+                                <li>Strategic planning workshop participation</li>
+                                <li>Industry thought leadership opportunities</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-actions">
+                            <button class="btn btn-primary" onclick="markComplete()">
+                                <i class="fas fa-check"></i> Mark as Complete
+                            </button>
+                            <button class="btn btn-secondary" onclick="nextLesson()">
+                                Next Lesson <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Executive Features -->
+                <div class="executive-features">
+                    <div class="feature-card">
+                        <h4><i class="fas fa-user-tie"></i> Executive Coaching</h4>
+                        <p>Schedule 1:1 sessions with industry executives</p>
+                        <button class="btn btn-outline">Schedule Session</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-users"></i> Executive Network</h4>
+                        <p>Connect with C-level cybersecurity professionals</p>
+                        <button class="btn btn-outline">Join Network</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-chart-line"></i> Strategic Tools</h4>
+                        <p>Access executive planning and assessment tools</p>
+                        <button class="btn btn-outline">Access Tools</button>
+                    </div>
+                </div>
+
+                <!-- Interactive Elements -->
+                <div class="interactive-section" style="display: none;" id="quiz-section">
+                    <h3>Executive Assessment</h3>
+                    <div class="quiz-container">
+                        <div class="question active" data-question="1">
+                            <h4>What is the primary focus of effective C-Suite cybersecurity communication?</h4>
+                            <div class="options">
+                                <label><input type="radio" name="q1" value="a"> Technical implementation details</label>
+                                <label><input type="radio" name="q1" value="b"> Risk quantification and business impact</label>
+                                <label><input type="radio" name="q1" value="c"> Compliance requirements</label>
+                                <label><input type="radio" name="q1" value="d"> Technology vendor comparisons</label>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="submitQuiz()">Submit Assessment</button>
+                    </div>
+                </div>
+
+                <div class="assignment-section" style="display: none;" id="assignment-section">
+                    <h3>Executive Assignment: Board Presentation</h3>
+                    <div class="assignment-container">
+                        <div class="assignment-description">
+                            <p>Prepare a comprehensive board-level presentation on your organization's cybersecurity strategy and risk posture.</p>
+                            <h4>Deliverables:</h4>
+                            <ul>
+                                <li>Executive summary (2 pages max)</li>
+                                <li>PowerPoint presentation (15 slides max)</li>
+                                <li>Risk dashboard with key metrics</li>
+                                <li>Strategic recommendations with ROI analysis</li>
+                            </ul>
+                        </div>
+                        <div class="assignment-submission">
+                            <div class="file-upload">
+                                <input type="file" id="presentation-upload" accept=".ppt,.pptx,.pdf">
+                                <label for="presentation-upload">
+                                    <i class="fas fa-upload"></i> Upload Presentation
+                                </label>
+                            </div>
+                            <textarea placeholder="Provide a brief overview of your presentation strategy and key messages..."></textarea>
+                            <button class="btn btn-primary">Submit Executive Assignment</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Certificate Modal -->
+        <div class="modal" id="certificateModal">
+            <div class="modal-content executive-certificate">
+                <div class="modal-header">
+                    <h3>Executive Achievement Unlocked!</h3>
+                    <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="certificate executive">
+                        <div class="certificate-header">
+                            <h2>Executive Leadership Certificate</h2>
+                            <div class="certificate-seal">
+                                <i class="fas fa-award"></i>
+                            </div>
+                        </div>
+                        <div class="certificate-body">
+                            <p>This certifies that</p>
+                            <h3 class="student-name">[Executive Name]</h3>
+                            <p>has successfully completed the</p>
+                            <h4>CPF Coaching Executive Leadership Track</h4>
+                            <p class="certificate-subtitle">Cybersecurity Executive Excellence Program</p>
+                            <p>Whole Cyber Human Initiative</p>
+                            <div class="certificate-date">Date: [Current Date]</div>
+                            <div class="certificate-signature">Executive Director Signature</div>
+                        </div>
+                    </div>
+                    <div class="certificate-actions">
+                        <button class="btn btn-primary">Download Executive Certificate</button>
+                        <button class="btn btn-secondary">Share Achievement</button>
+                        <button class="btn btn-outline">Add to LinkedIn Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Executive platform functionality
+        let currentProgress = 0;
+        let completedLessons = 0;
+        let totalLessons = 16;
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+
+        function markComplete() {
+            const currentLesson = document.querySelector('.lesson-item.active');
+            if (currentLesson) {
+                const statusIcon = currentLesson.querySelector('.lesson-status i');
+                statusIcon.className = 'fas fa-check-circle';
+                completedLessons++;
+                updateProgress();
+            }
+        }
+
+        function nextLesson() {
+            const lessons = document.querySelectorAll('.lesson-item');
+            const currentIndex = Array.from(lessons).findIndex(lesson => lesson.classList.contains('active'));
+            
+            if (currentIndex < lessons.length - 1) {
+                lessons[currentIndex].classList.remove('active');
+                lessons[currentIndex + 1].classList.add('active');
+                
+                // Unlock next lesson
+                const nextStatus = lessons[currentIndex + 1].querySelector('.lesson-status i');
+                if (nextStatus.classList.contains('fa-lock')) {
+                    nextStatus.className = 'fas fa-play-circle';
+                }
+            }
+        }
+
+        function updateProgress() {
+            currentProgress = (completedLessons / totalLessons) * 100;
+            const progressFill = document.querySelector('.progress-fill');
+            const progressText = document.querySelector('.progress-text');
+            
+            progressFill.style.width = currentProgress + '%';
+            progressText.textContent = Math.round(currentProgress) + '% Complete';
+            
+            if (currentProgress === 100) {
+                showExecutiveCertificate();
+            }
+        }
+
+        function submitQuiz() {
+            const selectedAnswer = document.querySelector('input[name="q1"]:checked');
+            if (selectedAnswer) {
+                if (selectedAnswer.value === 'b') {
+                    alert('Excellent! Risk quantification and business impact are key to effective board communication.');
+                } else {
+                    alert('Consider focusing more on risk quantification and business impact when communicating with the board.');
+                }
+                document.getElementById('quiz-section').style.display = 'none';
+            }
+        }
+
+        function showExecutiveCertificate() {
+            document.getElementById('certificateModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+
+        // Executive-specific features
+        function scheduleCoachingSession() {
+            alert('Coaching session scheduling will be implemented in the full platform.');
+        }
+
+        function joinExecutiveNetwork() {
+            alert('Executive network access will be available in the full platform.');
+        }
+
+        function accessStrategicTools() {
+            alert('Strategic planning tools will be available in the full platform.');
+        }
+
+        // Initialize executive platform
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up executive feature listeners
+            const featureButtons = document.querySelectorAll('.feature-card .btn-outline');
+            featureButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    switch(index) {
+                        case 0: scheduleCoachingSession(); break;
+                        case 1: joinExecutiveNetwork(); break;
+                        case 2: accessStrategicTools(); break;
+                    }
+                });
+            });
+
+            // Executive progress tracking
+            document.querySelector('.progress-text').addEventListener('click', function() {
+                document.getElementById('progressModal').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

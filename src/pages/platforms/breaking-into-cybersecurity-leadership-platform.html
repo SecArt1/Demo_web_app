@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking Into Cybersecurity Leadership - Learning Platform</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    
+    <!-- Learning Platform Styles -->
+    <style>
+        :root {
+            --sidebar-width: 320px;
+            --header-height: 70px;
+            --primary-blue: #2886c8;
+            --light-blue: #6db6fe;
+            --dark-blue: #053994;
+            --accent-pink: #ff0099;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border-light: #e5e7eb;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+            --leadership-orange: #f97316;
+            --leadership-gradient: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Platform Header */
+        .platform-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 1000;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .back-btn:hover {
+            color: var(--primary-blue);
+        }
+
+        .course-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        .progress-bar {
+            width: 120px;
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--leadership-orange);
+            transition: width 0.3s ease;
+        }
+
+        /* Sidebar */
+        .course-sidebar {
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--header-height));
+            background: var(--white);
+            border-right: 1px solid var(--border-light);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-content {
+            padding: 1.5rem;
+        }
+
+        .course-info {
+            margin-bottom: 2rem;
+            background: var(--leadership-gradient);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 0 -1.5rem 2rem -1.5rem;
+        }
+
+        .course-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .course-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Module List */
+        .module-list {
+            margin-bottom: 2rem;
+        }
+
+        .module-list h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .module-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-item:hover {
+            background: var(--bg-light);
+        }
+
+        .module-item.active {
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+        }
+
+        .module-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            background: var(--border-light);
+            color: var(--text-light);
+            flex-shrink: 0;
+        }
+
+        .module-icon.completed {
+            background: var(--success-green);
+            color: white;
+        }
+
+        .module-icon.current {
+            background: var(--leadership-orange);
+            color: white;
+        }
+
+        .module-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .module-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+
+        .module-duration {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+            min-height: calc(100vh - var(--header-height));
+            margin-top: var(--header-height);
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .lesson-header {
+            margin-bottom: 2rem;
+        }
+
+        .lesson-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--leadership-orange);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .lesson-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--leadership-gradient);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .content-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-text p {
+            margin-bottom: 1rem;
+        }
+
+        .content-text ul, .content-text ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .content-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Interactive Elements */
+        .quiz-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-light);
+        }
+
+        .quiz-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--leadership-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .quiz-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .quiz-question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background: rgba(249, 115, 22, 0.05);
+            border-color: rgba(249, 115, 22, 0.2);
+        }
+
+        .quiz-option.selected {
+            background: rgba(249, 115, 22, 0.1);
+            border-color: var(--leadership-orange);
+        }
+
+        .quiz-option input[type="radio"] {
+            accent-color: var(--leadership-orange);
+        }
+
+        .quiz-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--leadership-gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-light);
+        }
+
+        /* Assignment Section */
+        .assignment-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--leadership-orange);
+        }
+
+        .assignment-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .assignment-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--leadership-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .assignment-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .assignment-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .assignment-requirements {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .assignment-requirements h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .assignment-requirements ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .assignment-requirements li {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        /* Certificate Section */
+        .certificate-container {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .certificate-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .certificate-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-certificate {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-certificate:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+            color: white;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--bg-light);
+            border-color: var(--leadership-orange);
+        }
+
+        .nav-btn.primary {
+            background: var(--leadership-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .nav-btn.primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .course-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .course-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .platform-header {
+                padding: 0 1rem;
+            }
+
+            .header-left {
+                gap: 0.5rem;
+            }
+
+            .progress-container {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+
+            .lesson-title {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+
+            .quiz-container,
+            .assignment-container {
+                padding: 1.5rem;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Platform Header -->
+    <header class="platform-header">
+        <div class="header-left">
+            <a href="../courses.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Courses
+            </a>
+            <h1 class="course-title">Breaking Into Cybersecurity Leadership</h1>
+        </div>
+        <div class="header-right">
+            <div class="progress-container">
+                <span class="progress-text">Progress: 15%</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 15%"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Course Sidebar -->
+    <nav class="course-sidebar">
+        <div class="sidebar-content">
+            <div class="course-info">
+                <h3>Leadership Track</h3>
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>8 weeks</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span>Advanced Level</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>Leadership Certificate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-list">
+                <h4>Course Modules</h4>
+                
+                <div class="module-item active">
+                    <div class="module-icon current">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="module-details">
+                        <div class="module-title">Leadership Fundamentals</div>
+                        <div class="module-duration">45 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">2</div>
+                    <div class="module-details">
+                        <div class="module-title">Building High-Performance Teams</div>
+                        <div class="module-duration">60 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">3</div>
+                    <div class="module-details">
+                        <div class="module-title">Strategic Communication</div>
+                        <div class="module-duration">50 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">4</div>
+                    <div class="module-details">
+                        <div class="module-title">Risk Management & Decision Making</div>
+                        <div class="module-duration">55 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">5</div>
+                    <div class="module-details">
+                        <div class="module-title">Change Management</div>
+                        <div class="module-duration">40 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">6</div>
+                    <div class="module-details">
+                        <div class="module-title">Executive Presence</div>
+                        <div class="module-duration">45 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">7</div>
+                    <div class="module-details">
+                        <div class="module-title">Mentoring & Development</div>
+                        <div class="module-duration">50 min</div>
+                    </div>
+                </div>
+
+                <div class="module-item">
+                    <div class="module-icon">8</div>
+                    <div class="module-details">
+                        <div class="module-title">Leadership Capstone Project</div>
+                        <div class="module-duration">90 min</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Lesson Header -->
+            <div class="lesson-header">
+                <div class="lesson-badge">
+                    <i class="fas fa-users"></i>
+                    Module 1 of 8
+                </div>
+                <h1 class="lesson-title">Leadership Fundamentals in Cybersecurity</h1>
+                <p class="lesson-description">
+                    Master the core principles of cybersecurity leadership, including team management, 
+                    strategic planning, and effective communication with stakeholders.
+                </p>
+            </div>
+
+            <!-- Learning Objectives -->
+            <div class="content-section">
+                <h2 class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-target"></i>
+                    </div>
+                    Learning Objectives
+                </h2>
+                <div class="content-text">
+                    <p>By the end of this module, you will be able to:</p>
+                    <ul>
+                        <li>Define the key characteristics of effective cybersecurity leadership</li>
+                        <li>Understand the unique challenges facing cyber leaders in today's landscape</li>
+                        <li>Develop strategies for building trust and credibility with technical and non-technical teams</li>
+                        <li>Create a personal leadership development plan focused on cybersecurity excellence</li>
+                        <li>Apply leadership frameworks to real-world cybersecurity scenarios</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Core Content -->
+            <div class="content-section">
+                <h2 class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    The Leadership Imperative
+                </h2>
+                <div class="content-text">
+                    <p>
+                        Cybersecurity leadership requires a unique blend of technical expertise and business acumen. 
+                        As a cybersecurity leader, you're not just protecting systems and data – you're enabling 
+                        business growth, managing risk, and building organizational resilience.
+                    </p>
+                    <p>
+                        The most successful cybersecurity leaders understand that their role extends far beyond 
+                        technical implementation. They serve as:
+                    </p>
+                    <ul>
+                        <li><strong>Strategic advisors</strong> who align security initiatives with business objectives</li>
+                        <li><strong>Change agents</strong> who drive security culture transformation</li>
+                        <li><strong>Risk communicators</strong> who translate technical threats into business impact</li>
+                        <li><strong>Team builders</strong> who develop and retain top cybersecurity talent</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Quiz -->
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <div class="quiz-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3 class="quiz-title">Knowledge Check</h3>
+                </div>
+                <div class="quiz-question">
+                    What is the most critical skill for a cybersecurity leader when communicating with the C-suite?
+                </div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="quiz1" value="a">
+                        <span>Deep technical knowledge of security tools and processes</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="quiz1" value="b">
+                        <span>Ability to translate technical risks into business impact</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="quiz1" value="c">
+                        <span>Certification in multiple cybersecurity frameworks</span>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="quiz1" value="d">
+                        <span>Experience with incident response procedures</span>
+                    </label>
+                </div>
+                <div class="quiz-actions">
+                    <button class="btn btn-primary" onclick="checkQuiz()">
+                        <i class="fas fa-check"></i>
+                        Submit Answer
+                    </button>
+                    <button class="btn btn-secondary" onclick="resetQuiz()">
+                        <i class="fas fa-redo"></i>
+                        Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Leadership Framework -->
+            <div class="content-section">
+                <h2 class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    The SECURE Leadership Framework
+                </h2>
+                <div class="content-text">
+                    <p>
+                        We've developed the SECURE framework specifically for cybersecurity leaders:
+                    </p>
+                    <ul>
+                        <li><strong>S</strong>trategic Vision - Align security with business strategy</li>
+                        <li><strong>E</strong>ngagement - Build relationships across the organization</li>
+                        <li><strong>C</strong>ommunication - Articulate value and risk clearly</li>
+                        <li><strong>U</strong>nderstanding - Know your business and its threats</li>
+                        <li><strong>R</strong>esilience - Build adaptive and responsive teams</li>
+                        <li><strong>E</strong>thics - Maintain trust and integrity in all decisions</li>
+                    </ul>
+                    <p>
+                        Each element of this framework will be explored in detail throughout this course, 
+                        with practical applications and real-world case studies.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Assignment -->
+            <div class="assignment-container">
+                <div class="assignment-header">
+                    <div class="assignment-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="assignment-title">Leadership Self-Assessment</h3>
+                </div>
+                <div class="assignment-description">
+                    Complete a comprehensive leadership self-assessment to identify your current strengths 
+                    and areas for development as a cybersecurity leader.
+                </div>
+                <div class="assignment-requirements">
+                    <h4>Assignment Requirements:</h4>
+                    <ul>
+                        <li>Complete the SECURE Leadership Assessment (30 questions)</li>
+                        <li>Identify your top 3 leadership strengths</li>
+                        <li>Select 2 areas for focused development</li>
+                        <li>Create a 90-day leadership development action plan</li>
+                        <li>Submit a 500-word reflection on your assessment results</li>
+                    </ul>
+                </div>
+                <div class="quiz-actions">
+                    <button class="btn btn-primary" onclick="startAssignment()">
+                        <i class="fas fa-play"></i>
+                        Start Assessment
+                    </button>
+                    <button class="btn btn-secondary" onclick="downloadTemplate()">
+                        <i class="fas fa-download"></i>
+                        Download Template
+                    </button>
+                </div>
+            </div>
+
+            <!-- Certificate Section -->
+            <div class="certificate-container">
+                <div class="certificate-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3 class="certificate-title">Module Completion Certificate</h3>
+                <p class="certificate-description">
+                    Complete all module activities and assessments to earn your Leadership Fundamentals certificate.
+                </p>
+                <button class="btn btn-certificate" onclick="downloadCertificate()" disabled>
+                    <i class="fas fa-download"></i>
+                    Download Certificate
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <div class="lesson-navigation">
+                <a href="#" class="nav-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous Module
+                </a>
+                <div style="flex-grow: 1;"></div>
+                <a href="#" class="nav-btn primary">
+                    Next Module
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Quiz functionality
+        function checkQuiz() {
+            const selected = document.querySelector('input[name="quiz1"]:checked');
+            if (!selected) {
+                alert('Please select an answer before submitting.');
+                return;
+            }
+
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+                const input = option.querySelector('input');
+                if (input.value === 'b') {
+                    option.style.background = 'rgba(16, 185, 129, 0.1)';
+                    option.style.borderColor = '#10b981';
+                } else if (input.checked && input.value !== 'b') {
+                    option.style.background = 'rgba(239, 68, 68, 0.1)';
+                    option.style.borderColor = '#ef4444';
+                }
+            });
+
+            if (selected.value === 'b') {
+                alert('Correct! The ability to translate technical risks into business impact is crucial for C-suite communication.');
+                updateProgress();
+            } else {
+                alert('Not quite right. The correct answer is "Ability to translate technical risks into business impact".');
+            }
+        }
+
+        function resetQuiz() {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.style.pointerEvents = 'auto';
+                option.style.background = '';
+                option.style.borderColor = 'transparent';
+                const input = option.querySelector('input');
+                input.checked = false;
+            });
+        }
+
+        function startAssignment() {
+            alert('Opening Leadership Self-Assessment...');
+            // In a real implementation, this would open the assessment tool
+        }
+
+        function downloadTemplate() {
+            alert('Downloading assignment template...');
+            // In a real implementation, this would download the template file
+        }
+
+        function downloadCertificate() {
+            alert('Downloading your certificate...');
+            // In a real implementation, this would generate and download the certificate
+        }
+
+        function updateProgress() {
+            const progressFill = document.querySelector('.progress-fill');
+            const progressText = document.querySelector('.progress-text');
+            const newProgress = 25;
+            
+            progressFill.style.width = newProgress + '%';
+            progressText.textContent = `Progress: ${newProgress}%`;
+            
+            // Enable certificate download if module is complete
+            const certificateBtn = document.querySelector('.btn-certificate');
+            if (newProgress >= 25) {
+                certificateBtn.disabled = false;
+                certificateBtn.style.opacity = '1';
+            }
+        }
+
+        // Module navigation
+        document.querySelectorAll('.module-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.module-item').forEach(m => m.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Mobile sidebar toggle
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.course-sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        // Add mobile menu button for smaller screens
+        if (window.innerWidth <= 1024) {
+            const headerLeft = document.querySelector('.header-left');
+            const menuButton = document.createElement('button');
+            menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            menuButton.style.cssText = `
+                background: none;
+                border: none;
+                color: var(--text-light);
+                font-size: 1.2rem;
+                cursor: pointer;
+                padding: 0.5rem;
+                margin-right: 0.5rem;
+            `;
+            menuButton.onclick = toggleSidebar;
+            headerLeft.insertBefore(menuButton, headerLeft.firstChild);
+        }
+    </script>
+</body>
+</html>

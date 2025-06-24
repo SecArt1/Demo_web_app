@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Engineer Certification Platform - Whole Cyber Human Initiative</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    
+    <!-- Learning Platform Styles -->
+    <style>
+        :root {
+            --sidebar-width: 320px;
+            --header-height: 70px;
+            --primary-blue: #2886c8;
+            --light-blue: #6db6fe;
+            --dark-blue: #053994;
+            --accent-pink: #ff0099;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border-light: #e5e7eb;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Platform Header */
+        .platform-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .platform-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-right: 2rem;
+        }
+
+        .platform-logo img {
+            height: 40px;
+        }
+
+        .course-title-header {
+            flex: 1;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            width: 100px;
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success-green);
+            transition: width 0.3s ease;
+        }
+
+        /* Track Selector */
+        .track-selector {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        .track-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .track-tab {
+            padding: 0.5rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 20px;
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .track-tab.active {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        /* Sidebar */
+        .course-sidebar {
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--header-height));
+            background: var(--white);
+            border-right: 1px solid var(--border-light);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-content {
+            padding: 0;
+        }
+
+        .course-info {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .course-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .course-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Module Navigation */
+        .modules-list {
+            list-style: none;
+            padding: 1.5rem;
+            margin: 0;
+        }
+
+        .module-item {
+            margin-bottom: 1rem;
+        }
+
+        .module-header {
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .module-header:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .module-header.active {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .module-toggle {
+            transition: transform 0.3s ease;
+        }
+
+        .module-header.active .module-toggle {
+            transform: rotate(180deg);
+        }
+
+        .lessons-list {
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+            list-style: none;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+
+        .lesson-item {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .lesson-item:last-child {
+            border-bottom: none;
+        }
+
+        .lesson-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            gap: 1rem;
+        }
+
+        .lesson-link:hover {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .lesson-link.active {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .lesson-link.completed {
+            color: var(--success-green);
+        }
+
+        .lesson-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        .lesson-content {
+            flex: 1;
+        }
+
+        .lesson-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .lesson-duration {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .lesson-status {
+            margin-left: auto;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--header-height);
+            min-height: calc(100vh - var(--header-height));
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* Track Overview */
+        .track-overview {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .track-overview h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .track-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .track-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Learning Path */
+        .learning-path {
+            background: var(--white);
+            padding: 2rem;
+        }
+
+        .path-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .path-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .path-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .path-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .timeline-item {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .timeline-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-duration {
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Quiz and Assignment Components */
+        .interactive-section {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin: 2rem;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+        }
+
+        .section-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-content {
+            padding: 2rem;
+        }
+
+        .quiz-question {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .quiz-option {
+            padding: 0.75rem;
+            background: var(--white);
+            border: 2px solid var(--border-light);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary-blue);
+            background: rgba(40, 134, 200, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: var(--success-green);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        /* Certificate Section */
+        .certificate-section {
+            background: linear-gradient(135deg, var(--success-green), #059669);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 2rem;
+            border-radius: 12px;
+        }
+
+        .certificate-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .certificate-section h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Navigation Buttons */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+        }
+
+        .nav-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn.primary {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .nav-btn.secondary {
+            background: var(--border-light);
+            color: var(--text-dark);
+        }
+
+        .nav-btn.success {
+            background: var(--success-green);
+            color: var(--white);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .course-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .course-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .platform-header {
+                padding: 0 1rem;
+            }
+
+            .sidebar-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.2rem;
+                color: var(--text-dark);
+                cursor: pointer;
+                margin-right: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .track-overview {
+                padding: 2rem 1rem;
+            }
+
+            .track-overview h1 {
+                font-size: 2rem;
+            }
+
+            .track-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .path-timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .track-tabs {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../public/assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Platform Header -->
+    <header class="platform-header">
+        <button class="sidebar-toggle" style="display: none;">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="platform-logo">
+            <img src="../../public/assets/images/image.png" alt="Whole Cyber Human Initiative">
+        </div>
+        
+        <div class="course-title-header" id="courseTitle">
+            Security Engineer Certification Track
+        </div>
+        
+        <div class="header-actions">
+            <div class="progress-indicator">
+                <span id="progressText">0% Complete</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+            </div>
+            <button class="nav-btn secondary" onclick="window.location.href='../courses.html'">
+                <i class="fas fa-arrow-left"></i> Back to Courses
+            </button>
+        </div>
+    </header>
+
+    <!-- Course Sidebar -->
+    <aside class="course-sidebar" id="courseSidebar">
+        <div class="sidebar-content">
+            <!-- Track Selector -->
+            <div class="track-selector">
+                <h4>Choose Your Track</h4>
+                <div class="track-tabs">
+                    <button class="track-tab active" data-track="60">60-Day</button>
+                    <button class="track-tab" data-track="90">90-Day</button>
+                    <button class="track-tab" data-track="120">120-Day</button>
+                </div>
+            </div>
+
+            <div class="course-info">
+                <h3 id="sidebarCourseTitle">60-Day Security Engineer</h3>
+                <div class="course-meta">
+                    <span><i class="fas fa-user-tie"></i> <span id="instructor">Paul Cummings</span></span>
+                    <span><i class="fas fa-clock"></i> <span id="totalDuration">180+ hours</span></span>
+                    <span><i class="fas fa-play-circle"></i> <span id="totalLessons">45+ Lessons</span></span>
+                    <span><i class="fas fa-certificate"></i> <span id="certificateInfo">Certification Available</span></span>
+                </div>
+            </div>
+
+            <ul class="modules-list" id="modulesList">
+                <!-- Modules will be dynamically loaded based on selected track -->
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Track Overview -->
+            <div class="track-overview">
+                <h1 id="trackTitle">🛡️ Security Engineer Certification</h1>
+                <p class="track-subtitle" id="trackSubtitle">60-Day Intensive Program</p>
+                
+                <div class="track-stats" id="trackStats">
+                    <div class="stat-item">
+                        <div class="stat-value">60</div>
+                        <div class="stat-label">Days</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">180+</div>
+                        <div class="stat-label">Hours</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">45+</div>
+                        <div class="stat-label">Lessons</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Path -->
+            <div class="learning-path">
+                <div class="path-header">
+                    <h2>Your Learning Journey</h2>
+                    <p class="path-description" id="pathDescription">
+                        Master cybersecurity fundamentals and advanced techniques through our structured, hands-on program 
+                        designed to prepare you for real-world security challenges.
+                    </p>
+                </div>
+
+                <div class="path-timeline" id="pathTimeline">
+                    <!-- Timeline items will be dynamically generated -->
+                </div>
+            </div>
+
+            <!-- Interactive Quiz Section -->
+            <div class="interactive-section" id="quizSection" style="display: none;">
+                <div class="section-header">
+                    <h3><i class="fas fa-question-circle"></i> Knowledge Assessment</h3>
+                    <p>Test your understanding of key security concepts</p>
+                </div>
+                <div class="section-content">
+                    <div class="quiz-question">
+                        <div class="question-text" id="questionText">
+                            What is the primary purpose of a firewall in network security?
+                        </div>
+                        <div class="quiz-options" id="quizOptions">
+                            <div class="quiz-option" data-option="a">To encrypt data transmission</div>
+                            <div class="quiz-option" data-option="b">To control network traffic based on security rules</div>
+                            <div class="quiz-option" data-option="c">To store security logs</div>
+                            <div class="quiz-option" data-option="d">To scan for malware</div>
+                        </div>
+                    </div>
+                    <button class="nav-btn primary" id="submitQuizBtn">
+                        <i class="fas fa-check"></i> Submit Answer
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hands-on Assignment Section -->
+            <div class="interactive-section" id="assignmentSection" style="display: none;">
+                <div class="section-header">
+                    <h3><i class="fas fa-laptop-code"></i> Hands-on Assignment</h3>
+                    <p>Apply your knowledge through practical exercises</p>
+                </div>
+                <div class="section-content">
+                    <h4>Network Security Assessment</h4>
+                    <p>Complete a comprehensive network security assessment using industry-standard tools and methodologies.</p>
+                    
+                    <div class="quiz-question">
+                        <div class="question-text">Assignment Requirements:</div>
+                        <ul>
+                            <li>Perform network reconnaissance using Nmap</li>
+                            <li>Identify potential vulnerabilities</li>
+                            <li>Document findings in a professional report</li>
+                            <li>Recommend remediation strategies</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <button class="nav-btn secondary">
+                            <i class="fas fa-download"></i> Download Assignment
+                        </button>
+                        <button class="nav-btn primary">
+                            <i class="fas fa-upload"></i> Submit Solution
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Section -->
+            <div class="certificate-section" id="certificateSection" style="display: none;">
+                <div class="certificate-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>Congratulations!</h3>
+                <p class="certificate-description">
+                    You've successfully completed the Security Engineer Certification program. 
+                    Download your certificate and showcase your achievement.
+                </p>
+                <button class="nav-btn success" style="background: var(--white); color: var(--success-green);">
+                    <i class="fas fa-download"></i> Download Certificate
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <div class="lesson-navigation">
+                <button class="nav-btn secondary" id="prevBtn" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <button class="nav-btn primary" id="nextBtn" onclick="showQuiz()">
+                    Take Assessment <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        class SecurityEngineerPlatform {
+            constructor() {
+                this.currentTrack = '60';
+                this.currentStep = 0;
+                this.completedSteps = new Set();
+                this.tracks = {
+                    '60': {
+                        title: '60-Day Security Engineer',
+                        subtitle: '60-Day Intensive Program',
+                        duration: '180+ hours',
+                        lessons: '45+ lessons',
+                        projects: '12 projects',
+                        description: 'Master cybersecurity fundamentals and advanced techniques through our structured, hands-on program designed to prepare you for real-world security challenges.',
+                        timeline: [
+                            {
+                                icon: 'fas fa-play',
+                                title: 'Foundations',
+                                duration: 'Week 1-2',
+                                description: 'Security fundamentals, networking basics, and threat landscape overview'
+                            },
+                            {
+                                icon: 'fas fa-shield-alt',
+                                title: 'Core Security',
+                                duration: 'Week 3-5',
+                                description: 'Cryptography, access controls, and security protocols'
+                            },
+                            {
+                                icon: 'fas fa-bug',
+                                title: 'Vulnerability Assessment',
+                                duration: 'Week 6-7',
+                                description: 'Vulnerability scanning, penetration testing, and security assessment'
+                            },
+                            {
+                                icon: 'fas fa-certificate',
+                                title: 'Certification Prep',
+                                duration: 'Week 8',
+                                description: 'Exam preparation, practice tests, and final project'
+                            }
+                        ]
+                    },
+                    '90': {
+                        title: '90-Day Security Engineer',
+                        subtitle: '90-Day Comprehensive Program',
+                        duration: '270+ hours',
+                        lessons: '65+ lessons',
+                        projects: '18 projects',
+                        description: 'Comprehensive cybersecurity program covering advanced topics, specialized security domains, and extensive hands-on practice.',
+                        timeline: [
+                            {
+                                icon: 'fas fa-play',
+                                title: 'Foundations',
+                                duration: 'Week 1-3',
+                                description: 'Extended fundamentals with deeper networking and system administration'
+                            },
+                            {
+                                icon: 'fas fa-shield-alt',
+                                title: 'Advanced Security',
+                                duration: 'Week 4-8',
+                                description: 'Advanced cryptography, enterprise security, and compliance frameworks'
+                            },
+                            {
+                                icon: 'fas fa-search',
+                                title: 'Security Operations',
+                                duration: 'Week 9-11',
+                                description: 'SOC operations, incident response, and threat hunting'
+                            },
+                            {
+                                icon: 'fas fa-certificate',
+                                title: 'Specialization',
+                                duration: 'Week 12-13',
+                                description: 'Choose specialization track and complete capstone project'
+                            }
+                        ]
+                    },
+                    '120': {
+                        title: '120-Day Security Engineer',
+                        subtitle: '120-Day Master Program',
+                        duration: '360+ hours',
+                        lessons: '85+ lessons',
+                        projects: '24 projects',
+                        description: 'Master-level program with advanced specializations, leadership training, and comprehensive preparation for senior security roles.',
+                        timeline: [
+                            {
+                                icon: 'fas fa-play',
+                                title: 'Extended Foundations',
+                                duration: 'Week 1-4',
+                                description: 'Comprehensive fundamentals with advanced networking and programming'
+                            },
+                            {
+                                icon: 'fas fa-shield-alt',
+                                title: 'Enterprise Security',
+                                duration: 'Week 5-10',
+                                description: 'Enterprise architecture, advanced threat detection, and security management'
+                            },
+                            {
+                                icon: 'fas fa-users',
+                                title: 'Leadership & Strategy',
+                                duration: 'Week 11-14',
+                                description: 'Security leadership, risk management, and business alignment'
+                            },
+                            {
+                                icon: 'fas fa-crown',
+                                title: 'Advanced Specialization',
+                                duration: 'Week 15-17',
+                                description: 'Deep dive into chosen specialization with mentor-guided capstone'
+                            }
+                        ]
+                    }
+                };
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.loadTrack('60');
+            }
+
+            setupEventListeners() {
+                // Track selection
+                document.querySelectorAll('.track-tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        const track = e.target.dataset.track;
+                        this.loadTrack(track);
+                    });
+                });
+
+                // Quiz submission
+                document.getElementById('submitQuizBtn').addEventListener('click', () => {
+                    this.submitQuiz();
+                });
+
+                // Quiz options
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('quiz-option')) {
+                        this.selectQuizOption(e.target);
+                    }
+                });
+
+                // Sidebar toggle for mobile
+                const sidebarToggle = document.querySelector('.sidebar-toggle');
+                if (sidebarToggle) {
+                    sidebarToggle.addEventListener('click', () => {
+                        this.toggleSidebar();
+                    });
+                }
+            }
+
+            loadTrack(trackId) {
+                this.currentTrack = trackId;
+                const track = this.tracks[trackId];
+
+                // Update active track tab
+                document.querySelectorAll('.track-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.querySelector(`[data-track="${trackId}"]`).classList.add('active');
+
+                // Update track information
+                document.getElementById('trackTitle').textContent = `🛡️ ${track.title}`;
+                document.getElementById('trackSubtitle').textContent = track.subtitle;
+                document.getElementById('sidebarCourseTitle').textContent = track.title;
+                document.getElementById('totalDuration').textContent = track.duration;
+                document.getElementById('totalLessons').textContent = track.lessons;
+                document.getElementById('pathDescription').textContent = track.description;
+
+                // Update stats
+                const stats = document.getElementById('trackStats');
+                const days = trackId;
+                const hours = track.duration.replace(/\D/g, '');
+                const lessons = track.lessons.replace(/\D/g, '');
+                const projects = track.projects.replace(/\D/g, '');
+
+                stats.innerHTML = `
+                    <div class="stat-item">
+                        <div class="stat-value">${days}</div>
+                        <div class="stat-label">Days</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${hours}+</div>
+                        <div class="stat-label">Hours</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${lessons}+</div>
+                        <div class="stat-label">Lessons</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${projects}</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                `;
+
+                // Update timeline
+                this.updateTimeline(track.timeline);
+                this.updateModules(track);
+            }
+
+            updateTimeline(timeline) {
+                const container = document.getElementById('pathTimeline');
+                container.innerHTML = timeline.map(item => `
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="${item.icon}"></i>
+                        </div>
+                        <div class="timeline-title">${item.title}</div>
+                        <div class="timeline-duration">${item.duration}</div>
+                        <div class="timeline-description">${item.description}</div>
+                    </div>
+                `).join('');
+            }
+
+            updateModules(track) {
+                const modulesList = document.getElementById('modulesList');
+                // Generate sample modules based on track complexity
+                const moduleCount = track.title.includes('60') ? 4 : track.title.includes('90') ? 6 : 8;
+                
+                let modulesHTML = '';
+                for (let i = 0; i < moduleCount; i++) {
+                    const moduleNames = [
+                        'Security Fundamentals',
+                        'Network Security',
+                        'Cryptography & PKI',
+                        'Vulnerability Assessment',
+                        'Incident Response',
+                        'Advanced Threats',
+                        'Enterprise Security',
+                        'Leadership & Strategy'
+                    ];
+                    
+                    modulesHTML += `
+                        <li class="module-item">
+                            <div class="module-header ${i === 0 ? 'active' : ''}" data-module="${i}">
+                                ${moduleNames[i] || `Module ${i + 1}`}
+                                <i class="fas fa-chevron-down module-toggle"></i>
+                            </div>
+                            <ul class="lessons-list" ${i !== 0 ? 'style="display: none;"' : ''}>
+                                <li class="lesson-item">
+                                    <a href="#" class="lesson-link ${i === 0 ? 'active' : ''}" data-lesson="${i * 5}">
+                                        <div class="lesson-icon">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="lesson-content">
+                                            <div class="lesson-title">Introduction to ${moduleNames[i] || `Module ${i + 1}`}</div>
+                                            <div class="lesson-duration">25 min</div>
+                                        </div>
+                                        <div class="lesson-status">
+                                            <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    `;
+                }
+                
+                modulesList.innerHTML = modulesHTML;
+
+                // Add module toggle listeners
+                document.querySelectorAll('.module-header').forEach(header => {
+                    header.addEventListener('click', (e) => {
+                        this.toggleModule(e.target);
+                    });
+                });
+            }
+
+            toggleModule(moduleHeader) {
+                moduleHeader.classList.toggle('active');
+                const lessonsList = moduleHeader.nextElementSibling;
+                if (lessonsList.style.display === 'none') {
+                    lessonsList.style.display = 'block';
+                } else {
+                    lessonsList.style.display = 'none';
+                }
+            }
+
+            selectQuizOption(option) {
+                // Clear previous selections
+                document.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Select clicked option
+                option.classList.add('selected');
+            }
+
+            submitQuiz() {
+                const selectedOption = document.querySelector('.quiz-option.selected');
+                if (!selectedOption) {
+                    alert('Please select an answer first.');
+                    return;
+                }
+
+                // Show correct answer (option b)
+                document.querySelectorAll('.quiz-option').forEach(opt => {
+                    if (opt.dataset.option === 'b') {
+                        opt.classList.add('correct');
+                    } else if (opt.classList.contains('selected') && opt.dataset.option !== 'b') {
+                        opt.classList.add('incorrect');
+                    }
+                });
+
+                // Update button
+                document.getElementById('submitQuizBtn').innerHTML = '<i class="fas fa-check"></i> Continue to Assignment';
+                document.getElementById('submitQuizBtn').onclick = () => this.showAssignment();
+            }
+
+            showAssignment() {
+                document.getElementById('quizSection').style.display = 'none';
+                document.getElementById('assignmentSection').style.display = 'block';
+                document.getElementById('nextBtn').innerHTML = 'Complete Assignment <i class="fas fa-chevron-right"></i>';
+                document.getElementById('nextBtn').onclick = () => this.showCertificate();
+            }
+
+            showCertificate() {
+                document.getElementById('assignmentSection').style.display = 'none';
+                document.getElementById('certificateSection').style.display = 'block';
+                document.getElementById('nextBtn').innerHTML = '<i class="fas fa-trophy"></i> Program Complete';
+                document.getElementById('nextBtn').disabled = true;
+            }
+
+            toggleSidebar() {
+                const sidebar = document.getElementById('courseSidebar');
+                sidebar.classList.toggle('open');
+            }
+        }
+
+        // Global functions
+        function showQuiz() {
+            document.getElementById('quizSection').style.display = 'block';
+            document.getElementById('nextBtn').innerHTML = 'Continue Learning <i class="fas fa-chevron-right"></i>';
+            document.getElementById('nextBtn').onclick = null;
+        }
+
+        // Initialize the platform
+        let platform;
+        document.addEventListener('DOMContentLoaded', function() {
+            platform = new SecurityEngineerPlatform();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Challenge Platform - Whole Cyber Human Initiative</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    
+    <!-- Learning Platform Styles -->
+    <style>
+        :root {
+            --sidebar-width: 320px;
+            --header-height: 70px;
+            --primary-blue: #2886c8;
+            --light-blue: #6db6fe;
+            --dark-blue: #053994;
+            --accent-pink: #ff0099;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border-light: #e5e7eb;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Platform Header */
+        .platform-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .platform-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-right: 2rem;
+        }
+
+        .platform-logo img {
+            height: 40px;
+        }
+
+        .course-title-header {
+            flex: 1;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            width: 100px;
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success-green);
+            transition: width 0.3s ease;
+        }
+
+        /* Sidebar */
+        .course-sidebar {
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--header-height));
+            background: var(--white);
+            border-right: 1px solid var(--border-light);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-content {
+            padding: 1.5rem;
+        }
+
+        .course-info {
+            margin-bottom: 2rem;
+        }
+
+        .course-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .course-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Challenge Sections */
+        .challenges-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .challenge-item {
+            margin-bottom: 1rem;
+        }
+
+        .challenge-header {
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-header:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .challenge-header.active {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .challenge-toggle {
+            transition: transform 0.3s ease;
+        }
+
+        .challenge-header.active .challenge-toggle {
+            transform: rotate(180deg);
+        }
+
+        .tasks-list {
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+            list-style: none;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+
+        .task-item {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+        .task-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            gap: 1rem;
+        }
+
+        .task-link:hover {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .task-link.active {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .task-link.completed {
+            color: var(--success-green);
+        }
+
+        .task-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        .task-content {
+            flex: 1;
+        }
+
+        .task-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .task-duration {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .task-status {
+            margin-left: auto;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--header-height);
+            padding: 2rem;
+            min-height: calc(100vh - var(--header-height));
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Challenge Container */
+        .challenge-container {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .challenge-content {
+            padding: 2rem;
+        }
+
+        .challenge-header-content {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .challenge-header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .challenge-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .challenge-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Task Display */
+        .task-display {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .task-header {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+        }
+
+        .task-title-main {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .task-meta {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .task-body {
+            padding: 2rem;
+        }
+
+        .task-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .task-requirements {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .task-requirements h4 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .task-requirements ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .task-requirements li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .task-requirements li::before {
+            content: "✓";
+            color: var(--success-green);
+            font-weight: bold;
+        }
+
+        /* Navigation Buttons */
+        .task-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .nav-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn.primary {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .nav-btn.secondary {
+            background: var(--border-light);
+            color: var(--text-dark);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .course-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .course-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .platform-header {
+                padding: 0 1rem;
+            }
+
+            .sidebar-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.2rem;
+                color: var(--text-dark);
+                cursor: pointer;
+                margin-right: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+
+            .challenge-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .task-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../public/assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Platform Header -->
+    <header class="platform-header">
+        <button class="sidebar-toggle" style="display: none;">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="platform-logo">
+            <img src="../../public/assets/images/image.png" alt="Whole Cyber Human Initiative">
+        </div>
+        
+        <div class="course-title-header" id="courseTitle">
+            Community Challenge
+        </div>
+        
+        <div class="header-actions">
+            <div class="progress-indicator">
+                <span id="progressText">0% Complete</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+            </div>
+            <button class="nav-btn secondary" onclick="window.location.href='../courses.html'">
+                <i class="fas fa-arrow-left"></i> Back to Courses
+            </button>
+        </div>
+    </header>
+
+    <!-- Course Sidebar -->
+    <aside class="course-sidebar" id="courseSidebar">
+        <div class="sidebar-content">
+            <div class="course-info">
+                <h3 id="sidebarCourseTitle">Community Challenge</h3>
+                <div class="course-meta">
+                    <span><i class="fas fa-users"></i> <span id="participants">Community Event</span></span>
+                    <span><i class="fas fa-clock"></i> <span id="totalDuration">Self-Paced</span></span>
+                    <span><i class="fas fa-trophy"></i> <span id="totalTasks">5 Challenges</span></span>
+                    <span><i class="fas fa-certificate"></i> <span id="certificateInfo">Badge Available</span></span>
+                </div>
+            </div>
+
+            <ul class="challenges-list" id="challengesList">
+                <li class="challenge-item">
+                    <div class="challenge-header active" data-challenge="0">
+                        Welcome Challenge
+                        <i class="fas fa-chevron-down challenge-toggle"></i>
+                    </div>
+                    <ul class="tasks-list">
+                        <li class="task-item">
+                            <a href="#" class="task-link active" data-task="0">
+                                <div class="task-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="task-content">
+                                    <div class="task-title">Community Introduction</div>
+                                    <div class="task-duration">5 min</div>
+                                </div>
+                                <div class="task-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="challenge-item">
+                    <div class="challenge-header" data-challenge="1">
+                        Skill Assessment
+                        <i class="fas fa-chevron-down challenge-toggle"></i>
+                    </div>
+                    <ul class="tasks-list" style="display: none;">
+                        <li class="task-item">
+                            <a href="#" class="task-link" data-task="1">
+                                <div class="task-icon">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <div class="task-content">
+                                    <div class="task-title">Technical Skills Quiz</div>
+                                    <div class="task-duration">15 min</div>
+                                </div>
+                                <div class="task-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="challenge-item">
+                    <div class="challenge-header" data-challenge="2">
+                        Project Challenge
+                        <i class="fas fa-chevron-down challenge-toggle"></i>
+                    </div>
+                    <ul class="tasks-list" style="display: none;">
+                        <li class="task-item">
+                            <a href="#" class="task-link" data-task="2">
+                                <div class="task-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="task-content">
+                                    <div class="task-title">Security Project</div>
+                                    <div class="task-duration">2 hours</div>
+                                </div>
+                                <div class="task-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="challenge-item">
+                    <div class="challenge-header" data-challenge="3">
+                        Collaboration Task
+                        <i class="fas fa-chevron-down challenge-toggle"></i>
+                    </div>
+                    <ul class="tasks-list" style="display: none;">
+                        <li class="task-item">
+                            <a href="#" class="task-link" data-task="3">
+                                <div class="task-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="task-content">
+                                    <div class="task-title">Team Collaboration</div>
+                                    <div class="task-duration">30 min</div>
+                                </div>
+                                <div class="task-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="challenge-item">
+                    <div class="challenge-header" data-challenge="4">
+                        Final Presentation
+                        <i class="fas fa-chevron-down challenge-toggle"></i>
+                    </div>
+                    <ul class="tasks-list" style="display: none;">
+                        <li class="task-item">
+                            <a href="#" class="task-link" data-task="4">
+                                <div class="task-icon">
+                                    <i class="fas fa-presentation"></i>
+                                </div>
+                                <div class="task-content">
+                                    <div class="task-title">Present Your Solution</div>
+                                    <div class="task-duration">15 min</div>
+                                </div>
+                                <div class="task-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Challenge Overview -->
+            <div class="challenge-container">
+                <div class="challenge-content">
+                    <div class="challenge-header-content">
+                        <h1>🏆 Community Challenge</h1>
+                        <p class="challenge-description">
+                            Join our community-driven cybersecurity challenge! Test your skills, collaborate with peers, 
+                            and showcase your expertise through a series of engaging tasks designed to simulate 
+                            real-world cybersecurity scenarios.
+                        </p>
+                    </div>
+                    
+                    <div class="challenge-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">Challenges</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">3+</div>
+                            <div class="stat-label">Hours</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">100+</div>
+                            <div class="stat-label">Participants</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">Free</div>
+                            <div class="stat-label">Entry</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Task Display -->
+            <div class="task-display" id="taskDisplay">
+                <div class="task-header">
+                    <h2 class="task-title-main" id="taskTitle">Community Introduction</h2>
+                    <div class="task-meta">
+                        <span><i class="fas fa-clock"></i> <span id="taskDuration">5 minutes</span></span>
+                        <span><i class="fas fa-users"></i> <span id="taskType">Individual</span></span>
+                        <span><i class="fas fa-trophy"></i> <span id="taskPoints">10 points</span></span>
+                    </div>
+                </div>
+                <div class="task-body">
+                    <div class="task-description" id="taskDescription">
+                        <p>Welcome to the Whole Cyber Community Challenge! This introductory task will help you get familiar with the platform and connect with other community members.</p>
+                        <p>Your goal is to introduce yourself to the community and share your cybersecurity interests and background.</p>
+                    </div>
+                    
+                    <div class="task-requirements">
+                        <h4>Requirements:</h4>
+                        <ul id="taskRequirements">
+                            <li>Create your community profile</li>
+                            <li>Write a brief introduction (50-100 words)</li>
+                            <li>Share your cybersecurity interests</li>
+                            <li>Connect with at least 3 other participants</li>
+                        </ul>
+                    </div>
+
+                    <div class="task-navigation">
+                        <button class="nav-btn secondary" id="prevTaskBtn" disabled>
+                            <i class="fas fa-chevron-left"></i> Previous Task
+                        </button>
+                        <button class="nav-btn primary" id="completeTaskBtn">
+                            <i class="fas fa-check"></i> Mark Complete
+                        </button>
+                        <button class="nav-btn primary" id="nextTaskBtn">
+                            Next Task <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        class CommunityChallenge {
+            constructor() {
+                this.currentTask = 0;
+                this.completedTasks = new Set();
+                this.totalTasks = 5;
+                this.tasks = [
+                    {
+                        title: "Community Introduction",
+                        duration: "5 minutes",
+                        type: "Individual",
+                        points: 10,
+                        description: "Welcome to the Whole Cyber Community Challenge! This introductory task will help you get familiar with the platform and connect with other community members.",
+                        requirements: [
+                            "Create your community profile",
+                            "Write a brief introduction (50-100 words)",
+                            "Share your cybersecurity interests",
+                            "Connect with at least 3 other participants"
+                        ]
+                    },
+                    {
+                        title: "Technical Skills Quiz",
+                        duration: "15 minutes",
+                        type: "Individual",
+                        points: 25,
+                        description: "Test your foundational cybersecurity knowledge with our comprehensive skills assessment quiz.",
+                        requirements: [
+                            "Complete the 20-question quiz",
+                            "Achieve a minimum score of 70%",
+                            "Review incorrect answers",
+                            "Submit your results"
+                        ]
+                    },
+                    {
+                        title: "Security Project",
+                        duration: "2 hours",
+                        type: "Individual",
+                        points: 50,
+                        description: "Apply your cybersecurity knowledge to a real-world scenario. Choose from network security, incident response, or vulnerability assessment projects.",
+                        requirements: [
+                            "Select a project from the available options",
+                            "Complete the technical implementation",
+                            "Document your methodology and findings",
+                            "Submit your project report and artifacts"
+                        ]
+                    },
+                    {
+                        title: "Team Collaboration",
+                        duration: "30 minutes",
+                        type: "Team",
+                        points: 30,
+                        description: "Collaborate with other participants to solve a cybersecurity challenge that requires teamwork and communication.",
+                        requirements: [
+                            "Join or form a team of 3-4 members",
+                            "Participate in the team discussion",
+                            "Contribute to the solution development",
+                            "Present your team's approach"
+                        ]
+                    },
+                    {
+                        title: "Present Your Solution",
+                        duration: "15 minutes",
+                        type: "Individual/Team",
+                        points: 35,
+                        description: "Present your project solution to the community and receive feedback from peers and mentors.",
+                        requirements: [
+                            "Prepare a 5-minute presentation",
+                            "Demonstrate your solution",
+                            "Answer questions from the audience",
+                            "Provide constructive feedback to other presenters"
+                        ]
+                    }
+                ];
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.loadTask(0);
+            }
+
+            setupEventListeners() {
+                // Challenge toggling
+                document.querySelectorAll('.challenge-header').forEach(header => {
+                    header.addEventListener('click', (e) => {
+                        this.toggleChallenge(e.target);
+                    });
+                });
+
+                // Task navigation
+                document.querySelectorAll('.task-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const taskIndex = parseInt(e.target.closest('.task-link').dataset.task);
+                        this.loadTask(taskIndex);
+                    });
+                });
+
+                // Navigation buttons
+                document.getElementById('prevTaskBtn').addEventListener('click', () => {
+                    this.previousTask();
+                });
+
+                document.getElementById('nextTaskBtn').addEventListener('click', () => {
+                    this.nextTask();
+                });
+
+                document.getElementById('completeTaskBtn').addEventListener('click', () => {
+                    this.markTaskComplete();
+                });
+
+                // Sidebar toggle for mobile
+                const sidebarToggle = document.querySelector('.sidebar-toggle');
+                if (sidebarToggle) {
+                    sidebarToggle.addEventListener('click', () => {
+                        this.toggleSidebar();
+                    });
+                }
+            }
+
+            loadTask(taskIndex) {
+                this.currentTask = taskIndex;
+                const task = this.tasks[taskIndex];
+                
+                if (!task) return;
+
+                // Update active task in sidebar
+                document.querySelectorAll('.task-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                document.querySelector(`[data-task="${taskIndex}"]`).classList.add('active');
+
+                // Update task display
+                document.getElementById('taskTitle').textContent = task.title;
+                document.getElementById('taskDuration').textContent = task.duration;
+                document.getElementById('taskType').textContent = task.type;
+                document.getElementById('taskPoints').textContent = `${task.points} points`;
+                document.getElementById('taskDescription').innerHTML = `<p>${task.description}</p>`;
+                
+                // Update requirements
+                const requirementsList = document.getElementById('taskRequirements');
+                requirementsList.innerHTML = task.requirements.map(req => `<li>${req}</li>`).join('');
+
+                this.updateNavigationButtons();
+                this.updateProgress();
+            }
+
+            toggleChallenge(challengeHeader) {
+                challengeHeader.classList.toggle('active');
+                const tasksList = challengeHeader.nextElementSibling;
+                if (tasksList.style.display === 'none') {
+                    tasksList.style.display = 'block';
+                } else {
+                    tasksList.style.display = 'none';
+                }
+            }
+
+            markTaskComplete() {
+                this.completedTasks.add(this.currentTask);
+                
+                // Update task status in sidebar
+                const taskLink = document.querySelector(`[data-task="${this.currentTask}"]`);
+                taskLink.classList.add('completed');
+                const statusIcon = taskLink.querySelector('.task-status i');
+                statusIcon.className = 'fas fa-check-circle';
+                statusIcon.style.color = 'var(--success-green)';
+                statusIcon.style.opacity = '1';
+
+                this.updateProgress();
+                
+                // Auto-advance to next task
+                setTimeout(() => {
+                    this.nextTask();
+                }, 1000);
+            }
+
+            updateProgress() {
+                const completedCount = this.completedTasks.size;
+                const progressPercentage = Math.round((completedCount / this.totalTasks) * 100);
+                
+                document.getElementById('progressText').textContent = `${progressPercentage}% Complete`;
+                document.getElementById('progressFill').style.width = `${progressPercentage}%`;
+            }
+
+            updateNavigationButtons() {
+                const prevBtn = document.getElementById('prevTaskBtn');
+                const nextBtn = document.getElementById('nextTaskBtn');
+                
+                prevBtn.disabled = this.currentTask === 0;
+                nextBtn.disabled = this.currentTask >= this.totalTasks - 1;
+                
+                if (nextBtn.disabled) {
+                    nextBtn.innerHTML = '<i class="fas fa-trophy"></i> Challenge Complete';
+                } else {
+                    nextBtn.innerHTML = 'Next Task <i class="fas fa-chevron-right"></i>';
+                }
+            }
+
+            previousTask() {
+                if (this.currentTask > 0) {
+                    this.loadTask(this.currentTask - 1);
+                }
+            }
+
+            nextTask() {
+                if (this.currentTask < this.totalTasks - 1) {
+                    this.loadTask(this.currentTask + 1);
+                }
+            }
+
+            toggleSidebar() {
+                const sidebar = document.getElementById('courseSidebar');
+                sidebar.classList.toggle('open');
+            }
+        }
+
+        // Initialize the challenge
+        let challengePlatform;
+        document.addEventListener('DOMContentLoaded', function() {
+            challengePlatform = new CommunityChallenge();
+        });
+    </script>
+</body>
+</html>
