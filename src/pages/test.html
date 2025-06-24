@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Asset Path Check</title>
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-result { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>Asset Path Test</h1>
+    
+    <div class="test-result" id="css-test">
+        <strong>CSS Test:</strong> <span id="css-result">Checking...</span>
+    </div>
+    
+    <div class="test-result" id="img-test">
+        <strong>Image Test:</strong><br>
+        <img src="../../public/assets/images/image.png" alt="Logo" style="max-width: 200px; margin-top: 10px;" 
+             onload="document.getElementById('img-result').textContent = 'Image loaded successfully!'; this.parentElement.className += ' success';"
+             onerror="document.getElementById('img-result').textContent = 'Image failed to load!'; this.parentElement.className += ' error';">
+        <div id="img-result">Loading...</div>
+    </div>
+    
+    <div class="test-result" id="js-test">
+        <strong>JavaScript Test:</strong> <span id="js-result">Checking...</span>
+    </div>
+    
+    <script>
+        // Test CSS
+        const computedStyle = getComputedStyle(document.documentElement);
+        const primaryBlue = computedStyle.getPropertyValue('--primary-blue').trim();
+        const cssTest = document.getElementById('css-test');
+        const cssResult = document.getElementById('css-result');
+        
+        if (primaryBlue === '#2886c8') {
+            cssResult.textContent = 'CSS loaded successfully! Primary blue found: ' + primaryBlue;
+            cssTest.className += ' success';
+        } else {
+            cssResult.textContent = 'CSS failed to load or primary blue not found. Got: ' + primaryBlue;
+            cssTest.className += ' error';
+        }
+        
+        // Test JavaScript
+        const jsTest = document.getElementById('js-test');
+        const jsResult = document.getElementById('js-result');
+        jsResult.textContent = 'JavaScript is working!';
+        jsTest.className += ' success';
+    </script>
+    
+    <script src="../../public/assets/js/main.js" 
+            onload="document.getElementById('js-result').textContent += ' Main.js loaded successfully!';"
+            onerror="document.getElementById('js-result').textContent = 'Main.js failed to load!'; document.getElementById('js-test').className = document.getElementById('js-test').className.replace('success', 'error');"></script>
+</body>
+</html>

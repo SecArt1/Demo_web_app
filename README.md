@@ -1,149 +1,103 @@
-# Whole Cyber Human Initiative Website
+# Whole Cyber Human Initiative - Professional Website## 🎯 OverviewThe Whole Cyber Human Initiative is a Service-Disabled Veteran Owned Non-profit organization dedicated to providing minimal to no-cost logical cybersecurity education with true return on investment. This repository contains the complete website built with modern web development practices.**Founded by:** Retired Navy Veteran Paul Cummings, Leah McLean, Chris Foulon, and Alex Rhodes## 🏗️ Project StructureThis project follows a professional-grade structure with clear separation of concerns:```├── 📁 src/                        # Source code and pages│   ├── 📁 pages/                  # Website pages│   │   ├── index.html            # Homepage│   │   ├── courses.html          # Course catalog│   │   └── 📁 courses/           # Individual course pages (16 courses)│   ├── 📁 components/            # Reusable components│   └── 📁 templates/             # Page templates├── 📁 public/                     # Static assets served to users│   └── 📁 assets/                # CSS, JavaScript, images, media├── 📁 config/                     # Configuration files├── 📁 scripts/                    # Build and deployment scripts├── 📁 docs/                       # Project documentation└── 📁 tests/                      # Testing files```See [PROJECT-STRUCTURE.md](docs/PROJECT-STRUCTURE.md) for detailed documentation.## 🚀 Quick Start### Local Development1. **Clone the repository:**   ```bash   git clone [repository-url]   cd whole-cyber-human-initiative   ```2. **Serve locally:**   ```bash   # Using Python   python -m http.server 8000   # or using Node.js   npx http-server src/pages/ -p 8000   ```3. **Open in browser:**   ```   http://localhost:8000   ```### Project Setup1. **Update asset paths** (if needed):   ```powershell   # Run the asset path update script   powershell -ExecutionPolicy Bypass -File "scripts\utilities\update-course-asset-paths.ps1"   ```2. **Build for production:**   ```bash   ./scripts/build/build.sh   ```## 📚 Course CatalogThe website features a comprehensive course catalog with 15+ courses:### 🆓 Free Courses- **Foundation Course**: Understanding IT/Cyber Roles- **OT Cyber Essentials** (OTCE3) - Closed Beta- **Security Engineer Certifications** (60/90/120 day programs)- **Job Interview Mastery** by Ken Underhill### 💼 Coaching Programs  - **CPF Coaching Tracks** 1, 2, and 3 ($2 each)- **Budgeting for Tech Career 101** ($1)### 🎯 Specialty Courses- **AI Generalist Certification** (Membership)- **Community Challenges** ($50 - English & German)### 🏆 Certifications- Whole Cyber Certified Security Engineer- Whole Cyber Certified AI Generalist## 🛠️ Development### File Organization- **Pages**: All HTML pages are in `src/pages/`- **Assets**: CSS, JS, images in `public/assets/`- **Courses**: Individual course pages in `src/pages/courses/`- **Templates**: Reusable templates in `src/templates/`### Asset ReferencesAll asset paths follow the pattern:```html<!-- From src/pages/ --><link rel="stylesheet" href="../../public/assets/css/styles.css"><!-- From src/pages/courses/ --><link rel="stylesheet" href="../../../public/assets/css/styles.css">```### Key Features- ✅ **Responsive Design**: Mobile-first, modern UI- ✅ **Course Filtering**: Filter courses by category- ✅ **Learning Platform**: Integrated course platform template- ✅ **Professional Structure**: Scalable, maintainable codebase- ✅ **Performance Optimized**: Fast loading, optimized assets## 🚢 Deployment### Production Deployment1. **Build the project:**   ```bash   ./scripts/build/build.sh   ```2. **Deploy to server:**   ```bash   ./scripts/deployment/update-website.sh   ```3. **Configure SSL:**   ```bash   ./scripts/deployment/ssl-setup.sh   ```### Server Configuration- **Apache**: Use `config/deployment/apache.conf`- **SSL**: Automated with Let's Encrypt- **Permissions**: Set correct `www-data` permissionsSee [DEPLOYMENT.md](docs/deployment/DEPLOYMENT.md) for detailed deployment instructions.## 🧪 Testing### Manual Testing- Cross-browser compatibility- Mobile responsiveness  - Course navigation flow- Asset loading verification
 
-A modern, responsive website for the Whole Cyber Human Initiative - a Service-Disabled Veteran Owned Non-profit dedicated to providing minimal to no-cost logical cybersecurity education.
-
-## 🎨 Brand Colors
-
-Based on the official brand guidelines:
-- **Primary Blue**: `#2886c8` - Main brand color
-- **Light Blue**: `#6db6fe` - Vibrant and relevant accent
-- **Dark Blue**: `#053994` - Security and defense representation
-- **Accent Pink**: `#ff0099` - Inclusivity and diversity symbol
-
-## 📁 Project Structure
-
-```
-Whole Cyber/
-├── index.html              # Main HTML file
-├── info.txt               # Brand guidelines and content source
-├── assets/
-│   ├── css/
-│   │   └── styles.css     # Main stylesheet with brand colors
-│   ├── js/
-│   │   └── main.js        # Interactive JavaScript features
-│   └── images/
-│       └── (image assets)
+### Automated Testing (Planned)
+```bash
+npm run test           # Run all tests
+npm run test:unit      # Unit tests
+npm run test:e2e       # End-to-end tests
 ```
 
-## 🚀 Features
+## 📋 Course Management
 
-### Design & UX
-- **Modern responsive design** that works on all devices
-- **Brand-compliant color scheme** based on official guidelines
-- **Smooth animations** and micro-interactions
-- **Accessible navigation** with keyboard support
-- **Performance optimized** with lazy loading and efficient CSS
+### Adding New Courses
 
-### Content Sections
-1. **Hero Section** - Brand tagline and mission statement
-2. **About Section** - Organization background and values
-3. **Services Section** - Core offerings and programs
-4. **Curriculum Section** - Detailed 380-hour program breakdown
-5. **Training Section** - Affiliate partnerships and discounts
-6. **Footer** - Contact information and additional resources
+1. **Create course info page:**
+   ```bash
+   cp src/templates/course-info-template.html src/pages/courses/new-course.html
+   ```
 
-### Technical Features
-- **Mobile-first responsive design**
-- **CSS Grid and Flexbox layouts**
-- **Intersection Observer animations**
-- **Smooth scrolling navigation**
-- **Progressive enhancement**
-- **SEO optimized**
+2. **Update course catalog:**
+   - Add course card to `src/pages/courses.html`
+   - Update course configuration
 
-## 💡 Key Information from Brand Guidelines
+3. **Create learning platform:**
+   ```bash
+   cp src/templates/course-platform.html src/pages/courses/new-course-platform.html
+   ```
 
-### Mission Statement
-"Arming talent with minimal to no-cost logical and true return on investment education"
+### Course Platform Features
 
-### Value Proposition
-- Saves candidates $8,525-$26,640 in training costs
-- 380-hour comprehensive curriculum
-- 300+ years combined advisory experience
-- Partnership with EC-Council for up to 50% training discounts
-- Focus on NICE framework's 52 cybersecurity roles
+- 📹 **Video Integration**: Support for video lessons
+- 📊 **Slide Presentations**: PowerPoint/PDF slide viewer  
+- 📝 **Progress Tracking**: Lesson completion tracking
+- 💬 **Discussion**: Course discussion integration
+- 📚 **Resources**: Downloadable resources and materials
+- 🏆 **Certificates**: Course completion certificates
 
-### Target Audience
-- Veterans and transitioning service members
-- First responders
-- Military spouses
-- Career changers seeking cybersecurity roles
-- DoD SkillBridge participants
+## 🤝 Contributing
 
-### Core Values
-- **Whole**: Holistic approach to cybersecurity education
-- **Cyber**: Business-focused cybersecurity thinking
-- **Human**: Bringing humanity back to hiring and networking
-- **Initiative**: Taking action to fight talent shortage
+### Development Guidelines
 
-## 🛠 Development
+1. **Follow the project structure** outlined in `docs/PROJECT-STRUCTURE.md`
+2. **Update asset paths** when moving files
+3. **Test across browsers** and devices
+4. **Document changes** in comments and documentation
+5. **Maintain accessibility** standards
 
-### HTML Structure
-- Semantic HTML5 elements
-- Proper accessibility attributes
-- Meta tags for SEO
-- Open Graph tags for social sharing
+### Code Style
 
-### CSS Architecture
-- CSS Custom Properties for consistent theming
-- Mobile-first responsive design
-- Flexbox and Grid layouts
-- BEM-inspired naming conventions
-- Optimized animations and transitions
+- **HTML**: Semantic, valid HTML5
+- **CSS**: BEM methodology, mobile-first
+- **JavaScript**: Modern ES6+, commented
+- **Files**: kebab-case naming convention
 
-### JavaScript Features
-- Modern ES6+ syntax
-- Intersection Observer for animations
-- Smooth scrolling navigation
-- Mobile menu functionality
-- Performance optimization utilities
+## 🔧 Maintenance
 
-## 📱 Responsive Breakpoints
+### Regular Tasks
 
-- **Mobile**: 320px - 768px
-- **Tablet**: 768px - 1024px
-- **Desktop**: 1024px+
-- **Large Desktop**: 1400px+
+- **Update dependencies** monthly
+- **Security audits** quarterly
+- **Performance monitoring** ongoing
+- **Content updates** as needed
+- **Backup procedures** automated
 
-## 🎯 Performance Considerations
+### Monitoring
 
-- Optimized images and fonts
-- Minimal JavaScript bundle
-- Efficient CSS with no unused styles
-- Lazy loading for non-critical resources
-- Smooth 60fps animations
+- **Website uptime**: Monitor server availability
+- **Performance**: Page load speeds, Core Web Vitals
+- **Security**: SSL certificates, vulnerability scans
+- **Analytics**: Course enrollment, user engagement
 
-## 🌟 Brand Logo Meaning
+## 📊 Project Statistics
 
-The logo represents:
-- **Two half circles**: Knowledge intake and mentorship output
-- **Broken gap**: New knowledge coming in
-- **Silhouette**: Cybersecurity has no face, gender, race, or creed
-- **Inclusive design**: Open to everyone regardless of background
+- **Total Pages**: 20+ HTML pages
+- **Course Pages**: 16 individual course pages
+- **Assets Organized**: CSS, JS, Images in `/public/assets/`
+- **Professional Structure**: ✅ Complete
+- **Mobile Responsive**: ✅ Fully responsive
+- **Performance Optimized**: ✅ Fast loading
 
-## 📞 Contact Information
+## 📞 Support & Contact
 
-- **Website**: wholecyberhumaninitiative.org
-- **Email**: info@wholecyberhumaninitiative.org
-- **Discord**: Vicious Vineyards
-- **YouTube**: Paul Cummings Veterans Breaking into IT Cyber
-
-## 🏆 Founder Information
-
-**Paul Cummings** - CEO/Founder
-- Retired 20-year US Navy Information Systems Technology Chief
-- Cyber Threat Intel Research Specialist
-- CompTIA CASP certified
-- Led 15 Navy Warfighting Ships and 176 IT professionals
-
-**Co-Founders:**
-- **Leah McLean** - Cybersecurity Specialist & Partnership Expert
-- **Alex Rhodes** - Space Cyber Specialist & Digital Forensics Expert
-- **Christophe Foulon** - CISO/vCISO & Cybersecurity Consultant
+- **Website**: [wholecyberhumaninitiative.org](https://wholecyberhumaninitiative.org)
+- **Email**: courses@wholecyberhumaninitiative.org
+- **Discord**: Join our learning community
+- **LinkedIn**: Follow for updates
 
 ## 📄 License
 
-This project represents the official website for Whole Cyber Human Initiative, a registered non-profit organization.
+This project is licensed under the terms specified in the [LICENSE](LICENSE) file.
+
+## 🙏 Acknowledgments
+
+- **Paul Cummings** - Founder, Course Instructor
+- **Ken Underhill** - Job Interview Course Instructor  
+- **Gregor Lyttek** - German Community Challenge Instructor
+- **Development Team** - Website design and implementation
+- **Community** - Beta testers and feedback providers
 
 ---
 
-*Built with modern web technologies to serve veterans, first responders, and aspiring cybersecurity professionals worldwide.*
+**Built with ❤️ for the cybersecurity community**
+
+*A Service-Disabled Veteran Owned Non-profit Organization*

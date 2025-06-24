@@ -1,0 +1,24 @@
+{
+  "name": "whole-cyber-human-initiative",
+  "version": "2.0.0",
+  "description": "Professional cybersecurity education platform",
+  "environment": "development",
+  "server": {
+    "port": 8000,
+    "host": "localhost"
+  },
+  "paths": {
+    "public": "./public",
+    "src": "./src",
+    "assets": "./public/assets",
+    "pages": "./src/pages",
+    "courses": "./src/pages/courses",
+    "templates": "./src/templates"
+  },
+  "features": {
+    "minifyCSS": false,
+    "minifyJS": false,
+    "optimizeImages": false,
+    "generateSourceMaps": true
+  }
+}
