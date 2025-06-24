@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OT Cyber Essentials - Course Platform - Whole Cyber Human Initiative</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    
+    <!-- Learning Platform Styles -->
+    <style>
+        :root {
+            --sidebar-width: 320px;
+            --header-height: 70px;
+            --primary-blue: #2886c8;
+            --light-blue: #6db6fe;
+            --dark-blue: #053994;
+            --accent-pink: #ff0099;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border-light: #e5e7eb;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Platform Header */
+        .platform-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .platform-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-right: 2rem;
+        }
+
+        .platform-logo img {
+            height: 40px;
+        }
+
+        .course-title-header {
+            flex: 1;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            width: 100px;
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success-green);
+            transition: width 0.3s ease;
+        }
+
+        /* Sidebar */
+        .course-sidebar {
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--header-height));
+            background: var(--white);
+            border-right: 1px solid var(--border-light);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-content {
+            padding: 1.5rem;
+        }
+
+        .course-info {
+            margin-bottom: 2rem;
+        }
+
+        .course-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .course-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Module Navigation */
+        .modules-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .module-item {
+            margin-bottom: 1rem;
+        }
+
+        .module-header {
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .module-header:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .module-header.active {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .module-toggle {
+            transition: transform 0.3s ease;
+        }
+
+        .module-header.active .module-toggle {
+            transform: rotate(180deg);
+        }
+
+        .lessons-list {
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+            list-style: none;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+
+        .lesson-item {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .lesson-item:last-child {
+            border-bottom: none;
+        }
+
+        .lesson-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            gap: 1rem;
+        }
+
+        .lesson-link:hover {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .lesson-link.active {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .lesson-link.completed {
+            color: var(--success-green);
+        }
+
+        .lesson-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        .lesson-content {
+            flex: 1;
+        }
+
+        .lesson-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .lesson-duration {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .lesson-status {
+            margin-left: auto;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--header-height);
+            padding: 2rem;
+            min-height: calc(100vh - var(--header-height));
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Video Player Container */
+        .video-container {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .video-player {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+        }
+
+        .video-controls {
+            padding: 1rem;
+            background: var(--white);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .video-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-meta {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .video-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Slides Container */
+        .slides-container {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .slides-viewer {
+            width: 100%;
+            height: 600px;
+            border: none;
+            background: #f5f5f5;
+        }
+
+        .slides-controls {
+            padding: 1rem;
+            background: var(--white);
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slide-info {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .slide-navigation {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Content Tabs */
+        .content-tabs {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .tab-headers {
+            display: flex;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .tab-header {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-light);
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab-header.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
+
+        .tab-content {
+            padding: 2rem;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Navigation Buttons */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .nav-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn.primary {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .nav-btn.secondary {
+            background: var(--border-light);
+            color: var(--text-dark);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .course-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .course-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .platform-header {
+                padding: 0 1rem;
+            }
+
+            .sidebar-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.2rem;
+                color: var(--text-dark);
+                cursor: pointer;
+                margin-right: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+
+            .video-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .video-actions {
+                flex-wrap: wrap;
+            }
+
+            .tab-headers {
+                overflow-x: auto;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Platform Header -->
+    <header class="platform-header">
+        <button class="sidebar-toggle" style="display: none;">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="platform-logo">
+            <img src="../assets/photos/image.png" alt="Whole Cyber Human Initiative">
+        </div>
+        
+        <div class="course-title-header" id="courseTitle">
+            OT Cyber for Non-Electrical Engineers Essentials
+        </div>
+        
+        <div class="header-actions">
+            <div class="progress-indicator">
+                <span id="progressText">0% Complete</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+            </div>
+            <button class="nav-btn secondary" onclick="window.location.href='../courses.html'">
+                <i class="fas fa-arrow-left"></i> Back to Courses
+            </button>
+        </div>
+    </header>
+
+    <!-- Course Sidebar -->
+    <aside class="course-sidebar" id="courseSidebar">
+        <div class="sidebar-content">
+            <div class="course-info">
+                <h3>OT Cyber Essentials</h3>
+                <div class="course-meta">
+                    <span><i class="fas fa-user-tie"></i> Paul Cummings</span>
+                    <span><i class="fas fa-clock"></i> 4 hours 30 minutes</span>
+                    <span><i class="fas fa-play-circle"></i> 5 Lessons</span>
+                    <span><i class="fas fa-certificate"></i> Certificate Available</span>
+                </div>
+            </div>
+
+            <ul class="modules-list">
+                <!-- Module 1: Introduction to OT Cybersecurity -->
+                <li class="module-item">
+                    <div class="module-header active" data-module="0">
+                        Introduction to OT Cybersecurity
+                        <i class="fas fa-chevron-down module-toggle"></i>
+                    </div>
+                    <ul class="lessons-list">
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link active" data-lesson="0">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">What is OT Cybersecurity?</div>
+                                    <div class="lesson-duration">15 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="1">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-file-powerpoint"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">OT Security Framework Overview</div>
+                                    <div class="lesson-duration">20 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Module 2: Industrial Control Systems -->
+                <li class="module-item">
+                    <div class="module-header" data-module="1">
+                        Industrial Control Systems
+                        <i class="fas fa-chevron-down module-toggle"></i>
+                    </div>
+                    <ul class="lessons-list" style="display: none;">
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="2">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">SCADA Systems Deep Dive</div>
+                                    <div class="lesson-duration">25 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="3">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-file-powerpoint"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">PLC Security Fundamentals</div>
+                                    <div class="lesson-duration">30 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Module 3: OT Risk Assessment -->
+                <li class="module-item">
+                    <div class="module-header" data-module="2">
+                        OT Risk Assessment
+                        <i class="fas fa-chevron-down module-toggle"></i>
+                    </div>
+                    <ul class="lessons-list" style="display: none;">
+                        <li class="lesson-item">
+                            <a href="#" class="lesson-link" data-lesson="4">
+                                <div class="lesson-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">OT Risk Assessment Methodology</div>
+                                    <div class="lesson-duration">35 min</div>
+                                </div>
+                                <div class="lesson-status">
+                                    <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0.3;"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Video Container (shown for video lessons) -->
+            <div class="video-container" id="videoContainer">
+                <video class="video-player" id="videoPlayer" controls poster="../assets/images/video-placeholder.jpg">
+                    <source src="../assets/videos/ot-intro.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-controls">
+                    <h2 class="video-title">What is OT Cybersecurity?</h2>
+                    <div class="video-meta">
+                        <span><i class="fas fa-clock"></i> 15 minutes</span>
+                        <span><i class="fas fa-eye"></i> 1,247 views</span>
+                        <span><i class="fas fa-calendar"></i> Updated Dec 2024</span>
+                    </div>
+                    <div class="video-actions">
+                        <button class="nav-btn secondary" id="markCompleteBtn">
+                            <i class="fas fa-check"></i> Mark as Complete
+                        </button>
+                        <button class="nav-btn secondary">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button class="nav-btn secondary">
+                            <i class="fas fa-bookmark"></i> Bookmark
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slides Container (hidden by default, shown for presentation lessons) -->
+            <div class="slides-container" id="slidesContainer" style="display: none;">
+                <iframe class="slides-viewer" id="slidesViewer" src=""></iframe>
+                <div class="slides-controls">
+                    <div class="slide-info">
+                        <span id="slideTitle">Presentation Title</span>
+                    </div>
+                    <div class="slide-navigation">
+                        <button class="nav-btn secondary">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button class="nav-btn secondary">
+                            <i class="fas fa-expand"></i> Fullscreen
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Tabs -->
+            <div class="content-tabs">
+                <div class="tab-headers">
+                    <button class="tab-header active" data-tab="overview">Overview</button>
+                    <button class="tab-header" data-tab="notes">Notes</button>
+                    <button class="tab-header" data-tab="resources">Resources</button>
+                    <button class="tab-header" data-tab="discussion">Discussion</button>
+                </div>
+
+                <div class="tab-content active" id="overview">
+                    <h3>Lesson Overview</h3>
+                    <p>This introductory lesson covers the fundamental concepts of operational technology (OT) cybersecurity. You'll learn how OT differs from traditional IT, understand the unique security challenges in industrial environments, and explore the basic principles that guide OT security practices.</p>
+                    
+                    <h4>Learning Objectives</h4>
+                    <ul>
+                        <li>Understand the difference between OT and IT systems</li>
+                        <li>Learn basic OT concepts and terminology</li>
+                        <li>Identify common OT security challenges and threats</li>
+                        <li>Recognize the importance of OT cybersecurity in industrial settings</li>
+                    </ul>
+
+                    <h4>Key Topics Covered</h4>
+                    <ul>
+                        <li>Definition and scope of operational technology</li>
+                        <li>OT vs IT security considerations</li>
+                        <li>Industrial control system components</li>
+                        <li>Common OT security vulnerabilities</li>
+                        <li>Regulatory and compliance requirements</li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="notes">
+                    <h3>Your Notes</h3>
+                    <textarea id="notesArea" style="width: 100%; height: 300px; padding: 1rem; border: 1px solid var(--border-light); border-radius: 8px; font-family: inherit; resize: vertical;" placeholder="Take notes during the lesson...
+
+Key points to remember:
+- 
+- 
+- 
+
+Questions to research:
+- 
+- 
+- "></textarea>
+                    <button class="nav-btn primary" style="margin-top: 1rem;" onclick="saveNotes()">
+                        <i class="fas fa-save"></i> Save Notes
+                    </button>
+                </div>
+
+                <div class="tab-content" id="resources">
+                    <h3>Additional Resources</h3>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="padding: 1rem; border: 1px solid var(--border-light); border-radius: 8px;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <i class="fas fa-file-pdf" style="color: #e53e3e;"></i>
+                                <strong>OT vs IT Security Comparison Chart</strong>
+                            </div>
+                            <p style="margin: 0; color: var(--text-light); font-size: 0.9rem;">Comprehensive comparison of operational technology and information technology security approaches.</p>
+                            <button class="nav-btn secondary" style="margin-top: 0.5rem; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                                <i class="fas fa-download"></i> Download PDF
+                            </button>
+                        </div>
+                        
+                        <div style="padding: 1rem; border: 1px solid var(--border-light); border-radius: 8px;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <i class="fas fa-external-link-alt" style="color: var(--primary-blue);"></i>
+                                <strong>NIST Cybersecurity Framework Guide</strong>
+                            </div>
+                            <p style="margin: 0; color: var(--text-light); font-size: 0.9rem;">Official NIST guide for implementing cybersecurity frameworks in industrial environments.</p>
+                            <button class="nav-btn secondary" style="margin-top: 0.5rem; padding: 0.5rem 1rem; font-size: 0.9rem;" onclick="window.open('https://www.nist.gov/cyberframework', '_blank')">
+                                <i class="fas fa-external-link-alt"></i> Visit Website
+                            </button>
+                        </div>
+
+                        <div style="padding: 1rem; border: 1px solid var(--border-light); border-radius: 8px;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <i class="fas fa-file-excel" style="color: #38a169;"></i>
+                                <strong>OT Security Checklist Template</strong>
+                            </div>
+                            <p style="margin: 0; color: var(--text-light); font-size: 0.9rem;">Practical checklist for assessing OT security in your organization.</p>
+                            <button class="nav-btn secondary" style="margin-top: 0.5rem; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                                <i class="fas fa-download"></i> Download Excel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="discussion">
+                    <h3>Discussion</h3>
+                    <p>Join the discussion about this lesson with other students and the instructor. Ask questions, share insights, and learn from the community.</p>
+                    
+                    <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <h4 style="margin-top: 0;">Discussion Topics</h4>
+                        <ul style="margin-bottom: 0;">
+                            <li>Share your experience with OT systems in your workplace</li>
+                            <li>What OT security challenges have you encountered?</li>
+                            <li>Discuss the differences between OT and IT security approaches</li>
+                            <li>Ask questions about lesson content</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="nav-btn primary">
+                        <i class="fas fa-comments"></i> Open Course Discussion Forum
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lesson Navigation -->
+            <div class="lesson-navigation">
+                <button class="nav-btn secondary" id="prevLessonBtn" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous Lesson
+                </button>
+                <button class="nav-btn primary" id="nextLessonBtn">
+                    Next Lesson <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Course Platform JavaScript for OT Cyber Course
+        class OTCyberPlatform {
+            constructor() {
+                this.currentLesson = 0;
+                this.completedLessons = new Set();
+                this.totalLessons = 5;
+                this.lessons = [
+                    {
+                        title: "What is OT Cybersecurity?",
+                        type: "video",
+                        videoUrl: "../assets/videos/ot-intro.mp4"
+                    },
+                    {
+                        title: "OT Security Framework Overview", 
+                        type: "slides",
+                        slidesUrl: "../assets/presentations/ot-framework.pdf"
+                    },
+                    {
+                        title: "SCADA Systems Deep Dive",
+                        type: "video", 
+                        videoUrl: "../assets/videos/scada-systems.mp4"
+                    },
+                    {
+                        title: "PLC Security Fundamentals",
+                        type: "slides",
+                        slidesUrl: "../assets/presentations/plc-security.pdf"
+                    },
+                    {
+                        title: "OT Risk Assessment Methodology",
+                        type: "video",
+                        videoUrl: "../assets/videos/ot-risk-assessment.mp4"
+                    }
+                ];
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.loadLesson(0);
+            }
+
+            setupEventListeners() {
+                // Tab switching
+                document.querySelectorAll('.tab-header').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        this.switchTab(e.target.dataset.tab);
+                    });
+                });
+
+                // Module toggling
+                document.querySelectorAll('.module-header').forEach(header => {
+                    header.addEventListener('click', (e) => {
+                        this.toggleModule(e.target);
+                    });
+                });
+
+                // Lesson navigation
+                document.querySelectorAll('.lesson-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const lessonIndex = parseInt(e.target.closest('.lesson-link').dataset.lesson);
+                        this.loadLesson(lessonIndex);
+                    });
+                });
+
+                document.getElementById('prevLessonBtn').addEventListener('click', () => {
+                    this.previousLesson();
+                });
+
+                document.getElementById('nextLessonBtn').addEventListener('click', () => {
+                    this.nextLesson();
+                });
+
+                document.getElementById('markCompleteBtn').addEventListener('click', () => {
+                    this.markLessonComplete();
+                });
+
+                // Video player events
+                const videoPlayer = document.getElementById('videoPlayer');
+                videoPlayer.addEventListener('ended', () => {
+                    this.markLessonComplete();
+                });
+
+                // Responsive sidebar toggle
+                const sidebarToggle = document.querySelector('.sidebar-toggle');
+                if (sidebarToggle) {
+                    sidebarToggle.addEventListener('click', () => {
+                        this.toggleSidebar();
+                    });
+                }
+
+                // Responsive design
+                this.setupResponsive();
+            }
+
+            loadLesson(lessonIndex) {
+                this.currentLesson = lessonIndex;
+                const lesson = this.lessons[lessonIndex];
+
+                // Update active lesson in sidebar
+                document.querySelectorAll('.lesson-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                document.querySelector(`[data-lesson="${lessonIndex}"]`).classList.add('active');
+
+                // Load lesson content
+                if (lesson.type === 'video') {
+                    this.loadVideoLesson(lesson);
+                } else if (lesson.type === 'slides') {
+                    this.loadSlidesLesson(lesson);
+                }
+
+                this.updateNavigationButtons();
+                this.updateProgress();
+            }
+
+            loadVideoLesson(lesson) {
+                document.getElementById('videoContainer').style.display = 'block';
+                document.getElementById('slidesContainer').style.display = 'none';
+                
+                const videoPlayer = document.getElementById('videoPlayer');
+                // For demo purposes, using placeholder video
+                videoPlayer.src = 'https://www.w3schools.com/html/mov_bbb.mp4';
+                
+                document.querySelector('.video-title').textContent = lesson.title;
+            }
+
+            loadSlidesLesson(lesson) {
+                document.getElementById('videoContainer').style.display = 'none';
+                document.getElementById('slidesContainer').style.display = 'block';
+                
+                const slidesViewer = document.getElementById('slidesViewer');
+                // For demo purposes, using placeholder PDF
+                slidesViewer.src = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
+                
+                document.getElementById('slideTitle').textContent = lesson.title;
+            }
+
+            toggleModule(moduleHeader) {
+                moduleHeader.classList.toggle('active');
+                const lessonsList = moduleHeader.nextElementSibling;
+                if (lessonsList.style.display === 'none') {
+                    lessonsList.style.display = 'block';
+                } else {
+                    lessonsList.style.display = 'none';
+                }
+            }
+
+            switchTab(tabName) {
+                document.querySelectorAll('.tab-header').forEach(header => {
+                    header.classList.remove('active');
+                });
+                document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tabName).classList.add('active');
+            }
+
+            markLessonComplete() {
+                this.completedLessons.add(this.currentLesson);
+                
+                const lessonLink = document.querySelector(`[data-lesson="${this.currentLesson}"]`);
+                lessonLink.classList.add('completed');
+                const statusIcon = lessonLink.querySelector('.lesson-status i');
+                statusIcon.className = 'fas fa-check-circle';
+                statusIcon.style.color = 'var(--success-green)';
+                statusIcon.style.opacity = '1';
+
+                this.updateProgress();
+            }
+
+            updateProgress() {
+                const progressPercentage = Math.round((this.completedLessons.size / this.totalLessons) * 100);
+                document.getElementById('progressText').textContent = `${progressPercentage}% Complete`;
+                document.getElementById('progressFill').style.width = `${progressPercentage}%`;
+            }
+
+            updateNavigationButtons() {
+                const prevBtn = document.getElementById('prevLessonBtn');
+                const nextBtn = document.getElementById('nextLessonBtn');
+                
+                prevBtn.disabled = this.currentLesson === 0;
+                nextBtn.disabled = this.currentLesson >= this.totalLessons - 1;
+                
+                if (nextBtn.disabled) {
+                    nextBtn.innerHTML = '<i class="fas fa-trophy"></i> Course Complete';
+                } else {
+                    nextBtn.innerHTML = 'Next Lesson <i class="fas fa-chevron-right"></i>';
+                }
+            }
+
+            previousLesson() {
+                if (this.currentLesson > 0) {
+                    this.loadLesson(this.currentLesson - 1);
+                }
+            }
+
+            nextLesson() {
+                if (this.currentLesson < this.totalLessons - 1) {
+                    this.loadLesson(this.currentLesson + 1);
+                }
+            }
+
+            toggleSidebar() {
+                const sidebar = document.getElementById('courseSidebar');
+                sidebar.classList.toggle('open');
+            }
+
+            setupResponsive() {
+                const checkScreenSize = () => {
+                    const sidebarToggle = document.querySelector('.sidebar-toggle');
+                    if (window.innerWidth <= 1024) {
+                        sidebarToggle.style.display = 'block';
+                    } else {
+                        sidebarToggle.style.display = 'none';
+                        document.getElementById('courseSidebar').classList.remove('open');
+                    }
+                };
+
+                window.addEventListener('resize', checkScreenSize);
+                checkScreenSize();
+            }
+        }
+
+        // Global functions
+        function saveNotes() {
+            const notes = document.getElementById('notesArea').value;
+            localStorage.setItem(`ot_cyber_notes_lesson_${platform.currentLesson}`, notes);
+            alert('Notes saved successfully!');
+        }
+
+        // Initialize the platform
+        let platform;
+        document.addEventListener('DOMContentLoaded', function() {
+            platform = new OTCyberPlatform();
+        });
+    </script>
+</body>
+</html>
