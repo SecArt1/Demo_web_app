@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Whole Cyber Human Initiative</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    
+    <!-- Page-specific styles -->
+    <style>
+        /* About Us Page Specific Styles */
+        .about-hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: var(--white);
+            padding: 8rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.05)"><polygon points="0,100 1000,0 1000,100"/></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .about-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-hero .lead {
+            font-size: 1.25rem;
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Mission Section */
+        .mission-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .mission-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .mission-card .icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        .mission-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .mission-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .story-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .story-highlight {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-blue);
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* Program Overview */
+        .program-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .program-parts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .program-part {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-part::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--light-blue));
+        }
+
+        .program-part h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .program-part .duration {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-part p, .program-part ul {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .program-part ul {
+            margin-left: 1rem;
+        }
+
+        .program-part li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Definition Section */
+        .definition-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .definition-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .definition-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        /* Founders Section */
+        .founders-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .founder-card {
+            text-align: center;
+            background: var(--bg-light);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .founder-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: var(--white);
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .founder-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-card .title {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .founder-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .impact-stat {
+            text-align: center;
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .impact-stat .number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .impact-stat .label {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .impact-stat .description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Support Section */
+        .support-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .support-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .support-method {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .support-method:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+
+        .support-method .icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .support-method h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .support-method p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-pink));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-hero .lead {
+                font-size: 1.1rem;
+            }
+
+            .mission-cards,
+            .program-parts,
+            .founders-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-card,
+            .program-part {
+                padding: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .impact-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-hero {
+                padding: 6rem 0 3rem;
+            }
+
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+
+            .mission-section,
+            .story-section,
+            .program-section,
+            .founders-section,
+            .impact-section,
+            .support-section,
+            .cta-section {
+                padding: 4rem 0;
+            }
+
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../public/assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../../public/assets/images/image.png" alt="Whole Cyber Human Initiative" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="index.html#team">Meet the Team</a></li>
+                <li><a href="index.html#companies">For Companies</a></li>
+                <li class="nav-dropdown">
+                    <a href="#resources" class="dropdown-toggle">Additional Resources <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#partners">Our Partners</a></li>
+                        <li><a href="#sponsor">Sponsor Whole Cyber</a></li>
+                        <li><a href="#cert-drive">50 Cert Drive</a></li>
+                        <li><a href="#webinars">Webinars</a></li>
+                        <li><a href="#digital-products">Digital Products</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#membership">Membership</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-login">
+                    <i class="fas fa-user"></i> Login
+                </button>
+                <button class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About Whole Cyber Human Initiative</h1>
+            <p class="lead">Empowering veterans, military families, and first responders with comprehensive cybersecurity education through innovative, accessible, and industry-vetted training programs.</p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Our Mission & Vision</h2>
+                <p>Building a stronger cybersecurity workforce through accessible education and comprehensive training programs.</p>
+            </div>
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <div class="icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To provide complimentary, immersive, self-paced cybersecurity programs in support of transitioning service members, veterans, military families, and first responders while offering tier-based cohorts globally.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>A world where veterans, military dependents, and first responders can access free or inexpensive upskilling before investing in accelerated bootcamps, creating better pathways to cybersecurity careers.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Our Values</h3>
+                    <p>Accessibility, excellence, community support, and industry relevance. We believe in empowering individuals through education and creating force multipliers in cybersecurity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <h2>Our Story</h2>
+                <div class="story-text">
+                    <p>Whole Cyber Human Initiative was founded by retired Navy veteran Paul Cummings, Leah McLean, and a distinguished founding board of advisors. Together, we represent nearly 300 years of combined industry experience, bringing unparalleled expertise to workforce development in cybersecurity.</p>
+                    
+                    <div class="story-highlight">
+                        "We scan the internet and create robust curriculums utilizing reputable complimentary training resources that would otherwise cost between $8,525 and $26,640 for online education or $9,000 to $20,000 for an online cyber cert bootcamp."
+                    </div>
+
+                    <p>Our comprehensive program addresses the critical gap in cybersecurity education by providing industry-vetted content from leading organizations including Cisco, Microsoft, AWS, RangeForce, EvolveSecurity, AttackIQ, Idaho National Labs, Qualys, and Fortinet.</p>
+
+                    <p>We recognized that the alleged "talent shortage" in cybersecurity wasn't really about a lack of talent—it was about the broken processes used to identify, develop, and acquire new cybersecurity professionals. We're here to change that narrative.</p>
+
+                    <p>As leaders in this space, we're committed to burning down these broken processes and kindling the rebirth of a new approach to cybersecurity workforce development. We're reshaping how the industry identifies, molds, and acquires a new breed of talent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Overview Section -->
+    <section class="program-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Our Comprehensive Program</h2>
+                <p>A two-part curriculum designed to transform careers and build cybersecurity expertise from the ground up.</p>
+            </div>
+            <div class="program-parts">
+                <div class="program-part">
+                    <h3>Part 1: Career Foundation</h3>
+                    <span class="duration">4-5 Days</span>
+                    <p>Candidates explore and research the 52 cybersecurity roles presented by the National Initiative for Cybersecurity Careers and Study. This phase includes:</p>
+                    <ul>
+                        <li>Comprehensive role analysis and career pathway exploration</li>
+                        <li>Myers-Briggs personality assessment</li>
+                        <li>Cybersecurity aptitude evaluation by CyberKnights</li>
+                        <li>Identification of 3-5 aligned career paths</li>
+                        <li>Career transition planning and goal setting</li>
+                    </ul>
+                </div>
+                <div class="program-part">
+                    <h3>Part 2: Technical Mastery</h3>
+                    <span class="duration">380 Hours (12 Weeks)</span>
+                    <p>Intensive, curated training featuring content from industry leaders. This comprehensive phase includes:</p>
+                    <ul>
+                        <li>Modular training from Cisco, Microsoft, AWS, and other industry leaders</li>
+                        <li>Hands-on labs and practical exercises</li>
+                        <li>Individual and group mentorship opportunities</li>
+                        <li>One-on-one sessions with advisory board members</li>
+                        <li>LinkedIn networking assistance and career support</li>
+                        <li>Peer collaboration and knowledge sharing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Definition Section -->
+    <section class="definition-section">
+        <div class="container">
+            <h2>What is a "Whole Cyber Human?"</h2>
+            <div class="definition-content">
+                <p>A Whole Cyber Human is defined as a person who has built foundational and practical knowledge holistically in the information technology and cybersecurity space. They are immersed into the full spectrum of cyber and empowered with training to be force multipliers.</p>
+                <p>They are career pivoters, transitioning veterans, or potential service members who have obtained critical mid-senior level soft and hard skills highly sought after in the job market. They are our children in school who have built efficiency in using technology. They are the key to securing the next 20 years.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founders Section -->
+    <section class="founders-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Meet Our Founders</h2>
+                <p>Visionary leaders with combined decades of military service and cybersecurity expertise.</p>
+            </div>
+            <div class="founders-grid">
+                <div class="founder-card">
+                    <div class="founder-avatar">PC</div>
+                    <h3>Paul Cummings</h3>
+                    <div class="title">Founder & CEO, Retired Navy Veteran</div>
+                    <p>With extensive military and cybersecurity experience, Paul leads our mission to transform cybersecurity education and workforce development for veterans and military families.</p>
+                </div>
+                <div class="founder-card">
+                    <div class="founder-avatar">LM</div>
+                    <h3>Leah McLean</h3>
+                    <div class="title">Co-Founder & Strategic Director</div>
+                    <p>Leah brings strategic vision and operational excellence to our programs, ensuring they meet the highest standards of quality and effectiveness.</p>
+                </div>
+                <div class="founder-card">
+                    <div class="founder-avatar">AB</div>
+                    <h3>Advisory Board</h3>
+                    <div class="title">300+ Years Combined Experience</div>
+                    <p>Our distinguished advisory board provides strategic guidance and industry expertise, ensuring our curriculum remains relevant and impactful.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Our Growing Impact</h2>
+                <p>Measurable results in cybersecurity workforce development and career transformation.</p>
+            </div>
+            <div class="impact-stats">
+                <div class="impact-stat">
+                    <span class="number">300+</span>
+                    <div class="label">Years Combined Experience</div>
+                    <div class="description">Advisory board expertise</div>
+                </div>
+                <div class="impact-stat">
+                    <span class="number">52</span>
+                    <div class="label">Cybersecurity Roles</div>
+                    <div class="description">Comprehensive career pathways</div>
+                </div>
+                <div class="impact-stat">
+                    <span class="number">380</span>
+                    <div class="label">Training Hours</div>
+                    <div class="description">Intensive technical curriculum</div>
+                </div>
+                <div class="impact-stat">
+                    <span class="number">100%</span>
+                    <div class="label">Free Access</div>
+                    <div class="description">No cost to participants globally</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Support Our Mission</h2>
+                <p>Help us continue providing free cybersecurity education to veterans, military families, and first responders worldwide.</p>
+            </div>
+            <div class="support-methods">
+                <div class="support-method">
+                    <div class="icon">
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                    <h4>PayPal Donations</h4>
+                    <p>Direct support through our secure PayPal donation platform for immediate impact on our programs.</p>
+                    <a href="https://www.paypal.com/donate/?hosted_button_id=CB4LWDGUELC3Y" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-heart"></i> Donate Now
+                    </a>
+                </div>
+                <div class="support-method">
+                    <div class="icon">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h4>Microsoft Rewards</h4>
+                    <p>Turn your Bing searches and Xbox rewards into donations to support our cybersecurity education mission.</p>
+                    <a href="#" class="btn btn-outline">Learn More</a>
+                </div>
+                <div class="support-method">
+                    <div class="icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4>Corporate Support</h4>
+                    <p>We're listed on Benevity for corporate donations and welcome partnerships with organizations.</p>
+                    <a href="#" class="btn btn-outline">Partner With Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Begin Your Cybersecurity Journey?</h2>
+            <p>Join thousands of veterans, military families, and first responders who have transformed their careers through our comprehensive cybersecurity programs.</p>
+            <div class="cta-buttons">
+                <a href="courses.html" class="btn btn-white btn-large">
+                    <i class="fas fa-graduation-cap"></i> Explore Courses
+                </a>
+                <a href="index.html#membership" class="btn btn-outline-white btn-large">
+                    <i class="fas fa-users"></i> Join Community
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../../public/assets/images/image.png" alt="Whole Cyber Human Initiative">
+                        <h3>Whole Cyber Human Initiative</h3>
+                    </div>
+                    <p>Empowering veterans, military families, and first responders through comprehensive cybersecurity education and career development programs.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/WholeCyberHuman" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/WholeCyberHuman" target="_blank" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/whole-cyber-human-initiative" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@wholecyber" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#team">Meet the Team</a></li>
+                        <li><a href="index.html#companies">For Companies</a></li>
+                        <li><a href="index.html#membership">Membership</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#partners">Our Partners</a></li>
+                        <li><a href="#sponsor">Sponsor Whole Cyber</a></li>
+                        <li><a href="#cert-drive">50 Cert Drive</a></li>
+                        <li><a href="#webinars">Webinars</a></li>
+                        <li><a href="#digital-products">Digital Products</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="https://www.paypal.com/donate/?hosted_button_id=CB4LWDGUELC3Y" target="_blank">Donate</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#scholarship">Scholarship Program</a></li>
+                        <li><a href="#volunteer">Volunteer</a></li>
+                        <li><a href="#corporate">Corporate Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>&copy; 2025 Whole Cyber Human Initiative. All rights reserved.</p>
+                    <div class="legal-links">
+                        <a href="https://www.wholecyberhumaninitiative.org/privacypolicy">Privacy Policy</a>
+                        <a href="https://www.wholecyberhumaninitiative.org/termsofuse">Terms of Use</a>
+                        <a href="#contact">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../public/assets/js/main.js"></script>
+    <script>
+        // About page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Animate counters on scroll
+            const observerOptions = {
+                threshold: 0.7,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target.querySelector('.number');
+                        if (counter && !counter.classList.contains('animated')) {
+                            animateCounter(counter);
+                            counter.classList.add('animated');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.impact-stat').forEach(stat => {
+                observer.observe(stat);
+            });
+
+            function animateCounter(element) {
+                const target = parseInt(element.textContent.replace(/[^\d]/g, ''));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                const suffix = element.textContent.replace(/[\d]/g, '');
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        element.textContent = target + suffix;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current) + suffix;
+                    }
+                }, 16);
+            }
+
+            // Add scroll animation to cards
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.mission-card, .program-part, .founder-card, .support-method').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                cardObserver.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

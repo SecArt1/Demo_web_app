@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additional Resources - Whole Cyber Human Initiative</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>        :root {
+            --primary-blue: #3b82f6;
+            --dark-blue: #1e40af;
+            --light-blue: #60a5fa;
+            --accent-pink: #ec4899;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --bg-light: #f8fafc;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-blue);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.5rem 1.5rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-login {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-login:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: 0.3s;
+        }        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.05)"><polygon points="0,100 1000,0 1000,100"/></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        /* Resource Cards */
+        .resources-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--light-blue));
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .card-items {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .card-items li {
+            padding: 8px 0;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-items li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+        }        .download-btn {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }        /* Veteran Resources Section */
+        .veteran-resources {
+            background: var(--bg-light);
+            padding: 100px 0;
+        }
+
+        .resource-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }        .resource-link {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .resource-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }        .resource-link h4 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .resource-link p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .resource-link a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .resource-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Free Training Section */
+        .free-training {
+            background: white;
+            padding: 100px 0;
+        }
+
+        .training-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }        .category-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .category-description {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .view-all-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .view-all-btn:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+        }        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-pink));
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }        .cta-btn.primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: white;
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn.primary:hover {
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-btn.secondary:hover {
+            background: white;
+            color: var(--text-dark);
+        }        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }        .footer-section a:hover {
+            color: var(--primary-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #94a3b8;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 30px;
+            text-align: center;
+            color: #64748b;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resource-links {
+                grid-template-columns: 1fr;
+            }
+
+            .training-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../../public/assets/images/image.png" alt="Whole Cyber Human Initiative" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#team">Meet the Team</a></li>
+                <li><a href="index.html#companies">For Companies</a></li>
+                <li class="nav-dropdown">
+                    <a href="resources.html" class="dropdown-toggle active">Additional Resources <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#partners">Our Partners</a></li>
+                        <li><a href="#sponsor">Sponsor Whole Cyber</a></li>
+                        <li><a href="#cert-drive">50 Cert Drive</a></li>
+                        <li><a href="#webinars">Webinars</a></li>
+                        <li><a href="#digital-products">Digital Products</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#membership">Membership</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-login">
+                    <i class="fas fa-user"></i> Login
+                </button>
+                <button class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Additional Resources</h1>
+                <p>Comprehensive training materials, tools, and resources to accelerate your cybersecurity journey</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complimentary Resources Section -->
+    <section class="resources-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Complimentary Resources</h2>
+                <p class="section-subtitle">Get started with our comprehensive guides and exploration materials designed to help you navigate the cybersecurity landscape</p>
+            </div>
+
+            <div class="resource-grid">
+                <div class="resource-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="card-title">Whole Cyber Human Exploration Call</h3>
+                    <p class="card-description">A comprehensive guide to help you understand the vast landscape of IT and Cybersecurity careers, training options, and growth potential.</p>
+                    <ul class="card-items">
+                        <li>Career Paths Overview</li>
+                        <li>Where to Start Your Journey</li>
+                        <li>Training Options & Platforms</li>
+                        <li>Career Growth Potential</li>
+                        <li>Certification Roadmaps</li>
+                    </ul>
+                    <a href="https://wholecyberhumaninitiative.sharepoint.com/:b:/s/FrontFacing/ESexPGsbbWJHgM-0Z4D7T_MB1q-kaTI-2sH7waAdu_U6rQ?e=Q594d5" class="download-btn" target="_blank">
+                        <i class="fas fa-download"></i>
+                        Download Navigation Guide
+                    </a>
+                </div>
+
+                <div class="resource-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="card-title">Getting Started Toolkit</h3>
+                    <p class="card-description">Essential resources and step-by-step guidance for beginners entering the cybersecurity field.</p>
+                    <ul class="card-items">
+                        <li>Foundational Knowledge Areas</li>
+                        <li>Recommended Learning Paths</li>
+                        <li>Study Materials & Resources</li>
+                        <li>Practical Lab Exercises</li>
+                        <li>Industry Best Practices</li>
+                    </ul>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-rocket"></i>
+                        Get Started Now
+                    </a>
+                </div>
+
+                <div class="resource-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="card-title">Certification Guide</h3>
+                    <p class="card-description">Navigate the complex world of cybersecurity certifications with our comprehensive roadmap and recommendations.</p>
+                    <ul class="card-items">
+                        <li>Entry-Level Certifications</li>
+                        <li>Advanced Specializations</li>
+                        <li>Vendor-Specific Paths</li>
+                        <li>Study Resources & Tips</li>
+                        <li>Career Impact Analysis</li>
+                    </ul>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-award"></i>
+                        Explore Certifications
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Veteran Resources Section -->
+    <section class="veteran-resources">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Veteran-Only Resources</h2>
+                <p class="section-subtitle">Curated and trusted training opportunities specifically designed for our military veterans transitioning into cybersecurity careers</p>
+            </div>
+
+            <div class="resource-links">
+                <div class="resource-link fade-in">
+                    <h4>WithYouWithMe</h4>
+                    <p>Digital skills training and career support for veterans</p>
+                    <a href="https://www.withyouwithme.com" target="_blank">Visit Platform →</a>
+                </div>
+
+                <div class="resource-link fade-in">
+                    <h4>Immersive Labs for Veterans</h4>
+                    <p>Hands-on cybersecurity training and skill development</p>
+                    <a href="https://vets.immersivelabs.online/register" target="_blank">Register Now →</a>
+                </div>
+
+                <div class="resource-link fade-in">
+                    <h4>Splunk Veterans Program</h4>
+                    <p>Data analytics and security information training</p>
+                    <a href="https://workplus.splunk.com/veterans" target="_blank">Learn More →</a>
+                </div>
+
+                <div class="resource-link fade-in">
+                    <h4>Fortinet Veterans Program</h4>
+                    <p>Network security and cybersecurity training</p>
+                    <a href="https://www.fortinet.com/training/veterans-program" target="_blank">Join Program →</a>
+                </div>
+
+                <div class="resource-link fade-in">
+                    <h4>AWS Educate</h4>
+                    <p>Cloud computing and security training resources</p>
+                    <a href="https://aws.amazon.com/education/awseducate/" target="_blank">Get Started →</a>
+                </div>
+
+                <div class="resource-link fade-in">
+                    <h4>Salesforce Veterans Program</h4>
+                    <p>CRM and cloud platform training for veterans</p>
+                    <a href="https://veterans.force.com/s/" target="_blank">Access Portal →</a>
+                </div>
+
+                <div class="resource-link fade-in">
+                    <h4>Microsoft MSSA</h4>
+                    <p>Software Systems Academy for transitioning veterans</p>
+                    <a href="https://military.microsoft.com/programs/microsoft-software-systems-academy/" target="_blank">Apply Now →</a>
+                </div>
+
+                <div class="resource-link fade-in">
+                    <h4>Fed VTE</h4>
+                    <p>Federal Virtual Training Environment for cybersecurity</p>
+                    <a href="https://fedvte.usalearning.gov/" target="_blank">Access Training →</a>
+                </div>
+
+                <div class="resource-link fade-in">
+                    <h4>Syracuse IVMF</h4>
+                    <p>Institute for Veterans & Military Families programs</p>
+                    <a href="https://ivmf.syracuse.edu/" target="_blank">Explore Programs →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Training Section -->
+    <section class="free-training">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Free Hands-On Training</h2>
+                <p class="section-subtitle">Access hundreds of free, practical training resources across all cybersecurity domains</p>
+            </div>
+
+            <div class="training-categories">
+                <div class="category-card fade-in">
+                    <div class="category-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="category-title">Network Security</h3>
+                    <p class="category-description">Learn network protection, firewall configuration, and intrusion detection systems</p>
+                    <a href="https://www.wholecyberhumaninitiative.org/s/pages/free-training" class="view-all-btn" target="_blank">View Resources</a>
+                </div>
+
+                <div class="category-card fade-in">
+                    <div class="category-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="category-title">Cloud Security</h3>
+                    <p class="category-description">Master AWS, Azure, and GCP security best practices and implementations</p>
+                    <a href="https://www.wholecyberhumaninitiative.org/s/pages/free-training" class="view-all-btn" target="_blank">View Resources</a>
+                </div>
+
+                <div class="category-card fade-in">
+                    <div class="category-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3 class="category-title">Penetration Testing</h3>
+                    <p class="category-description">Practice ethical hacking and vulnerability assessment techniques</p>
+                    <a href="https://www.wholecyberhumaninitiative.org/s/pages/free-training" class="view-all-btn" target="_blank">View Resources</a>
+                </div>
+
+                <div class="category-card fade-in">
+                    <div class="category-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="category-title">Digital Forensics</h3>
+                    <p class="category-description">Learn incident response and digital evidence analysis</p>
+                    <a href="https://www.wholecyberhumaninitiative.org/s/pages/free-training" class="view-all-btn" target="_blank">View Resources</a>
+                </div>
+
+                <div class="category-card fade-in">
+                    <div class="category-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="category-title">Security Operations</h3>
+                    <p class="category-description">SOC operations, SIEM management, and threat hunting</p>
+                    <a href="https://www.wholecyberhumaninitiative.org/s/pages/free-training" class="view-all-btn" target="_blank">View Resources</a>
+                </div>
+
+                <div class="category-card fade-in">
+                    <div class="category-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="category-title">Governance & Compliance</h3>
+                    <p class="category-description">Risk management, compliance frameworks, and security governance</p>
+                    <a href="https://www.wholecyberhumaninitiative.org/s/pages/free-training" class="view-all-btn" target="_blank">View Resources</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://www.wholecyberhumaninitiative.org/s/pages/free-training" class="download-btn" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                    View Complete Training List
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2>Ready to Start Your Cybersecurity Journey?</h2>
+                <p>Join thousands of professionals who have transformed their careers with our comprehensive training programs and resources.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="cta-btn primary">
+                        <i class="fas fa-rocket"></i>
+                        Get Started Today
+                    </a>
+                    <a href="#" class="cta-btn secondary">
+                        <i class="fas fa-phone"></i>
+                        Schedule Consultation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Whole Cyber Human Initiative</h3>
+                    <p>Empowering individuals to build successful cybersecurity careers through comprehensive training and mentorship.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/WholeCyberHuman" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/WholeCyberHuman" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/whole-cyber-human-initiative" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.youtube.com/@wholecyber" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Programs</a>
+                    <a href="#">Resources</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="#">Free Training</a>
+                    <a href="#">Veteran Resources</a>
+                    <a href="#">Career Guidance</a>
+                    <a href="#">Certification Paths</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Email: info@wholecyberhumaninitiative.org</p>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Address: 123 Cyber St, Security City, SC 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Whole Cyber Human Initiative. All rights reserved. | <a href="https://www.wholecyberhumaninitiative.org/privacypolicy" target="_blank">Privacy Policy</a> | <a href="#" target="_blank">Terms of Use</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading state to download buttons
+        document.querySelectorAll('.download-btn, .view-all-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+
+        // Add hover effects to resource cards
+        document.querySelectorAll('.resource-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click tracking for external links
+        document.querySelectorAll('a[target="_blank"]').forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('External link clicked:', this.href);
+                // Add analytics tracking here if needed
+            });
+        });
+    </script>
+</body>
+</html>

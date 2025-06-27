@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership - Whole Cyber Human Initiative</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    
+    <!-- Page-specific styles -->
+    <style>
+        :root {
+            --primary-blue: #3b82f6;
+            --dark-blue: #1e40af;
+            --light-blue: #60a5fa;
+            --accent-pink: #ec4899;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --bg-light: #f8fafc;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            --green: #10b981;
+            --orange: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-blue);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.5rem 1.5rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-login {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-login:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Membership Hero Section */
+        .membership-hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: var(--white);
+            padding: 180px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .membership-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.05)"><polygon points="0,100 1000,0 1000,100"/></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .membership-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .membership-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .membership-hero .lead {
+            font-size: 1.25rem;
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Community Benefits Section */
+        .community-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--light-blue));
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card.recommended {
+            border-color: var(--primary-blue);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.recommended::before {
+            content: 'RECOMMENDED';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-blue);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.recommended:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .plan-description {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .plan-price .currency {
+            font-size: 1.5rem;
+            vertical-align: top;
+        }
+
+        .plan-billing {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .plan-features li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .plan-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .plan-btn.primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: white;
+        }
+
+        .plan-btn.secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .plan-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .plan-btn.primary:hover {
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .plan-btn.secondary:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* Exclusive Courses Section */
+        .courses-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .course-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .course-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .course-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .course-meta span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .course-level {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .course-level.beginner {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--green);
+        }
+
+        .course-level.intermediate {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--orange);
+        }
+
+        .course-level.advanced {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        /* Community Features Section */
+        .community-features {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-pink));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-btn.primary {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn.primary:hover {
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-btn.secondary:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 30px;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .membership-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .membership-hero .lead {
+                font-size: 1.1rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.recommended {
+                transform: none;
+            }
+
+            .pricing-card.recommended:hover {
+                transform: translateY(-10px);
+            }
+
+            .benefits-grid,
+            .courses-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .membership-hero {
+                padding: 150px 0 80px;
+            }
+
+            .membership-hero h1 {
+                font-size: 2rem;
+            }
+
+            .community-section,
+            .pricing-section,
+            .courses-section,
+            .community-features,
+            .cta-section {
+                padding: 60px 0;
+            }
+
+            .pricing-card,
+            .benefit-card,
+            .course-card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../public/assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../../public/assets/images/image.png" alt="Whole Cyber Human Initiative" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#team">Meet the Team</a></li>
+                <li><a href="index.html#companies">For Companies</a></li>
+                <li class="nav-dropdown">
+                    <a href="resources.html" class="dropdown-toggle">Additional Resources <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#partners">Our Partners</a></li>
+                        <li><a href="#sponsor">Sponsor Whole Cyber</a></li>
+                        <li><a href="#cert-drive">50 Cert Drive</a></li>
+                        <li><a href="#webinars">Webinars</a></li>
+                        <li><a href="#digital-products">Digital Products</a></li>
+                    </ul>
+                </li>
+                <li><a href="membership.html" class="active">Membership</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-login">
+                    <i class="fas fa-user"></i> Login
+                </button>
+                <button class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="membership-hero">
+        <div class="container">
+            <h1>Join Our Community</h1>
+            <p class="lead">Connect with other cyber humans, access exclusive content, and accelerate your cybersecurity journey with our premium membership community.</p>
+        </div>
+    </section>
+
+    <!-- Community Benefits Section -->
+    <section class="community-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Connecting with Other Cyber Humans</h2>
+                <p class="section-subtitle">Join a thriving community of cybersecurity professionals, veterans, and learners who are passionate about building successful careers in cybersecurity.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Interact with Instructors and Peers</h3>
+                    <p>Engage directly with industry experts and fellow learners in our interactive community platform. Ask questions, share insights, and build lasting professional relationships.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Exclusive Courses and Blogs</h3>
+                    <p>Access member-only courses, in-depth tutorials, and expert-written blog posts that aren't available anywhere else. Stay ahead with cutting-edge cybersecurity knowledge.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Fluently Trained Study AI Bots</h3>
+                    <p>Get personalized learning assistance from our advanced AI study bots, trained specifically on cybersecurity content to help you master complex concepts faster.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Mentorship from Industry Practitioners</h3>
+                    <p>Connect with experienced cybersecurity professionals who provide one-on-one mentorship, career guidance, and real-world insights from the field.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <h3>Dedicated Discord Chat Rooms</h3>
+                    <p>Join topic-specific Discord channels for real-time discussions, collaborative learning, study groups, and networking with like-minded professionals.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Career Development Support</h3>
+                    <p>Receive personalized career advice, resume reviews, interview preparation, and job placement assistance from our network of industry professionals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">            <div class="section-header fade-in">
+                <h2 class="section-title">Community Membership</h2>
+                <p class="section-subtitle">Join our premium cybersecurity community and get access to all exclusive features, courses, and mentorship opportunities.</p>
+            </div>
+
+            <div class="pricing-grid" style="justify-content: center;">
+                <div class="pricing-card recommended fade-in" style="max-width: 450px;">
+                    <h3 class="plan-name">Annual Membership</h3>
+                    <p class="plan-description">Complete access to our cybersecurity community with all premium features, exclusive courses, and personalized mentorship.</p>
+                    <div class="plan-price">
+                        <span class="currency">$</span>20
+                    </div>
+                    <p class="plan-billing">Billed yearly - Best value!</p>
+                    <ul class="plan-features">
+                        <li>Access to community Discord</li>
+                        <li>Complete course library access</li>
+                        <li>AI study bot assistance</li>
+                        <li>Exclusive premium courses</li>
+                        <li>1-on-1 mentorship sessions</li>
+                        <li>Priority support and feedback</li>
+                        <li>Career development resources</li>
+                        <li>Early access to new content</li>
+                        <li>Certification guidance</li>
+                        <li>Job board access</li>
+                        <li>Weekly study groups</li>
+                    </ul>
+                    <a href="#" class="plan-btn primary">Join Community For $20/Year</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exclusive Courses Section -->
+    <section class="courses-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Exclusive Courses in Membership</h2>
+                <p class="section-subtitle">Access premium courses designed by industry experts, available only to our community members.</p>
+            </div>
+
+            <div class="courses-grid">
+                <div class="course-card fade-in">
+                    <h4>Advanced Penetration Testing</h4>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 12 hours</span>
+                        <span><i class="fas fa-users"></i> 1,234 students</span>
+                    </div>
+                    <span class="course-level advanced">Advanced</span>
+                    <p>Master advanced penetration testing techniques, tools, and methodologies used by professional ethical hackers and security consultants.</p>
+                </div>
+
+                <div class="course-card fade-in">
+                    <h4>Cloud Security Architecture</h4>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 16 hours</span>
+                        <span><i class="fas fa-users"></i> 987 students</span>
+                    </div>
+                    <span class="course-level intermediate">Intermediate</span>
+                    <p>Learn to design and implement secure cloud architectures across AWS, Azure, and Google Cloud platforms with hands-on labs.</p>
+                </div>
+
+                <div class="course-card fade-in">
+                    <h4>Incident Response and Forensics</h4>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 14 hours</span>
+                        <span><i class="fas fa-users"></i> 756 students</span>
+                    </div>
+                    <span class="course-level intermediate">Intermediate</span>
+                    <p>Develop skills in digital forensics and incident response procedures used by cybersecurity teams in real-world scenarios.</p>
+                </div>
+
+                <div class="course-card fade-in">
+                    <h4>Cybersecurity for Beginners</h4>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 8 hours</span>
+                        <span><i class="fas fa-users"></i> 2,156 students</span>
+                    </div>
+                    <span class="course-level beginner">Beginner</span>
+                    <p>Perfect introduction to cybersecurity fundamentals, covering basic concepts, terminology, and career pathways in the field.</p>
+                </div>
+
+                <div class="course-card fade-in">
+                    <h4>Zero Trust Security Model</h4>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 10 hours</span>
+                        <span><i class="fas fa-users"></i> 543 students</span>
+                    </div>
+                    <span class="course-level advanced">Advanced</span>
+                    <p>Understand and implement zero trust security frameworks in modern enterprise environments with practical case studies.</p>
+                </div>
+
+                <div class="course-card fade-in">
+                    <h4>Social Engineering Defense</h4>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 6 hours</span>
+                        <span><i class="fas fa-users"></i> 1,876 students</span>
+                    </div>
+                    <span class="course-level beginner">Beginner</span>
+                    <p>Learn to identify and defend against social engineering attacks, including phishing, pretexting, and physical security breaches.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Features Section -->
+    <section class="community-features">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Community Features</h2>
+                <p class="section-subtitle">Discover all the tools and resources available to help you succeed in your cybersecurity career journey.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h4>Live Discussion Forums</h4>
+                    <p>Participate in ongoing discussions about the latest cybersecurity trends, threats, and technologies with industry professionals.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4>Weekly Study Groups</h4>
+                    <p>Join organized study sessions focusing on different cybersecurity topics and certification preparation with peer support.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h4>Job Board Access</h4>
+                    <p>Get exclusive access to cybersecurity job opportunities shared by our network of industry partners and community members.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h4>Achievement System</h4>
+                    <p>Track your learning progress and earn recognition for completing courses, participating in discussions, and helping others.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h4>Resource Library</h4>
+                    <p>Access a comprehensive library of whitepapers, tools, templates, and guides curated by cybersecurity experts.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h4>Expert Webinars</h4>
+                    <p>Attend live webinars and Q&A sessions with cybersecurity leaders, featuring the latest insights and career advice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Join Our Community?</h2>
+            <p>Start your journey with thousands of cybersecurity professionals who are advancing their careers through our supportive community.</p>            <div class="cta-buttons">
+                <a href="#" class="cta-btn primary">
+                    <i class="fas fa-crown"></i> Join Community - $20/Year
+                </a>
+                <a href="contact.html" class="cta-btn secondary">
+                    <i class="fas fa-question-circle"></i> Have Questions?
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../../public/assets/images/image.png" alt="Whole Cyber Human Initiative" style="height: 40px; margin-bottom: 15px;">
+                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Whole Cyber Human Initiative</h3>
+                    </div>
+                    <p>Empowering veterans, military families, and first responders through comprehensive cybersecurity education and career development programs.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="https://www.facebook.com/WholeCyberHuman" target="_blank" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/WholeCyberHuman" target="_blank" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/whole-cyber-human-initiative" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@wholecyber" target="_blank" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#team">Meet the Team</a></li>
+                        <li><a href="index.html#companies">For Companies</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="resources.html">Additional Resources</a></li>
+                        <li><a href="#partners">Our Partners</a></li>
+                        <li><a href="#sponsor">Sponsor Whole Cyber</a></li>
+                        <li><a href="#webinars">Webinars</a></li>
+                        <li><a href="#digital-products">Digital Products</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="https://www.paypal.com/donate/?hosted_button_id=CB4LWDGUELC3Y" target="_blank">Donate</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="#scholarship">Scholarship Program</a></li>
+                        <li><a href="#volunteer">Volunteer</a></li>
+                        <li><a href="#corporate">Corporate Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Whole Cyber Human Initiative. All rights reserved. | 
+                   <a href="https://www.wholecyberhumaninitiative.org/privacypolicy" target="_blank">Privacy Policy</a> | 
+                   <a href="https://www.wholecyberhumaninitiative.org/termsofuse" target="_blank">Terms of Use</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../public/assets/js/main.js"></script>
+    <script>
+        // Membership page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add scroll animation to elements
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Pricing card interactions
+            document.querySelectorAll('.plan-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Show loading state
+                    const originalText = this.textContent;
+                    this.textContent = 'Processing...';
+                    this.style.opacity = '0.7';
+                    
+                    // Simulate processing
+                    setTimeout(() => {
+                        this.textContent = 'Redirecting to Payment...';
+                        
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                            this.style.opacity = '1';
+                            // Here you would typically redirect to payment processor
+                            console.log('Redirect to payment for plan:', this.closest('.pricing-card').querySelector('.plan-name').textContent);
+                        }, 1500);
+                    }, 1000);
+                });
+            });
+
+            // Course card hover effects
+            document.querySelectorAll('.course-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.borderLeftWidth = '6px';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.borderLeftWidth = '4px';
+                });
+            });
+
+            // Feature card animations
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.feature-icon');
+                    icon.style.transform = 'scale(1.1) rotate(5deg)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.feature-icon');
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+
+            // Add click tracking for membership buttons
+            document.querySelectorAll('.cta-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    console.log('CTA button clicked:', this.textContent.trim());
+                    // Add analytics tracking here if needed
+                });
+            });
+
+            // Benefit card stagger animation
+            const benefitCards = document.querySelectorAll('.benefit-card');
+            benefitCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+
+            // Social proof counter animation (if you want to add dynamic numbers)
+            function animateCounter(element, target, duration = 2000) {
+                const start = 0;
+                const increment = target / (duration / 16);
+                let current = start;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        element.textContent = target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, 16);
+            }
+
+            // Add any dynamic counters here
+            // Example: animateCounter(document.querySelector('.member-count'), 5000);
+        });
+    </script>
+</body>
+</html>

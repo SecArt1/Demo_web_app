@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use - Whole Cyber Human Initiative</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    
+    <!-- Page-specific styles -->
+    <style>
+        :root {
+            --primary-blue: #3b82f6;
+            --dark-blue: #1e40af;
+            --light-blue: #60a5fa;
+            --accent-pink: #ec4899;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --bg-light: #f8fafc;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-blue);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.5rem 1.5rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--bg-light);
+            color: var(--primary-blue);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-login {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-login:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Terms Hero Section */
+        .terms-hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: var(--white);
+            padding: 180px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terms-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.05)"><polygon points="0,100 1000,0 1000,100"/></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .terms-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .terms-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .terms-hero .lead {
+            font-size: 1.25rem;
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Table of Contents */
+        .toc-section {
+            padding: 80px 0 40px;
+            background: var(--white);
+        }
+
+        .toc-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .toc-card {
+            background: var(--bg-light);
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .toc-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toc-card h3 i {
+            color: var(--primary-blue);
+        }
+
+        .toc-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+            list-style: none;
+        }
+
+        .toc-list li {
+            padding: 8px 0;
+        }
+
+        .toc-list a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toc-list a:hover {
+            color: var(--primary-blue);
+        }
+
+        .toc-list a::before {
+            content: '→';
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Terms Content */
+        .terms-content {
+            padding: 40px 0 100px;
+            background: var(--white);
+        }
+
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .terms-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 100px;
+        }
+
+        .terms-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .terms-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 30px 0 15px;
+        }
+
+        .terms-section p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .terms-section ul {
+            margin: 15px 0 15px 20px;
+            color: var(--text-light);
+        }
+
+        .terms-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: var(--bg-light);
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .highlight-box.warning {
+            border-left-color: #f59e0b;
+            background: #fef3c7;
+        }
+
+        .highlight-box.important {
+            border-left-color: #ef4444;
+            background: #fee2e2;
+        }
+
+        .highlight-box h4 {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact-btn {
+            background: white;
+            color: var(--primary-blue);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 30px;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .footer-bottom a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .terms-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .terms-hero .lead {
+                font-size: 1.1rem;
+            }
+
+            .toc-list {
+                grid-template-columns: 1fr;
+            }
+
+            .terms-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .terms-hero {
+                padding: 150px 0 80px;
+            }
+
+            .terms-hero h1 {
+                font-size: 2rem;
+            }
+
+            .toc-section,
+            .terms-content {
+                padding: 40px 0;
+            }
+
+            .toc-card,
+            .contact-info {
+                padding: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../public/assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../../public/assets/images/image.png" alt="Whole Cyber Human Initiative" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#team">Meet the Team</a></li>
+                <li><a href="index.html#companies">For Companies</a></li>
+                <li class="nav-dropdown">
+                    <a href="resources.html" class="dropdown-toggle">Additional Resources <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#partners">Our Partners</a></li>
+                        <li><a href="#sponsor">Sponsor Whole Cyber</a></li>
+                        <li><a href="#cert-drive">50 Cert Drive</a></li>
+                        <li><a href="#webinars">Webinars</a></li>
+                        <li><a href="#digital-products">Digital Products</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#membership">Membership</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-login">
+                    <i class="fas fa-user"></i> Login
+                </button>
+                <button class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="terms-hero">
+        <div class="container">
+            <h1>Terms of Use</h1>
+            <p class="lead">Please read these terms and conditions carefully before using our platform. By accessing our services, you agree to be bound by these terms.</p>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="toc-section">
+        <div class="container">
+            <div class="toc-container">
+                <div class="toc-card fade-in">
+                    <h3><i class="fas fa-list"></i> Table of Contents</h3>
+                    <ul class="toc-list">
+                        <li><a href="#access-registration">Access and Registration</a></li>
+                        <li><a href="#license-use">License to Use</a></li>
+                        <li><a href="#communications">Communications</a></li>
+                        <li><a href="#code-conduct">Code of Conduct</a></li>
+                        <li><a href="#intellectual-property">Intellectual Property</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                        <li><a href="#payments-refunds">Payments and Refunds</a></li>
+                        <li><a href="#disclaimer">Disclaimer</a></li>
+                        <li><a href="#limitation-liability">Limitation of Liability</a></li>
+                        <li><a href="#indemnity">Indemnity and Release</a></li>
+                        <li><a href="#third-party">Links to Third Party Websites</a></li>
+                        <li><a href="#governing-law">Governing Law</a></li>
+                        <li><a href="#miscellaneous">Miscellaneous</a></li>
+                        <li><a href="#contact-us">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="terms-content">
+        <div class="container">
+            <div class="content-container">
+                
+                <!-- Introduction -->
+                <div class="terms-section fade-in">
+                    <p><strong>Last Updated:</strong> December 2024</p>
+                    <p>These Terms of Use set out the terms and conditions for use of the Whole Cyber Human Initiative website ("Website") and any content, public forums, or services offered on or through the Website and/or through any mobile application(s) ("Application") (collectively referred to as the "Platform").</p>
+                    <p>These Terms of Use apply to end users of the Website (referred to as "Learners", "You", "Your"). These Terms of Use, including the <a href="privacy.html">Privacy Policy</a> and any other terms and conditions published on the Platform or communicated to you from time to time (collectively referred to as the "Agreement"), define the relationship and responsibilities between You and Creator (as defined herein) in using the Platform.</p>
+
+                    <div class="highlight-box important">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Important Notice</h4>
+                        <p>By accessing this Platform, You are agreeing to be bound by the terms of this Agreement, all applicable laws and regulations. If You disagree with any part of this Agreement or do not wish to be bound by the same, then please do not use the Platform in any manner.</p>
+                    </div>
+                </div>
+
+                <!-- Access and Registration -->
+                <div class="terms-section fade-in" id="access-registration">
+                    <h2><i class="fas fa-user-plus"></i> 1. Access and Registration</h2>
+                    <p>If You're an individual You must be at least 18 (eighteen) years of age, or, if You are between the ages of 13 and 18, You must have Your parent or legal guardian's permission to use the Platform. By using the Platform, You are, through Your actions, representing and warranting to us that You have obtained the appropriate consents/permissions to use the Platform.</p>
+                    
+                    <div class="highlight-box warning">
+                        <h4><i class="fas fa-child"></i> Age Restrictions</h4>
+                        <p>If You are under the age of 13 years or 16 years (depending on your country of residence), You may neither use our Platform in any manner nor may You register for any content or services offered therein.</p>
+                    </div>
+
+                    <p>To access any Content offered on the Platform, we require You to register for the same by providing Your name and email address. Please read our Privacy Policy to understand how we handle Your information. You represent that the information indicated by You during Your enrollment or registration for any Content on the Platform, is true and complete, that You meet the eligibility requirements for use of the Platform and the Content offered therein.</p>
+
+                    <h3>Platform Compatibility</h3>
+                    <p>To access the Platform and/or view the content on the Platform, You will need to use a "Supported/Compatible Device" which means a personal computer, mobile phone, portable media player, or other electronic device that meets the system and compatibility requirements and on which You are authorized to operate the Platform.</p>
+                </div>
+
+                <!-- License to Use -->
+                <div class="terms-section fade-in" id="license-use">
+                    <h2><i class="fas fa-certificate"></i> 2. License to Use</h2>
+                    <p>You are granted a limited, non-exclusive license to access and view the Content on the Platform for Your own personal, non-commercial use only. Further, if so allowed on the Platform, You may temporarily download one copy of any downloadable Content for personal and non-commercial transitory viewing only.</p>
+
+                    <h3>Restrictions</h3>
+                    <p>This license does not grant You the right to assign or sublicense the license granted under this Agreement to anyone else. Further, You may not:</p>
+                    <ul>
+                        <li>Modify, edit or copy the Content, Creator Content or any material made available on the Platform</li>
+                        <li>Create derivative works or exploit any material made available on the Platform</li>
+                        <li>Publicly display (commercially or non-commercially) the Content, Creator Content or any material made available on the Platform</li>
+                        <li>Attempt to decompile or reverse engineer any software contained in the Platform</li>
+                        <li>Remove any copyright or other proprietary notations from the Content</li>
+                        <li>Transfer any material made available on the Platform to another person or 'mirror' the same on any other server</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h4><i class="fas fa-info-circle"></i> License Termination</h4>
+                        <p>This license shall automatically terminate if You violate any of these restrictions and may be terminated by us at any time. Upon termination of this license granted to You, You must destroy any downloaded materials in Your possession (whether in electronic or printed format).</p>
+                    </div>
+                </div>
+
+                <!-- Communications -->
+                <div class="terms-section fade-in" id="communications">
+                    <h2><i class="fas fa-comments"></i> 3. Communications</h2>
+                    <p>The Platform includes provision and facilitation of Public Forums designed to enable You to communicate with us and other registrants to the Content You have registered for. Use of these Public Forums are completely your choice and by registering for a Content, you are not obligated to participate in the Public Forum.</p>
+
+                    <p>However, if You choose to participate, You agree to adhere to the terms specified in the 'Code of Conduct' section hereinbelow and such other terms as may be published on our Platform.</p>
+
+                    <h3>Content Rights</h3>
+                    <p>You represent and warrant that You own and control all rights in and to any content uploaded or posted by You on the Public Forums or anywhere on the Platform ("Learner Content"), or that You are licensed to use and reproduce such Learner Content.</p>
+
+                    <div class="highlight-box important">
+                        <h4><i class="fas fa-exclamation-circle"></i> Content Responsibility</h4>
+                        <p>You shall be solely responsible for the Learner Content including its legality, reliability, accuracy, and appropriateness, and the consequences of its publication.</p>
+                    </div>
+                </div>
+
+                <!-- Code of Conduct -->
+                <div class="terms-section fade-in" id="code-conduct">
+                    <h2><i class="fas fa-gavel"></i> 4. Code of Conduct</h2>
+                    <p>You agree to the following guidelines when using our Platform:</p>
+
+                    <h3>Legitimate Usage</h3>
+                    <p>You agree to use the Platform only for lawful purposes and You are not allowed to use our Platform to engage in any kind of activity that violates any applicable central, state, local, federal or international law or regulation.</p>
+
+                    <h3>Prohibited Content</h3>
+                    <ul>
+                        <li><strong>Harmful or dangerous content:</strong> Any content which incites or promotes violence, that may cause physical or emotional harm or that may endanger the safety of any individual</li>
+                        <li><strong>Hateful or defamatory content:</strong> We do not tolerate any form of hate speech or statements that are libelous, slanderous, threatening, violent, predatory, defamatory</li>
+                        <li><strong>Violent and graphic content:</strong> Any content, the sole objective of which is to sensationalize, shock or disturb individuals</li>
+                        <li><strong>Harassment and bullying:</strong> We do not tolerate any form of harassment or bullying on the Platform</li>
+                        <li><strong>Spam:</strong> Posting untargeted, unwanted and repetitive content, comments or messages</li>
+                        <li><strong>Scams:</strong> Any content uploaded or posted in order to trick others for financial gain</li>
+                        <li><strong>Impersonation:</strong> Impersonating another person, including but not limited to, another learner</li>
+                    </ul>
+
+                    <div class="highlight-box warning">
+                        <h4><i class="fas fa-ban"></i> Violation Consequences</h4>
+                        <p>If any violation of the above rules of conduct comes to our notice, then, we reserve the right to refuse Your access to the Platform, terminate accounts or remove such violating content at any time without notice to You.</p>
+                    </div>
+                </div>
+
+                <!-- Intellectual Property -->
+                <div class="terms-section fade-in" id="intellectual-property">
+                    <h2><i class="fas fa-copyright"></i> 5. Intellectual Property</h2>
+                    <p>We own all information and materials, including Content and Creator Content (in whatever form or media) provided or communicated to You by or on behalf of us including but not limited to, the Platform, trademarks, trade dress, logos, wordmarks, illustrations, letters, images, ideas, concepts, the layout, design, flow, look and feel of the Platform ("Creator's Intellectual Property").</p>
+
+                    <div class="highlight-box">
+                        <h4><i class="fas fa-shield-alt"></i> Protection Notice</h4>
+                        <p>Creator's Intellectual Property is protected by the applicable intellectual property laws, including international copyright, trademark, patent, trade secret and other intellectual property or proprietary rights laws and any unauthorized use, reproduction, modification, distribution, transmission, republication, display or performance of the Creator's Intellectual Property is strictly prohibited.</p>
+                    </div>
+                </div>
+
+                <!-- Feedback -->
+                <div class="terms-section fade-in" id="feedback">
+                    <h2><i class="fas fa-comment-dots"></i> 6. Feedback</h2>
+                    <p>If You submit suggestions, ideas, comments, or questions containing product feedback about any Content, the Platform or any part thereof, either through the Public Forum or otherwise ("Feedback"), then You grants to us a worldwide, non-exclusive, royalty-free, perpetual, and irrevocable right to use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, transmit, and display such Feedback in any form.</p>
+                </div>
+
+                <!-- Payments and Refunds -->
+                <div class="terms-section fade-in" id="payments-refunds">
+                    <h2><i class="fas fa-credit-card"></i> 7. Payments and Refunds</h2>
+                    <p>To register/enroll for any Content, You may need to pay a fee as may be applicable ("Content Fee"). Payment of such Content Fee shall be processed through third-party payment processors. Your payments may be subject to applicable taxes.</p>
+
+                    <div class="highlight-box important">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Refund Policy</h4>
+                        <p>Once You purchase access to a Content on the Platform, the same cannot be cancelled and there shall be no refund of the Content Fee, unless otherwise stated in our <a href="refund-policy.html">Refund Policy</a>.</p>
+                    </div>
+
+                    <p>We use third-party service providers to enable You to make payment for the purchases made on the Platform. We do not capture and/or store any of your sensitive personal information. While making payments through such third-party payment gateways/service providers kindly ensure to read through their terms and conditions.</p>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="terms-section fade-in" id="disclaimer">
+                    <h2><i class="fas fa-exclamation-triangle"></i> 8. Disclaimer</h2>
+                    <div class="highlight-box important">
+                        <h4><i class="fas fa-warning"></i> Important Legal Notice</h4>
+                        <p>THE PLATFORM IS PROVIDED TO YOU "AS IS" AND "AS AVAILABLE" AND WITH ALL FAULTS AND DEFECTS WITHOUT WARRANTY OF ANY KIND. TO THE MAXIMUM EXTENT PERMITTED UNDER APPLICABLE LAW, THE CREATOR, ON ITS OWN BEHALF AND ON BEHALF OF ITS AFFILIATES AND ITS AND THEIR RESPECTIVE LICENSORS AND SERVICE PROVIDERS, EXPRESSLY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY OR OTHERWISE.</p>
+                    </div>
+
+                    <p>Without limitation to the foregoing, the Creator provides no warranty or undertaking, and makes no representation of any kind that the Platform or the services or products offered therein will meet your requirements, achieve any intended results, be compatible or work with any other software, applications, systems or services, operate without interruption, meet any performance or reliability standards or be error free.</p>
+                </div>
+
+                <!-- Limitation of Liability -->
+                <div class="terms-section fade-in" id="limitation-liability">
+                    <h2><i class="fas fa-shield-alt"></i> 9. Limitation of Liability</h2>
+                    <p>In no event shall the Creator be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the Content or any other materials on the Platform, even if the Creator or any authorized personnel of the Creator has been notified orally or in writing of the possibility of such damage.</p>
+
+                    <div class="highlight-box">
+                        <h4><i class="fas fa-info-circle"></i> Jurisdictional Variations</h4>
+                        <p>Some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, so, some or all of these limitations may not apply to You.</p>
+                    </div>
+                </div>
+
+                <!-- Indemnity -->
+                <div class="terms-section fade-in" id="indemnity">
+                    <h2><i class="fas fa-handshake"></i> 10. Indemnity and Release</h2>
+                    <p>You shall indemnify and hold harmless the Creator and where applicable, its officers, directors, agents and employees, from any claim or demand, or actions including reasonable attorney's fees, made by any third party or penalty imposed due to or arising out of Your breach of this Agreement or any document incorporated by reference, or Your violation of any law, rules, regulations or the rights of a third party.</p>
+                </div>
+
+                <!-- Third Party Links -->
+                <div class="terms-section fade-in" id="third-party">
+                    <h2><i class="fas fa-external-link-alt"></i> 11. Links to Third Party Websites</h2>
+                    <p>Creator has not reviewed all of the sites linked to its Platform and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by the Creator of such site. Use of any such linked website is at Your own risk.</p>
+                </div>
+
+                <!-- Governing Law -->
+                <div class="terms-section fade-in" id="governing-law">
+                    <h2><i class="fas fa-balance-scale"></i> 12. Governing Law and Jurisdiction</h2>
+                    <p>Any claim relating to the Platform shall be governed by the laws of the Creator's home jurisdiction without regard to its conflict of law provisions. You agree, as we do, to submit to the exclusive jurisdiction of the courts at Creator's home jurisdiction.</p>
+                </div>
+
+                <!-- Miscellaneous -->
+                <div class="terms-section fade-in" id="miscellaneous">
+                    <h2><i class="fas fa-cog"></i> 13. Miscellaneous</h2>
+                    
+                    <h3>Alteration of Platform or Amendments</h3>
+                    <p>We reserve the right to make changes to our Platform, policies, and this Agreement at any time. We will post the new terms with a revision date indicated at the top. You should check our Platform frequently to see recent changes.</p>
+
+                    <h3>Waiver</h3>
+                    <p>If You breach these conditions and we take no action, we will still be entitled to use our rights and remedies in any other situation where You breach these conditions.</p>
+
+                    <h3>Assignment</h3>
+                    <p>You may not assign or transfer this Agreement, by operation or law or otherwise. Any attempt by You to assign or transfer this Agreement will be null and void.</p>
+
+                    <h3>Severability</h3>
+                    <p>If any provision of this Agreement will be adjudged by any court of competent jurisdiction to be unenforceable or invalid, that provision will be limited to the minimum extent necessary so that this Agreement will otherwise remain in effect.</p>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info fade-in" id="contact-us">
+                    <h3><i class="fas fa-envelope"></i> Questions About These Terms?</h3>
+                    <p>If you have concerns or queries regarding this Agreement, please don't hesitate to reach out to us.</p>
+                    <a href="mailto:paul@wholecyberhumaninitiative.org" class="contact-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Contact Us
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../../public/assets/images/image.png" alt="Whole Cyber Human Initiative" style="height: 40px; margin-bottom: 15px;">
+                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Whole Cyber Human Initiative</h3>
+                    </div>
+                    <p>Empowering veterans, military families, and first responders through comprehensive cybersecurity education and career development programs.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#team">Meet the Team</a></li>
+                        <li><a href="index.html#companies">For Companies</a></li>
+                        <li><a href="index.html#membership">Membership</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="refund-policy.html">Refund Policy</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="https://www.paypal.com/donate/?hosted_button_id=CB4LWDGUELC3Y" target="_blank">Donate</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#scholarship">Scholarship Program</a></li>
+                        <li><a href="#volunteer">Volunteer</a></li>
+                        <li><a href="#corporate">Corporate Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Whole Cyber Human Initiative. All rights reserved. | 
+                   <a href="privacy.html">Privacy Policy</a> | 
+                   <a href="terms.html">Terms of Use</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../public/assets/js/main.js"></script>
+    <script>
+        // Terms page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add scroll animation to elements
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Highlight current section in table of contents
+            const sections = document.querySelectorAll('.terms-section[id]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            function highlightCurrentSection() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 120;
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.style.color = '';
+                    link.style.fontWeight = '';
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.style.color = 'var(--primary-blue)';
+                        link.style.fontWeight = '600';
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', highlightCurrentSection);
+            highlightCurrentSection(); // Run on load
+
+            // Add copy functionality to email links
+            document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const email = this.href.replace('mailto:', '');
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(email).then(() => {
+                            // Show temporary feedback
+                            const originalText = this.textContent;
+                            this.textContent = 'Email copied!';
+                            this.style.color = '#10b981';
+                            
+                            setTimeout(() => {
+                                this.textContent = originalText;
+                                this.style.color = '';
+                            }, 2000);
+                        });
+                    }
+                });
+            });
+
+            // Add print functionality
+            const printBtn = document.createElement('button');
+            printBtn.innerHTML = '<i class="fas fa-print"></i> Print Terms';
+            printBtn.className = 'contact-btn';
+            printBtn.style.marginLeft = '10px';
+            printBtn.addEventListener('click', () => window.print());
+            
+            const contactInfo = document.querySelector('.contact-info');
+            if (contactInfo) {
+                contactInfo.querySelector('.contact-btn').parentNode.appendChild(printBtn);
+            }
+        });
+    </script>
+</body>
+</html>

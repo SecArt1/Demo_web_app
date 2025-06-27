@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Products - Whole Cyber Human Initiative</title>
+    <meta name="description" content="Discover our collection of digital products designed to advance your cybersecurity career. From job hunting guides to specialized training content.">
+    <meta name="keywords" content="cybersecurity products, digital downloads, career guides, training materials, job hunting, professional development">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../public/assets/images/favicon.ico">
+
+    <style>
+        .products-hero {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            color: white;
+            text-align: center;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .products-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,100 1000,0 1000,100"/></svg>');
+            background-size: cover;
+        }
+
+        .products-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .products-hero h1 {
+            font-size: 3.5rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .products-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(40, 134, 200, 0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--light-blue), var(--primary-blue));
+            color: white;
+            text-align: center;
+        }
+
+        .product-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-type {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-body {
+            padding: 2rem;
+        }
+
+        .product-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            color: var(--text-dark);
+        }
+
+        .product-features li i {
+            color: var(--primary-blue);
+            margin-right: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .product-footer {
+            padding: 0 2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-pricing {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .current-price {
+            font-size: 1.75rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--primary-blue);
+        }
+
+        .original-price {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+        }
+
+        .discount-badge {
+            background: var(--accent-pink);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .product-cta {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: var(--font-weight-medium);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            color: white;
+        }
+
+        .coming-soon-section {
+            background: var(--bg-light);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .coming-soon-content h2 {
+            font-size: 2.5rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .newsletter-signup {
+            display: flex;
+            max-width: 400px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
+
+        .newsletter-signup input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-signup input:focus {
+            border-color: var(--primary-blue);
+        }
+
+        .newsletter-signup button {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }        .newsletter-signup button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }        @media (max-width: 768px) {
+            .products-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .product-footer {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .newsletter-signup {
+                flex-direction: column;
+            }            /* Mobile Navigation */
+            .nav-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 2rem 0;
+                gap: 0;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border-top: 1px solid rgba(40, 134, 200, 0.1);
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                border-bottom: 1px solid rgba(40, 134, 200, 0.1);
+                width: 100%;
+            }
+
+            .nav-menu a:hover {
+                background: var(--bg-light);
+                color: var(--primary-blue);
+            }
+
+            .nav-menu a.active {
+                background: var(--primary-blue);
+                color: white;
+            }
+
+            /* Mobile dropdown styles */
+            .nav-dropdown {
+                position: relative;
+                width: 100%;
+            }
+
+            .dropdown-toggle {
+                cursor: pointer;
+                justify-content: center;
+            }
+
+            .dropdown-menu {
+                position: static;
+                background: rgba(248, 250, 252, 0.95);
+                border-radius: 0;
+                box-shadow: none;
+                padding: 0;
+                min-width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                transition: none;
+                border: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-dropdown.active .dropdown-menu {
+                max-height: 300px;
+            }
+
+            .dropdown-menu li {
+                border-left: 3px solid var(--primary-blue);
+            }
+
+            .dropdown-menu a {
+                padding: 0.8rem 3rem;
+                font-size: 1rem;
+                background: transparent;
+            }
+
+            .dropdown-menu a:hover {
+                background: var(--primary-blue);
+                color: white;
+                padding-left: 3.5rem;
+            }
+
+            .nav-toggle {
+                display: block !important;
+            }
+
+            .btn-login {
+                display: none;
+            }
+
+            nav {
+                padding: 1rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <a href="../../index.html">
+                    <img src="../../public/assets/images/image.png" alt="Whole Cyber Human Initiative" class="logo-img">
+                </a>
+            </div>            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="https://www.wholecyber.org/meet-the-team.html">Meet the Team</a></li>
+                <li><a href="https://www.wholecyber.org/for-companies.html">For Companies</a></li>
+                <li class="nav-dropdown">
+                    <a href="#resources" class="dropdown-toggle">Additional Resources <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.wholecyber.org/our-partners.html">Our Partners</a></li>
+                        <li><a href="https://www.wholecyber.org/cybersecurity-training-veterans-sponsorship.html">Sponsor Whole Cyber</a></li>
+                        <li><a href="nobody-left-behind.html">Nobody Left Behind</a></li>
+                        <li><a href="webinars.html">Webinars</a></li>
+                        <li><a href="products.html">Digital Products</a></li>
+                        <li><a href="resources.html">Additional Resources</a></li>
+                    </ul>
+                </li>
+                <li><a href="membership.html">Membership</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-login">
+                    <i class="fas fa-user"></i> Login
+                </button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="products-hero">
+            <div class="container">
+                <h1>Digital Products</h1>
+                <p>Accelerate your cybersecurity career with our expertly crafted digital resources and training materials.</p>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="section">
+            <div class="container">
+                <div class="products-grid">
+                    <!-- Job Hunting Starter Pack -->
+                    <div class="product-card">
+                        <div class="product-header">
+                            <div class="product-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h3 class="product-title">Job Hunting Starter Pack</h3>
+                            <div class="product-type">Document Guide</div>
+                        </div>
+                        <div class="product-body">
+                            <p class="product-description">
+                                A comprehensive guide designed to help you land the right cybersecurity role. Includes resume templates, interview preparation, and networking strategies.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i>Professional resume templates</li>
+                                <li><i class="fas fa-check"></i>Interview question database</li>
+                                <li><i class="fas fa-check"></i>Networking strategies</li>
+                                <li><i class="fas fa-check"></i>Salary negotiation tips</li>
+                                <li><i class="fas fa-check"></i>Industry insights</li>
+                            </ul>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-pricing">
+                                <span class="current-price">$9.99</span>
+                                <span class="original-price">$19.99</span>
+                                <span class="discount-badge">50% OFF</span>
+                            </div>
+                            <a href="https://www.wholecyberhumaninitiative.org/products/Job-Hunting-Starter-Pack---Helps-you-get-the-right-rolr-64fa21fc2a91f85e6d8d4539" class="product-cta" target="_blank">
+                                <i class="fas fa-download"></i>
+                                Get Now
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Demo Forum Video -->
+                    <div class="product-card">
+                        <div class="product-header">
+                            <div class="product-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h3 class="product-title">The Demo Forum</h3>
+                            <div class="product-type">Video Training</div>
+                        </div>
+                        <div class="product-body">
+                            <p class="product-description">
+                                Cyber Talent Pipeline video training that provides insider knowledge on breaking into the cybersecurity industry and building your professional network.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i>Industry expert insights</li>
+                                <li><i class="fas fa-check"></i>Talent pipeline strategies</li>
+                                <li><i class="fas fa-check"></i>Networking techniques</li>
+                                <li><i class="fas fa-check"></i>Career advancement tips</li>
+                                <li><i class="fas fa-check"></i>Real-world examples</li>
+                            </ul>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-pricing">
+                                <span class="current-price">$4.99</span>
+                                <span class="original-price">$9.99</span>
+                                <span class="discount-badge">50% OFF</span>
+                            </div>
+                            <a href="https://www.wholecyberhumaninitiative.org/products/The-Demo-Forum---Cyber-Talent-Pipeline-64fa0c912a91f85e6d8d4534" class="product-cta" target="_blank">
+                                <i class="fas fa-play"></i>
+                                Watch Now
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Career Advancement Guide -->
+                    <div class="product-card">
+                        <div class="product-header">
+                            <div class="product-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3 class="product-title">Advance Your Career in Cybersecurity</h3>
+                            <div class="product-type">Expert Guide</div>
+                        </div>
+                        <div class="product-body">
+                            <p class="product-description">
+                                Chris Foulon's comprehensive guide to advancing your cybersecurity career, featuring proven strategies and insider knowledge from industry veterans.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i>Expert career strategies</li>
+                                <li><i class="fas fa-check"></i>Skills development roadmap</li>
+                                <li><i class="fas fa-check"></i>Leadership principles</li>
+                                <li><i class="fas fa-check"></i>Industry certifications guide</li>
+                                <li><i class="fas fa-check"></i>Professional growth tactics</li>
+                            </ul>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-pricing">
+                                <span class="current-price">$14.99</span>
+                                <span class="original-price">$19.99</span>
+                                <span class="discount-badge">25% OFF</span>
+                            </div>
+                            <a href="https://www.wholecyberhumaninitiative.org/products/Advance-your-Career-in-Cybersecurity---Chris-Foulon-64fa056f2a91f85e6d8d452a" class="product-cta" target="_blank">
+                                <i class="fas fa-download"></i>
+                                Get Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coming Soon Section -->
+        <section class="coming-soon-section">
+            <div class="container">
+                <div class="coming-soon-content">
+                    <h2>More Products Coming Soon</h2>
+                    <p>We're constantly developing new digital products to help you succeed in cybersecurity. Be the first to know when we launch new training materials, guides, and resources.</p>
+                    <form class="newsletter-signup" action="#" method="POST">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit">Notify Me</button>
+                    </form>
+                </div>
+            </div>        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Whole Cyber Human Initiative</h3>
+                    <p>Empowering cybersecurity professionals through education, community, and professional development.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/WholeCyberHuman" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/WholeCyberHuman" target="_blank" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/whole-cyber-human-initiative/mycompany" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@wholecyber" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="webinars.html">Webinars</a></li>
+                        <li><a href="products.html">Digital Products</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="resources.html">Additional Resources</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="nobody-left-behind.html">Nobody Left Behind</a></li>
+                        <li><a href="https://www.wholecyberhumaninitiative.org/ourpartners" target="_blank">Our Partners</a></li>
+                        <li><a href="https://www.wholecyberhumaninitiative.org/sponsorwholecyber" target="_blank">Sponsor Whole Cyber</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@wholecyberhumaninitiative.org</p>
+                        <p><i class="fas fa-phone"></i> Coming Soon</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Global Remote Organization</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Whole Cyber Human Initiative. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#" target="_blank">Privacy Policy</a>
+                        <a href="#" target="_blank">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>    <!-- Scripts -->
+    <script src="../../public/assets/js/main.js"></script>
+    <script>        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    
+                    // Toggle hamburger animation
+                    const icon = this.querySelector('i');
+                    if (navMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+
+                // Handle dropdown toggle on mobile
+                const dropdownToggle = navMenu.querySelector('.dropdown-toggle');
+                if (dropdownToggle) {
+                    dropdownToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const dropdown = this.closest('.nav-dropdown');
+                        dropdown.classList.toggle('active');
+                        
+                        // Toggle chevron icon
+                        const chevron = this.querySelector('i');
+                        if (dropdown.classList.contains('active')) {
+                            chevron.style.transform = 'rotate(180deg)';
+                        } else {
+                            chevron.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                }
+
+                // Close menu when clicking on a link (but not dropdown toggle)
+                const navLinks = navMenu.querySelectorAll('a:not(.dropdown-toggle)');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                        const icon = navToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        
+                        // Reset any active dropdowns
+                        const activeDropdowns = navMenu.querySelectorAll('.nav-dropdown.active');
+                        activeDropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                            const chevron = dropdown.querySelector('.dropdown-toggle i');
+                            if (chevron) chevron.style.transform = 'rotate(0deg)';
+                        });
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                        navMenu.classList.remove('active');
+                        const icon = navToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        
+                        // Reset any active dropdowns
+                        const activeDropdowns = navMenu.querySelectorAll('.nav-dropdown.active');
+                        activeDropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                            const chevron = dropdown.querySelector('.dropdown-toggle i');
+                            if (chevron) chevron.style.transform = 'rotate(0deg)';
+                        });
+                    }
+                });
+            }
+        });
+
+        // Newsletter signup form handling
+        document.querySelector('.newsletter-signup').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            
+            if (email) {
+                // Here you would typically send the email to your backend
+                alert('Thank you! We\'ll notify you when new products are available.');
+                this.querySelector('input[type="email"]').value = '';
+            }
+        });
+
+        // Set active navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
