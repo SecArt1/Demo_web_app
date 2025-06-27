@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Whole Cyber Human Initiative</title>
+    <meta name="description" content="Sign in to your Whole Cyber Human Initiative account to access exclusive content, track your progress, and connect with our cybersecurity community.">
+    <meta name="keywords" content="login, sign in, cybersecurity education, member portal, account access">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../public/assets/images/favicon.ico">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="300" cy="700" r="120" fill="url(%23a)"/><circle cx="700" cy="800" r="80" fill="url(%23a)"/></svg>') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .login-container {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-container img {
+            height: 60px;
+            width: auto;
+        }
+
+        .login-title {
+            font-size: 2rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .login-subtitle {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        .login-form {
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: var(--font-weight-medium);
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(40, 134, 200, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-blue);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary-blue);
+        }
+
+        .forgot-password {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: var(--dark-blue);
+        }
+
+        .login-btn {
+            width: 100%;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .divider {
+            position: relative;
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-color);
+            z-index: 1;
+        }
+
+        .divider span {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .google-signin {
+            width: 100%;
+            background: white;
+            color: var(--text-dark);
+            border: 2px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .google-signin:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .google-icon {
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%234285f4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="%2334a853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="%23fbbc05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="%23ea4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>') no-repeat center center;
+            background-size: contain;
+        }
+
+        .sso-options {
+            display: grid;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .sso-btn {
+            width: 100%;
+            background: white;
+            color: var(--text-dark);
+            border: 2px solid var(--border-color);
+            padding: 0.875rem 1rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .sso-btn:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .microsoft-btn:hover {
+            border-color: #0078d4;
+        }
+
+        .github-btn:hover {
+            border-color: #333;
+        }
+
+        .signup-link {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .signup-link a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .signup-link a:hover {
+            color: var(--dark-blue);
+        }
+
+        .back-home {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: white;
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-home:hover {
+            color: rgba(255, 255, 255, 0.8);
+            transform: translateX(-5px);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                margin: 1rem;
+                padding: 2rem;
+            }
+
+            .back-home {
+                top: 1rem;
+                left: 1rem;
+            }
+
+            .login-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 0.875rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-error {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .alert-success {
+            background: #f0fdf4;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Home Link -->
+    <a href="../../index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <!-- Header -->
+        <div class="login-header">
+            <div class="logo-container">
+                <img src="../../public/assets/images/image.png" alt="Whole Cyber Human Initiative">
+            </div>
+            <h1 class="login-title">Welcome Back</h1>
+            <p class="login-subtitle">Sign in to access your cybersecurity learning journey</p>
+        </div>
+
+        <!-- Alert Messages -->
+        <div id="alert" class="alert">
+            <span id="alert-message"></span>
+        </div>
+
+        <!-- Google Sign-In (Primary) -->
+        <div class="sso-options">
+            <button class="google-signin" id="google-signin-btn">
+                <div class="google-icon"></div>
+                Continue with Google
+            </button>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider">
+            <span>or continue with email</span>
+        </div>
+
+        <!-- Login Form -->
+        <form class="login-form" id="login-form">
+            <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    class="form-input" 
+                    placeholder="your.email@example.com" 
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <div class="password-container">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-input" 
+                        placeholder="Enter your password" 
+                        required
+                    >
+                    <button type="button" class="password-toggle" id="password-toggle">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <span>Remember me</span>
+                </label>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="login-btn" id="submit-btn">
+                Sign In
+            </button>
+        </form>
+
+        <!-- Additional SSO Options -->
+        <div class="divider">
+            <span>or sign in with</span>
+        </div>
+
+        <div class="sso-options">
+            <button class="sso-btn microsoft-btn" id="microsoft-signin-btn">
+                <i class="fab fa-microsoft" style="color: #0078d4;"></i>
+                Continue with Microsoft
+            </button>
+            
+            <button class="sso-btn github-btn" id="github-signin-btn">
+                <i class="fab fa-github" style="color: #333;"></i>
+                Continue with GitHub
+            </button>
+        </div>
+
+        <!-- Sign Up Link -->
+        <div class="signup-link">
+            Don't have an account? <a href="#" id="signup-link">Sign up here</a>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const loginForm = document.getElementById('login-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const passwordToggle = document.getElementById('password-toggle');
+        const passwordInput = document.getElementById('password');
+        const alertDiv = document.getElementById('alert');
+        const alertMessage = document.getElementById('alert-message');
+        const googleSigninBtn = document.getElementById('google-signin-btn');
+        const microsoftSigninBtn = document.getElementById('microsoft-signin-btn');
+        const githubSigninBtn = document.getElementById('github-signin-btn');
+
+        // Password Toggle Functionality
+        passwordToggle.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            const icon = this.querySelector('i');
+            if (type === 'password') {
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        });
+
+        // Show Alert Function
+        function showAlert(message, type = 'error') {
+            alertMessage.textContent = message;
+            alertDiv.className = `alert alert-${type} show`;
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                alertDiv.classList.remove('show');
+            }, 5000);
+        }
+
+        // Loading State Function
+        function setLoading(button, loading) {
+            if (loading) {
+                button.disabled = true;
+                const originalText = button.innerHTML;
+                button.dataset.originalText = originalText;
+                button.innerHTML = '<div class="loading"></div> Signing in...';
+            } else {
+                button.disabled = false;
+                button.innerHTML = button.dataset.originalText || button.innerHTML;
+            }
+        }
+
+        // Traditional Login Form Submission
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+
+            // Basic validation
+            if (!email || !password) {
+                showAlert('Please fill in all required fields.');
+                return;
+            }
+
+            setLoading(submitBtn, true);
+
+            try {
+                // Simulate API call (replace with actual authentication logic)
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // For demo purposes, show success message
+                showAlert('Login successful! Redirecting...', 'success');
+                
+                // Redirect after successful login (replace with actual redirect logic)
+                setTimeout(() => {
+                    window.location.href = '../../index.html';
+                }, 1500);
+                
+            } catch (error) {
+                showAlert('Invalid email or password. Please try again.');
+            } finally {
+                setLoading(submitBtn, false);
+            }
+        });
+
+        // Google Sign-In
+        googleSigninBtn.addEventListener('click', async function() {
+            setLoading(this, true);
+            
+            try {
+                // Initialize Google Sign-In (replace with actual Google OAuth implementation)
+                // This is a placeholder - you would integrate with Google Identity Services
+                showAlert('Google Sign-In integration would be implemented here.', 'success');
+                
+                // Simulate successful Google authentication
+                setTimeout(() => {
+                    showAlert('Google Sign-In successful! Redirecting...', 'success');
+                    setTimeout(() => {
+                        window.location.href = '../../index.html';
+                    }, 1500);
+                }, 2000);
+                
+            } catch (error) {
+                showAlert('Google Sign-In failed. Please try again.');
+            } finally {
+                setTimeout(() => setLoading(this, false), 2000);
+            }
+        });
+
+        // Microsoft Sign-In
+        microsoftSigninBtn.addEventListener('click', async function() {
+            setLoading(this, true);
+            
+            try {
+                // Microsoft OAuth implementation would go here
+                showAlert('Microsoft Sign-In integration would be implemented here.', 'success');
+                
+            } catch (error) {
+                showAlert('Microsoft Sign-In failed. Please try again.');
+            } finally {
+                setTimeout(() => setLoading(this, false), 2000);
+            }
+        });
+
+        // GitHub Sign-In
+        githubSigninBtn.addEventListener('click', async function() {
+            setLoading(this, true);
+            
+            try {
+                // GitHub OAuth implementation would go here
+                showAlert('GitHub Sign-In integration would be implemented here.', 'success');
+                
+            } catch (error) {
+                showAlert('GitHub Sign-In failed. Please try again.');
+            } finally {
+                setTimeout(() => setLoading(this, false), 2000);
+            }
+        });        // Sign Up Link
+        document.getElementById('signup-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'signup.html';
+        });
+
+        // Forgot Password Link
+        document.querySelector('.forgot-password').addEventListener('click', function(e) {
+            e.preventDefault();
+            showAlert('Password reset functionality would be implemented here.', 'success');
+        });
+
+        // Auto-focus email field
+        document.getElementById('email').focus();
+    </script>
+</body>
+</html>

@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Library - Whole Cyber Human Initiative</title>
+    <meta name="description" content="Browse our comprehensive library of role-centric cybersecurity training programs from EC-Council E-Learning. Get up to 50% off industry-leading certifications and courses.">
+    <meta name="keywords" content="cybersecurity training, EC-Council, certification courses, CEH, CISSP, CCSP, cyber training library, discounted training">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../public/assets/images/favicon.ico">
+
+    <style>
+        .training-hero {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .training-hero h1 {
+            font-size: 3rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 1rem;
+        }
+
+        .training-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            opacity: 0.9;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .filters-section {
+            background: var(--bg-light);
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filters-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-select {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: white;
+            font-size: 0.9rem;
+            min-width: 150px;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+
+        .training-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .training-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .certification-level {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .card-header h3 {
+            font-size: 1.25rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-header .subtitle {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .training-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .training-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .detail-item i {
+            color: var(--primary-blue);
+            width: 16px;
+        }
+
+        .price-section {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .discounted-price {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--primary-blue);
+            margin-right: 0.5rem;
+        }
+
+        .discount-amount {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .card-footer {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+        }
+
+        .btn-enroll {
+            width: 100%;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 0.875rem 1rem;
+            border-radius: 8px;
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-enroll:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .role-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .role-tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .stats-section {
+            background: var(--bg-light);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--primary-blue);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: var(--font-weight-medium);
+            margin-top: 0.5rem;
+        }
+
+        .partnership-section {
+            padding: 4rem 0;
+            text-align: center;
+            background: white;
+        }
+
+        .partnership-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .ec-council-logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .training-hero h1 {
+                font-size: 2rem;
+            }
+
+            .training-grid {
+                grid-template-columns: 1fr;
+                padding: 2rem 0;
+            }
+
+            .filters-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group {
+                justify-content: space-between;
+            }
+
+            .training-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-light);
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../../public/assets/images/image.png" alt="Whole Cyber Human Initiative" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="https://www.wholecyber.org/meet-the-team.html">Meet the Team</a></li>
+                <li><a href="https://www.wholecyber.org/for-companies.html">For Companies</a></li>
+                <li class="nav-dropdown">
+                    <a href="#resources" class="dropdown-toggle">Additional Resources <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.wholecyber.org/our-partners.html">Our Partners</a></li>
+                        <li><a href="https://www.wholecyber.org/cybersecurity-training-veterans-sponsorship.html">Sponsor Whole Cyber</a></li>
+                        <li><a href="#cert-drive">50 Cert Drive</a></li>
+                        <li><a href="webinars.html">Webinars</a></li>
+                        <li><a href="products.html">Digital Products</a></li>
+                    </ul>
+                </li>
+                <li><a href="membership.html">Membership</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-login">
+                    <i class="fas fa-user"></i> Login
+                </a>
+                <button class="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="training-hero">
+        <div class="container">
+            <div class="discount-badge">
+                <i class="fas fa-tag"></i> Up to 50% OFF EC-Council Training
+            </div>
+            <h1>Training Library</h1>
+            <p>Discover our comprehensive collection of role-centric cybersecurity training programs from EC-Council E-Learning, carefully vetted by our advisory board with 300+ years of combined experience.</p>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label for="level-filter">Level:</label>
+                    <select id="level-filter" class="filter-select">
+                        <option value="">All Levels</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="role-filter">Role:</label>
+                    <select id="role-filter" class="filter-select">
+                        <option value="">All Roles</option>
+                        <option value="ethical-hacker">Ethical Hacker</option>
+                        <option value="security-analyst">Security Analyst</option>
+                        <option value="incident-responder">Incident Responder</option>
+                        <option value="forensics">Digital Forensics</option>
+                        <option value="governance">Governance & Risk</option>
+                        <option value="architecture">Security Architecture</option>
+                        <option value="cloud-security">Cloud Security</option>
+                        <option value="iot-security">IoT Security</option>
+                    </select>
+                </div>
+
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" class="search-input" placeholder="Search courses...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Library -->
+    <section class="training-library">
+        <div class="container">
+            <div class="training-grid" id="training-grid">
+                <!-- CEH Training -->
+                <div class="training-card" data-level="intermediate" data-role="ethical-hacker">
+                    <div class="card-header">
+                        <div class="certification-level">Intermediate</div>
+                        <h3>Certified Ethical Hacker (CEH) v12</h3>
+                        <p class="subtitle">Master ethical hacking techniques and penetration testing</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="role-tags">
+                            <span class="role-tag">Ethical Hacker</span>
+                            <span class="role-tag">Penetration Tester</span>
+                        </div>
+                        <p class="training-description">
+                            Learn to think like a hacker and defend like a security professional. This comprehensive course covers 20 modules of hands-on ethical hacking techniques, tools, and methodologies.
+                        </p>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>40+ Hours</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>CEH Certification</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-laptop-code"></i>
+                                <span>Hands-on Labs</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>Expert Support</span>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <div class="original-price">Regular Price: $1,199</div>
+                            <span class="discounted-price">$599</span>
+                            <span class="discount-amount">50% OFF</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-enroll">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- CISSP Training -->
+                <div class="training-card" data-level="advanced" data-role="security-analyst">
+                    <div class="card-header">
+                        <div class="certification-level">Advanced</div>
+                        <h3>CISSP - Certified Information Systems Security Professional</h3>
+                        <p class="subtitle">Advanced security management and leadership</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="role-tags">
+                            <span class="role-tag">Security Manager</span>
+                            <span class="role-tag">CISO</span>
+                            <span class="role-tag">Security Architect</span>
+                        </div>
+                        <p class="training-description">
+                            Master the 8 domains of information security and prepare for the gold standard in cybersecurity leadership certification. Ideal for experienced professionals.
+                        </p>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>60+ Hours</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>CISSP Certification</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-book"></i>
+                                <span>8 Domains</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-award"></i>
+                                <span>Industry Gold Standard</span>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <div class="original-price">Regular Price: $1,499</div>
+                            <span class="discounted-price">$749</span>
+                            <span class="discount-amount">50% OFF</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-enroll">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- CCSP Training -->
+                <div class="training-card" data-level="advanced" data-role="cloud-security">
+                    <div class="card-header">
+                        <div class="certification-level">Advanced</div>
+                        <h3>CCSP - Certified Cloud Security Professional</h3>
+                        <p class="subtitle">Master cloud security architecture and governance</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="role-tags">
+                            <span class="role-tag">Cloud Security</span>
+                            <span class="role-tag">Security Architect</span>
+                        </div>
+                        <p class="training-description">
+                            Comprehensive cloud security training covering 6 domains of cloud security knowledge. Perfect for professionals securing cloud environments.
+                        </p>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>50+ Hours</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-cloud"></i>
+                                <span>Cloud Focused</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>6 Domains</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>CCSP Certification</span>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <div class="original-price">Regular Price: $1,299</div>
+                            <span class="discounted-price">$649</span>
+                            <span class="discount-amount">50% OFF</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-enroll">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- ECIH Training -->
+                <div class="training-card" data-level="intermediate" data-role="incident-responder">
+                    <div class="card-header">
+                        <div class="certification-level">Intermediate</div>
+                        <h3>ECIH - EC-Council Incident Handler</h3>
+                        <p class="subtitle">Master incident response and digital forensics</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="role-tags">
+                            <span class="role-tag">Incident Responder</span>
+                            <span class="role-tag">SOC Analyst</span>
+                        </div>
+                        <p class="training-description">
+                            Learn to effectively respond to cybersecurity incidents, conduct forensic analysis, and implement incident response procedures following industry best practices.
+                        </p>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>35+ Hours</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-search"></i>
+                                <span>Forensics Focus</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Incident Response</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>ECIH Certification</span>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <div class="original-price">Regular Price: $999</div>
+                            <span class="discounted-price">$499</span>
+                            <span class="discount-amount">50% OFF</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-enroll">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- CHFI Training -->
+                <div class="training-card" data-level="intermediate" data-role="forensics">
+                    <div class="card-header">
+                        <div class="certification-level">Intermediate</div>
+                        <h3>CHFI - Computer Hacking Forensic Investigator</h3>
+                        <p class="subtitle">Digital forensics and investigation techniques</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="role-tags">
+                            <span class="role-tag">Digital Forensics</span>
+                            <span class="role-tag">Cyber Detective</span>
+                        </div>
+                        <p class="training-description">
+                            Master the art of digital forensics investigation, evidence collection, and analysis. Learn to investigate cybercrimes and recover digital evidence legally.
+                        </p>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>40+ Hours</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-fingerprint"></i>
+                                <span>Evidence Collection</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-gavel"></i>
+                                <span>Legal Procedures</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>CHFI Certification</span>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <div class="original-price">Regular Price: $1,099</div>
+                            <span class="discounted-price">$549</span>
+                            <span class="discount-amount">50% OFF</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-enroll">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- ECSA Training -->
+                <div class="training-card" data-level="expert" data-role="ethical-hacker">
+                    <div class="card-header">
+                        <div class="certification-level">Expert</div>
+                        <h3>ECSA - EC-Council Security Analyst</h3>
+                        <p class="subtitle">Advanced penetration testing and security analysis</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="role-tags">
+                            <span class="role-tag">Security Analyst</span>
+                            <span class="role-tag">Penetration Tester</span>
+                        </div>
+                        <p class="training-description">
+                            Advanced hands-on penetration testing course. Build upon CEH knowledge with practical testing scenarios and real-world security analysis techniques.
+                        </p>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>45+ Hours</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-code"></i>
+                                <span>Advanced Labs</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-bug"></i>
+                                <span>Vulnerability Assessment</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>ECSA Certification</span>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <div class="original-price">Regular Price: $1,399</div>
+                            <span class="discounted-price">$699</span>
+                            <span class="discount-amount">50% OFF</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-enroll">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- CND Training -->
+                <div class="training-card" data-level="beginner" data-role="security-analyst">
+                    <div class="card-header">
+                        <div class="certification-level">Beginner</div>
+                        <h3>CND - Certified Network Defender</h3>
+                        <p class="subtitle">Network security fundamentals and defense</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="role-tags">
+                            <span class="role-tag">Network Security</span>
+                            <span class="role-tag">SOC Analyst</span>
+                        </div>
+                        <p class="training-description">
+                            Perfect starting point for cybersecurity careers. Learn network security fundamentals, defense strategies, and how to protect organizational networks.
+                        </p>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>30+ Hours</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-network-wired"></i>
+                                <span>Network Focus</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Defense Strategies</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>CND Certification</span>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <div class="original-price">Regular Price: $899</div>
+                            <span class="discounted-price">$449</span>
+                            <span class="discount-amount">50% OFF</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-enroll">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- ECSA(PT) Training -->
+                <div class="training-card" data-level="expert" data-role="ethical-hacker">
+                    <div class="card-header">
+                        <div class="certification-level">Expert</div>
+                        <h3>ECSA(PT) - Penetration Testing</h3>
+                        <p class="subtitle">Master-level penetration testing certification</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="role-tags">
+                            <span class="role-tag">Penetration Tester</span>
+                            <span class="role-tag">Security Consultant</span>
+                        </div>
+                        <p class="training-description">
+                            The pinnacle of penetration testing certification. Demonstrate your ability to perform comprehensive penetration tests with this practical, hands-on exam.
+                        </p>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>50+ Hours</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-laptop-code"></i>
+                                <span>Practical Exam</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-trophy"></i>
+                                <span>Elite Level</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>ECSA(PT) Certification</span>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <div class="original-price">Regular Price: $1,599</div>
+                            <span class="discounted-price">$799</span>
+                            <span class="discount-amount">50% OFF</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-enroll">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- IoT Security Training -->
+                <div class="training-card" data-level="intermediate" data-role="iot-security">
+                    <div class="card-header">
+                        <div class="certification-level">Intermediate</div>
+                        <h3>IoT Security Fundamentals</h3>
+                        <p class="subtitle">Secure Internet of Things devices and networks</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="role-tags">
+                            <span class="role-tag">IoT Security</span>
+                            <span class="role-tag">Device Security</span>
+                        </div>
+                        <p class="training-description">
+                            Learn to secure IoT devices, networks, and applications. Cover emerging threats in the IoT ecosystem and implement comprehensive security measures.
+                        </p>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>25+ Hours</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-microchip"></i>
+                                <span>IoT Focus</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-wifi"></i>
+                                <span>Wireless Security</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Completion Certificate</span>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <div class="original-price">Regular Price: $699</div>
+                            <span class="discounted-price">$349</span>
+                            <span class="discount-amount">50% OFF</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-enroll">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="no-results" id="no-results" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No courses found</h3>
+                <p>Try adjusting your filters or search terms to find relevant training programs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <h2>Training Library Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">25+</span>
+                    <div class="stat-label">Training Programs</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50%</span>
+                    <div class="stat-label">Average Discount</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">300+</span>
+                    <div class="stat-label">Hours of Content</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">8</span>
+                    <div class="stat-label">Career Paths</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Section -->
+    <section class="partnership-section">
+        <div class="container">
+            <div class="partnership-content">
+                <h2>Partnership with EC-Council</h2>
+                <p>We've partnered with EC-Council, the world's largest cybersecurity certification body, to bring you industry-leading training programs at significantly discounted rates. Our advisory board has carefully vetted each course to ensure alignment with current industry needs and the NICE framework.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">Contact Us for Custom Training</a>
+                    <a href="membership.html" class="btn btn-secondary">View Membership Options</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Whole Cyber Human Initiative</h3>
+                    <p>A Service-Disabled Veteran Owned Non-profit dedicated to providing minimal to no-cost logical cybersecurity education with true return on investment.</p>
+                    <p><strong>Founded by:</strong> Retired Navy Veteran Paul Cummings, Leah McLean, Chris Foulon, and Alex Rhodes</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <a href="courses.html">Courses</a><br>
+                    <a href="index.html#curriculum">Core Curriculum</a><br>
+                    <a href="training-library.html">Training Library</a><br>
+                    <a href="membership.html">Membership</a><br>
+                    <a href="https://www.wholecyber.org/for-companies.html">For Companies</a><br>
+                    <a href="https://www.wholecyber.org/meet-the-team.html">Meet the Team</a>
+                </div>
+                <div class="footer-section">
+                    <h3>For Organizations</h3>
+                    <a href="https://www.wholecyber.org/for-companies.html">Direct-to-Hire Pipeline</a><br>
+                    <a href="https://www.wholecyber.org/for-companies.html">Workforce Development</a><br>
+                    <a href="https://www.wholecyber.org/for-companies.html">Executive Coaching</a><br>
+                    <a href="https://www.wholecyber.org/for-companies.html">Job Description Assistance</a><br>
+                    <a href="https://www.wholecyber.org/for-companies.html">HR Manager Training</a><br>
+                    <a href="https://www.wholecyber.org/for-companies.html">Curriculum Consulting</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Additional Resources</h3>
+                    <a href="https://www.wholecyber.org/our-partners.html">Our Partners</a><br>
+                    <a href="https://www.wholecyber.org/cybersecurity-training-veterans-sponsorship.html">Sponsor Whole Cyber</a><br>
+                    <a href="#cert-drive">50 Cert Drive</a><br>
+                    <a href="webinars.html">Webinars</a><br>
+                    <a href="products.html">Digital Products</a><br>
+                    <a href="resources.html">Resource Library</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <p>📧 info@wholecyberhumaninitiative.org</p>
+                    <p>🌍 Serving veterans, first responders, and aspiring cyber professionals globally</p>
+                    <p>💬 Join our Discord: Vicious Vineyards</p>
+                    <p>🎥 <a href="#">YouTube: Paul Cummings Veterans Breaking into IT Cyber</a></p>
+                    <a href="#" class="btn btn-accent mt-3">Donate to Our Mission</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Whole Cyber Human Initiative. All rights reserved. | A Service-Disabled Veteran Owned Non-profit Organization</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../public/assets/js/main.js"></script>
+    <script>
+        // Training Library Filtering and Search
+        document.addEventListener('DOMContentLoaded', function() {
+            const levelFilter = document.getElementById('level-filter');
+            const roleFilter = document.getElementById('role-filter');
+            const searchInput = document.getElementById('search-input');
+            const trainingCards = document.querySelectorAll('.training-card');
+            const noResults = document.getElementById('no-results');
+
+            function filterTrainings() {
+                const levelValue = levelFilter.value.toLowerCase();
+                const roleValue = roleFilter.value.toLowerCase();
+                const searchValue = searchInput.value.toLowerCase();
+                let visibleCount = 0;
+
+                trainingCards.forEach(card => {
+                    const cardLevel = card.dataset.level.toLowerCase();
+                    const cardRole = card.dataset.role.toLowerCase();
+                    const cardText = card.textContent.toLowerCase();
+
+                    const levelMatch = !levelValue || cardLevel === levelValue;
+                    const roleMatch = !roleValue || cardRole === roleValue;
+                    const searchMatch = !searchValue || cardText.includes(searchValue);
+
+                    if (levelMatch && roleMatch && searchMatch) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide no results message
+                if (visibleCount === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            }
+
+            // Add event listeners
+            levelFilter.addEventListener('change', filterTrainings);
+            roleFilter.addEventListener('change', filterTrainings);
+            searchInput.addEventListener('input', filterTrainings);
+
+            // Enrollment button handlers
+            document.querySelectorAll('.btn-enroll').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Enrollment functionality would be implemented here. Contact us for more information about this training program.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
