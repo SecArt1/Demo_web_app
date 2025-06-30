@@ -1,0 +1,186 @@
+%-------------------------
+% Resume in Latex
+% Author : Mohamed Elawady
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Mohamed Elawady} \\ \vspace{1pt}
+    \small +201096419777 $|$ \href{mailto:mohamedelawady1@proton.me}{\underline{mohamedelawady1@proton.me}} $|$ 
+    \href{https://www.linkedin.com/in/mohamedelawady1/}{\underline{linkedin.com/in/mohamedelawady1}} $|$
+    \href{https://github.com/SecArt1}{\underline{github.com/SecArt1}}
+\end{center}
+
+%-----------OBJECTIVE-----------
+\section{Objective}
+ A proactive and results-oriented IT professional with a passion for technology and a customer-first mindset. Eager to leverage hands-on experience in troubleshooting, network support, and system administration to ensure seamless IT operations in a dynamic, fast-paced environment. A quick learner dedicated to mastering new technologies and providing exceptional support.
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Higher Institute of Engineering and Technology}{New Damietta, Egypt}
+      {Bachelor of Electronics and Electrical Communications Engineering}{Oct 2020 -- May 2025}
+  \resumeSubHeadingListEnd
+
+%-----------SKILLS-----------
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+
+    \item
+     \textbf{Operating Systems}{: Windows, Linux (Kali)}
+    \item
+     \textbf{Productivity Suites}{: Microsoft Office 365}
+    \item
+     \textbf{Networking}{: TCP/IP, LAN/WAN, DNS, DHCP, SMB, Wireshark, Cisco CCNA Concepts}
+    \item
+     \textbf{Directory Services}{: Active Directory}
+    \item
+     \textbf{Hardware/Software}{: PC Hardware Troubleshooting, Software Installation & Configuration, Technical Support}
+    \item
+     \textbf{Security Tools}{: Metasploit, Ghidra, radare2}
+ \end{itemize}
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Community Moderator}{January 2023 -- Present}
+      {Hack smarter}{}
+      \resumeItemListStart
+        \resumeItem{Provided technical support for the community’s website and platform, efficiently troubleshooting and resolving user-facing issues.}
+        \resumeItem{Collaborated with a moderator team to maintain a positive and supportive community environment, enforcing guidelines and resolving conflicts.}
+        \resumeItem{Created and shared weekly information security content, increasing member engagement and knowledge sharing.}
+        \resumeItem{Organized and hosted monthly webinars and events for a diverse, global audience across multiple timezones.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Cybersecurity Intern}{Sep 2022}
+      {CISA}{}
+      \resumeItemListStart
+        \resumeItem{Analyzed critical infrastructure systems to identify and mitigate potential points of failure using passive and active discovery techniques.}
+        \resumeItem{Utilized tools like Metasploit to perform controlled system tests, identifying vulnerabilities and strengthening security configurations.}
+        \resumeItem{Studied web and wireless security protocols to understand common attack vectors and effective mitigation techniques.}
+        \resumeItem{Developed teamwork, communication, and creative problem-solving skills through collaborative, team-based cybersecurity projects.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Active Directory Home Lab} $|$ \emph{Kali Linux, Metasploit, Active Directory, Cisco CCNA}}{Self-directed}
+      \resumeItemListStart
+        \resumeItem{Set up a simulated corporate Active Directory environment to test and troubleshoot network services and security configurations.}
+        \resumeItem{Simulated common network issues and security threats (e.g., LLMNR Poisoning, Kerberoasting) to develop and test effective mitigation strategies.}
+        \resumeItem{Developed and implemented mitigation strategies, such as disabling LLMNR and enforcing SMB signing to enhance network security.}
+        \resumeItem{Documented findings and solutions in detailed reports, enhancing technical writing skills.}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{Advanced System Troubleshooting \& Analysis} $|$ \emph{Ghidra, Wireshark, radare2, OPSWAT OECA}}{Self-directed}
+      \resumeItemListStart
+        \resumeItem{Performed advanced static and dynamic analysis on software to identify and resolve system-level conflicts and security risks.}
+        \resumeItem{Identified indicators of compromise (IOCs) and blocked them at the network level, leveraging Wireshark for traffic analysis.}
+        \resumeItem{Wrote detailed reports on system behavior and recommended endpoint hardening measures to prevent future issues.}
+      \resumeItemListEnd
+      
+    \resumeProjectHeading
+      {\textbf{Non-Wearable Health Monitoring System} $|$ \emph{ESP32, Flutter, Firebase, CI/CD, Git}}{Self-directed}
+      \resumeItemListStart
+        \resumeItem{Developed a cloud-integrated health monitoring system using ESP32 for real-time data collection.}
+        \resumeItem{Designed a Flutter mobile app with Firebase for real-time data sync and storage, ensuring seamless hardware-software integration.}
+        \resumeItem{Implemented CI/CD pipelines and automated testing for efficient deployment and maintenance.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}
